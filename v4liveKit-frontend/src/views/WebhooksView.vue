@@ -4,10 +4,10 @@
     <SidebarNav />
 
     <!-- Main Content -->
-    <main class="flex-1 p-8 overflow-y-auto bg-slate-50 dark:bg-background-dark">
+    <main class="flex-1 p-8 overflow-y-auto">
       <div class="mx-auto flex max-w-7xl flex-col gap-6">
         <!-- Header -->
-        <div class="flex flex-wrap justify-between gap-3">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 -mx-8 px-8 mb-6 flex flex-wrap justify-between gap-3">
           <div class="flex min-w-72 flex-col gap-3">
             <h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
               API & Webhooks
@@ -16,7 +16,7 @@
               Manage API keys and configure webhooks for your application.
             </p>
           </div>
-        </div>
+        </header>
 
         <!-- Tabs -->
         <div class="pb-3">
@@ -71,10 +71,10 @@
           </div>
 
           <!-- API Keys List -->
-          <div class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 overflow-hidden">
+          <div class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/50 overflow-hidden">
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-800">
-                <thead class="bg-slate-50 dark:bg-slate-800/50">
+                <thead class="bg-slate-50/80 dark:bg-slate-800/50">
                   <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Name</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Key</th>
@@ -84,7 +84,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
-                <tbody class="bg-white dark:bg-slate-900/50 divide-y divide-slate-200 dark:divide-slate-800">
+                <tbody class="bg-white/80 dark:bg-slate-900/50 divide-y divide-slate-200 dark:divide-slate-800">
                   <tr v-for="key in apiKeys" :key="key.id" class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="text-sm font-medium text-slate-900 dark:text-white">{{ key.name }}</div>
@@ -146,7 +146,7 @@
                     v-model="newKeyName"
                     type="text"
                     placeholder="e.g., Production API Key"
-                    class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white/80 backdrop-blur-md dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
@@ -154,7 +154,7 @@
                   <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Permissions</label>
                   <select
                     v-model="newKeyPermissions"
-                    class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white/80 backdrop-blur-md dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     <option>Full Access</option>
                     <option>Read Only</option>
@@ -205,7 +205,7 @@
             <div
               v-for="webhook in webhooks"
               :key="webhook.id"
-              class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6"
+              class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/50 p-6"
             >
               <div class="flex items-start justify-between mb-4">
                 <div class="flex-1">
@@ -267,7 +267,7 @@
                     v-model="newWebhookUrl"
                     type="url"
                     placeholder="https://your-domain.com/webhook"
-                    class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white/80 backdrop-blur-md dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 

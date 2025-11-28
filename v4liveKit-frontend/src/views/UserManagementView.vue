@@ -7,7 +7,7 @@
     <main class="flex-1 overflow-y-auto">
       <div class="mx-auto max-w-7xl p-6 lg:p-8">
         <!-- Page Heading -->
-        <div class="flex flex-wrap items-center justify-between gap-4">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-6 flex flex-wrap items-center justify-between gap-4">
           <h1 class="text-4xl font-black leading-tight tracking-[-0.033em] text-slate-900 dark:text-white">
             User Management
           </h1>
@@ -26,7 +26,7 @@
               <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
             </button>
           </div>
-        </div>
+        </header>
 
         <!-- Action Bar (Search, Filters, Add Button) -->
         <div class="mt-6 flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 lg:flex-row lg:items-center">
@@ -34,13 +34,13 @@
           <div class="flex-1">
             <label class="flex h-12 w-full flex-col">
               <div class="flex h-full w-full flex-1 items-stretch rounded-lg">
-                <div class="flex items-center justify-center rounded-l-lg border-y border-l border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800 pl-4 text-slate-500 dark:text-slate-400">
+                <div class="flex items-center justify-center rounded-l-lg border-y border-l border-slate-200 bg-slate-50/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-800/80 pl-4 text-slate-500 dark:text-slate-400">
                   <span class="material-symbols-outlined">search</span>
                 </div>
                 <input
                   v-model="searchQuery"
                   @input="handleSearch"
-                  class="form-input h-full w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-500 focus:border-primary focus:outline-0 focus:ring-0 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-400 pl-2 text-base font-normal leading-normal"
+                  class="form-input h-full w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border border-slate-200 bg-white/80 backdrop-blur-md text-slate-900 placeholder:text-slate-500 focus:border-primary focus:outline-0 focus:ring-0 dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:placeholder:text-slate-400 pl-2 text-base font-normal leading-normal"
                   placeholder="Search by name or email..."
                 />
               </div>
@@ -51,14 +51,14 @@
           <div class="flex flex-wrap items-center gap-3">
             <button
               @click="toggleRoleFilter"
-              class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 pl-4 pr-3 text-slate-700 dark:text-slate-200"
+              class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100/80 backdrop-blur-md dark:bg-slate-800/80 pl-4 pr-3 text-slate-700 dark:text-slate-200"
             >
               <p class="text-sm font-medium leading-normal">Role</p>
               <span class="material-symbols-outlined">arrow_drop_down</span>
             </button>
             <button
               @click="toggleStatusFilter"
-              class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 pl-4 pr-3 text-slate-700 dark:text-slate-200"
+              class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100/80 backdrop-blur-md dark:bg-slate-800/80 pl-4 pr-3 text-slate-700 dark:text-slate-200"
             >
               <p class="text-sm font-medium leading-normal">Status</p>
               <span class="material-symbols-outlined">arrow_drop_down</span>
@@ -78,10 +78,10 @@
         </div>
 
         <!-- Data Table -->
-        <div class="mt-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <div class="mt-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
           <div class="overflow-x-auto">
             <table class="w-full min-w-[800px] text-left text-sm">
-              <thead class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300">
+              <thead class="border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 backdrop-blur-md dark:bg-slate-800/50 text-slate-600 dark:text-slate-300">
                 <tr>
                   <th class="p-4">
                     <input

@@ -4,7 +4,7 @@
     <SidebarNav />
 
     <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+    <main class="flex-1 overflow-y-auto">
       <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="flex flex-col gap-6">
         <!-- Back Navigation & Progress -->
@@ -47,7 +47,7 @@
         </div>
 
         <!-- Form Container -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
           <form @submit.prevent="handleSubmit" class="flex flex-col divide-y divide-gray-200 dark:divide-gray-700">
             <!-- Section: Basic Information -->
             <div class="p-6 md:p-8">

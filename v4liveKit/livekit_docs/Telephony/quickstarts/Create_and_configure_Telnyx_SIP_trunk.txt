@@ -1,0 +1,801 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/sip/quickstarts/configuring-telnyx-trunk/
+Title: 
+Crawled: 2025-11-01 21:12:15
+================================================================================
+
+On this page
+
+Creating a Telnyx SIP trunk using the API
+
+Prerequisite
+
+Step 1: Create an environment variable for API key
+
+Step 2: Create an FQDN connection
+
+Step 3: Associate phone number and trunk
+
+Creating a SIP trunk using the Telnyx UI
+
+Next steps
+
+Copy page
+
+See more page options
+
+Note
+
+If you're using LiveKit Cloud as your SIP server and you're signed in, your SIP endpoint is automatically
+
+included in the code blocks where appropriate.
+
+Creating a Telnyx SIP trunk using the API
+
+You can use
+
+curl
+
+command to make calls to the Telnyx API V2. The commands in the steps below use the
+
+example phone number,
+
++15105550100
+
+. To use the Telnyx console, see
+
+Creating a SIP trunk using the Telnyx UI
+
+.
+
+Prerequisite
+
+Purchase a
+
+Telnyx phone number
+
+.
+
+Step 1: Create an environment variable for API key
+
+If you don't have a key a Telnyx API V2 key,
+
+see the
+
+Telnyx guide to create one
+
+.
+
+export
+
+TELNYX_API_KEY
+
+=
+
+"<your_api_v2_key>"
+
+Step 2: Create an FQDN connection
+
+The following inbound and outbound commands include the required configuration settings if you plan on using only an inbound or
+
+outbound trunk for your LiveKit telephony app. However, by default, an
+
+FQDN connection
+
+creates both an inbound and outbound trunk.
+
+Creating an FQDN connection. Depending on your use case, select
+
+Inbound
+
+,
+
+Outbound
+
+, or
+
+Inbound and outbound
+
+to
+
+accept calls, make calls, or both:
+
+Inbound
+
+Outbound
+
+Inbound and Outbound
+
+Set the caller's number format to
+
++E.164
+
+for inbound calls (this identifies the caller's number with a leading
+
++
+
+):
+
+curl
+
+-L
+
+'https://api.telnyx.com/v2/fqdn_connections'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"active": true,
+
+"anchorsite_override": "Latency",
+
+"connection_name": "My LiveKit trunk",
+
+"inbound": {
+
+"ani_number_format": "+E.164",
+
+"dnis_number_format": "+e164"
+
+}
+
+}'
+
+For outbound trunks, complete the following items:
+
+Create a voice profile for outbound calls.
+
+Configure credential authentication with a username and password.
+
+Creating a
+
+voice profile
+
+:
+
+curl
+
+-L
+
+'https://api.telnyx.com/v2/outbound_voice_profiles'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"name": "My LiveKit outbound voice profile",
+
+"traffic_type": "conversational",
+
+"service_plan": "global"
+
+}'
+
+Creating an outbound FQDN connection:
+
+curl
+
+-L
+
+'https://api.telnyx.com/v2/fqdn_connections'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"active": true,
+
+"anchorsite_override": "Latency",
+
+"connection_name": "My LiveKit trunk",
+
+"user_name": "<username>",
+
+"password": "<password>",
+
+"outbound": {
+
+"outbound_voice_profile_id": "<voice_profile_id>"
+
+}
+
+}'
+
+To configure an FQDN trunk for both inbound and outbound calls:
+
+Create a voice profile for outbound calls.
+
+Set the caller's number format to
+
++E.164
+
+.
+
+Configure credential authentication with a username and password.
+
+Create a
+
+voice profile
+
+curl
+
+-L
+
+'https://api.telnyx.com/v2/outbound_voice_profiles'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"name": "My LiveKit outbound voice profile",
+
+"traffic_type": "conversational",
+
+"service_plan": "global"
+
+}'
+
+Create an inbound and outbound FQDN connection
+
+curl
+
+-L
+
+'https://api.telnyx.com/v2/fqdn_connections'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"active": true,
+
+"anchorsite_override": "Latency",
+
+"connection_name": "My LiveKit trunk",
+
+"user_name": "<username>",
+
+"password": "<password>",
+
+"inbound": {
+
+"ani_number_format": "+E.164",
+
+"dnis_number_format": "+e164"
+
+},
+
+"outbound": {
+
+"outbound_voice_profile_id": "<voice_profile_id>"
+
+}
+
+}'
+
+Copy the FQDN connection ID from the output:
+
+{
+
+"data"
+
+:
+
+{
+
+"id"
+
+:
+
+"<connection_id>"
+
+,
+
+...
+
+}
+
+}
+
+Create an FQDN with your
+
+LiveKit SIP endpoint
+
+and your FQDN connection ID:
+
+curl
+
+-L
+
+'https://api.telnyx.com/v2/fqdns'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"connection_id": "<connection_id>",
+
+"fqdn": "<your SIP endpoint>",
+
+"port": 5060,
+
+"dns_record_type": "a"
+
+}'
+
+Region-based endpoints
+
+To restrict calls to a specific region, replace your global LiveKit SIP endpoint with a
+
+region-based endpoint
+
+.
+
+Step 3: Associate phone number and trunk
+
+Get the phone number ID for phone number
+
+5105550100
+
+:
+
+curl
+
+-L
+
+-g
+
+'https://api.telnyx.com/v2/phone_numbers?filter[phone_number]=5105550100'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+Copy the phone number ID from the output:
+
+{
+
+"meta"
+
+:
+
+{
+
+"total_pages"
+
+:
+
+1
+
+,
+
+"total_results"
+
+:
+
+1
+
+,
+
+"page_number"
+
+:
+
+1
+
+,
+
+"page_size"
+
+:
+
+100
+
+}
+
+,
+
+"data"
+
+:
+
+[
+
+{
+
+"id"
+
+:
+
+"<phone_number_id>"
+
+,
+
+...
+
+}
+
+]
+
+}
+
+Add the FQDN connection to the phone number:
+
+curl
+
+-L
+
+-X
+
+PATCH
+
+'https://api.telnyx.com/v2/phone_numbers/<phone_number_id>'
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+-H
+
+'Accept: application/json'
+
+\
+
+-H
+
+"Authorization: Bearer
+
+$TELNYX_API_KEY
+
+"
+
+\
+
+-d
+
+'{
+
+"id": "<phone_number_id>",
+
+"connection_id": "<connection_id>"
+
+}'
+
+Creating a SIP trunk using the Telnyx UI
+
+Sign in to the
+
+Telnyx portal
+
+.
+
+Purchase a phone number
+
+.
+
+Navigate to
+
+Voice
+
+»
+
+SIP Trunking
+
+.
+
+Create a SIP connection:
+
+For inbound calls:
+
+Select
+
+FQDN
+
+and save.
+
+Select
+
+Add FQDN
+
+and enter your
+
+LiveKit SIP endpoint
+
+into the
+
+FQDN
+
+field.
+
+For example,
+
+vjnxecm0tjk.sip.livekit.cloud
+
+.
+
+Region-based endpoints
+
+To restrict calls to a specific region, replace your global LiveKit SIP endpoint with a
+
+region-based endpoint
+
+.
+
+Select the
+
+Inbound
+
+tab. In the
+
+Destination Number Format
+
+field, select
+
++E.164
+
+.
+
+In the
+
+SIP Transport Protocol
+
+field, select either
+
+TCP
+
+or
+
+UDP
+
+.
+
+In the
+
+SIP Region
+
+field, select your region.
+
+For outbound calls:
+
+Select the
+
+Outbound
+
+tab.
+
+In the
+
+Outbound Voice Profile
+
+field, select or create an outbound voice profile.
+
+Select the
+
+Settings
+
+tab
+
+Configure
+
+FQDN Authentication
+
+:
+
+Select the
+
+Settings
+
+tab.
+
+In the
+
+Authentication & Routing Configuration
+
+section, select
+
+Outbound Calls Authentication
+
+.
+
+In the
+
+Authentication Method
+
+field, select
+
+Credentials
+
+and enter a username and password.
+
+Select the
+
+Numbers
+
+tab and assign the purchased number to the SIP trunk.
+
+Next steps
+
+Head back to the main setup documentation to finish connecting your SIP trunk to LiveKit.
+
+SIP trunk setup
+
+Configure your Telnyx trunk in LiveKit.
+
+On this page
+
+Creating a Telnyx SIP trunk using the API
+
+Prerequisite
+
+Step 1: Create an environment variable for API key
+
+Step 2: Create an FQDN connection
+
+Step 3: Associate phone number and trunk
+
+Creating a SIP trunk using the Telnyx UI
+
+Next steps

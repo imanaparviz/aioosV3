@@ -1,0 +1,59 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useensurelayoutcontext/
+Title: useEnsureLayoutContext
+Crawled: 2025-11-01 21:16:31
+================================================================================
+
+GitHub
+
+Source
+
+useEnsureLayoutContext
+
+Ensures that a layout context is provided, either via context or explicitly as a parameter. If not inside a
+
+LayoutContext
+
+and no layout context is provided, an error is thrown.
+
+Import
+
+import
+
+{
+
+useEnsureLayoutContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+layoutContext
+
+LayoutContextType
+
+Optional
+
+#
+
+Returns
+
+LayoutContextType
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

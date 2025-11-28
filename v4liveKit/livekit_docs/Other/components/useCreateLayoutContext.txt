@@ -1,0 +1,41 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usecreatelayoutcontext/
+Title: useCreateLayoutContext
+Crawled: 2025-11-01 21:16:32
+================================================================================
+
+GitHub
+
+Source
+
+useCreateLayoutContext
+
+Import
+
+import
+
+{
+
+useCreateLayoutContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+LayoutContextType
+
+;
+
+On this page
+
+Import
+
+Returns

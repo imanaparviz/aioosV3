@@ -1,0 +1,183 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/egress/autoegress/
+Title: 
+Crawled: 2025-11-01 21:03:22
+================================================================================
+
+On this page
+
+Start recordings automatically
+
+Examples
+
+Automatically record all tracks to S3
+
+Record each room to HLS on GCP
+
+Copy page
+
+See more page options
+
+Start recordings automatically
+
+Sometimes it's desirable to record every track published to the room, or to start recording the room as soon as it's created.
+
+Autoegress is designed to simplify these workflows. When a room is created with
+
+CreateRoom
+
+, you can set the
+
+egress
+
+field to have it automatically record the room as a composite as well as each published track separately.
+
+Examples
+
+Automatically record all tracks to S3
+
+curl
+
+-X
+
+POST
+
+<
+
+your-host
+
+>
+
+/twirp/livekit.RoomService/CreateRoom
+
+\
+
+-H
+
+"Authorization: Bearer <token-with-roomCreate>"
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+--data-binary @-
+
+<<
+
+EOF
+
+{
+
+"name": "my-room",
+
+"egress": {
+
+"tracks": {
+
+"filepath": "bucket-path/{room_name}-{publisher_identity}-{time}"
+
+"s3": {
+
+"access_key": "",
+
+"secret": "",
+
+"bucket": "mybucket",
+
+"region": "",
+
+}
+
+}
+
+}
+
+}
+
+EOF
+
+Record each room to HLS on GCP
+
+curl
+
+-X
+
+POST
+
+<
+
+your-host
+
+>
+
+/twirp/livekit.RoomService/CreateRoom
+
+\
+
+-H
+
+"Authorization: Bearer <token-with-roomCreate>"
+
+\
+
+-H
+
+'Content-Type: application/json'
+
+\
+
+--data-binary @-
+
+<<
+
+EOF
+
+{
+
+"name": "my-room",
+
+"egress": {
+
+"room": {
+
+"customBaseUrl": "https://your-template-url"
+
+"segments": {
+
+"filename_prefix": "path-in-bucket/myfile",
+
+"segment_duration": 3,
+
+"gcp": {
+
+"credentials": "<json-encoded-credentials>",
+
+"bucket": "mybucket"
+
+}
+
+}
+
+}
+
+}
+
+}
+
+EOF
+
+On this page
+
+Start recordings automatically
+
+Examples
+
+Automatically record all tracks to S3
+
+Record each room to HLS on GCP

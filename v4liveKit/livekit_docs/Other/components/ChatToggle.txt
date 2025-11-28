@@ -1,0 +1,75 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/chattoggle/
+Title: ChatToggle
+Crawled: 2025-11-01 21:17:24
+================================================================================
+
+GitHub
+
+Source
+
+ChatToggle
+
+The
+
+ChatToggle
+
+component is a button that toggles the visibility of the
+
+Chat
+
+component.
+
+Import
+
+import
+
+{
+
+ChatToggle
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+For the component to have any effect it has to live inside a
+
+LayoutContext
+
+context.
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+ToggleChat
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+On this page
+
+Import
+
+Remarks
+
+Usage

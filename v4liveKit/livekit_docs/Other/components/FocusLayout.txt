@@ -1,0 +1,69 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/focuslayout/
+Title: FocusLayout
+Crawled: 2025-11-01 21:16:10
+================================================================================
+
+GitHub
+
+Source
+
+FocusLayout
+
+The
+
+FocusLayout
+
+component is just a light wrapper around the
+
+ParticipantTile
+
+to display a single participant.
+
+Import
+
+import
+
+{
+
+FocusLayout
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+onParticipantClick
+
+(evt: ParticipantClickEvent) => void
+
+Optional
+
+#
+
+(Optional)
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+(Optional)
+
+The track to display in the focus layout.
+
+On this page
+
+Import
+
+Properties

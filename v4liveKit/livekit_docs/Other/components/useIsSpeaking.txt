@@ -1,0 +1,83 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useisspeaking/
+Title: useIsSpeaking
+Crawled: 2025-11-01 21:17:36
+================================================================================
+
+GitHub
+
+Source
+
+useIsSpeaking
+
+The
+
+useIsSpeaking
+
+hook returns a
+
+boolean
+
+that indicates if the participant is speaking or not.
+
+Import
+
+import
+
+{
+
+useIsSpeaking
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+const
+
+isSpeaking
+
+=
+
+useIsSpeaking
+
+(
+
+participant
+
+)
+
+;
+
+Properties
+
+participant
+
+Participant
+
+Optional
+
+#
+
+Returns
+
+boolean
+
+;
+
+On this page
+
+Import
+
+Usage
+
+Properties
+
+Returns

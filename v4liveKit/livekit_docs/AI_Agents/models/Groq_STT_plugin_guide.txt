@@ -1,0 +1,335 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/groq/
+Title: 
+Crawled: 2025-11-01 21:21:38
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Try Groq transcription
+
+Experience Groq's fast STT in a LiveKit-powered playground
+
+Overview
+
+This plugin allows you to use
+
+Groq
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[groq]~=1.2"
+
+For Node.js, support for Groq STT is available using the OpenAI plugin.
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Authentication
+
+The Groq plugin requires a
+
+Groq API key
+
+.
+
+Set
+
+GROQ_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Groq STT in your
+
+AgentSession
+
+or as a standalone transcription service. For example,
+
+you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+groq
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+groq
+
+.
+
+STT
+
+(
+
+model
+
+=
+
+"whisper-large-v3-turbo"
+
+,
+
+language
+
+=
+
+"en"
+
+,
+
+)
+
+,
+
+# ... tts, llm, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+stt
+
+:
+
+new
+
+openai
+
+.
+
+STT
+
+.
+
+withGroq
+
+(
+
+model
+
+:
+
+"whisper-large-v3-turbo"
+
+)
+
+,
+
+// ... tts, llm, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+whisper-large-v3-turbo
+
+#
+
+Name of the STT model to use. For help with model selection, see the
+
+Groq STT documentation
+
+.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language of the input audio in
+
+ISO-639-1
+
+format.
+
+prompt
+
+string
+
+Optional
+
+#
+
+Prompt to guide the model's style or specify how to spell unfamiliar words. 224 tokens max.
+
+Additional resources
+
+The following resources provide more information about using Groq with LiveKit Agents.
+
+Python package
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+Groq docs
+
+Groq STT docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Groq STT.
+
+Groq ecosystem guide
+
+Overview of the entire Groq and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

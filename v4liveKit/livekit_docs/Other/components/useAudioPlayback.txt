@@ -1,0 +1,103 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useaudioplayback/
+Title: useAudioPlayback
+Crawled: 2025-11-01 21:17:45
+================================================================================
+
+GitHub
+
+Source
+
+useAudioPlayback
+
+Note
+
+This feature is experimental and may change or be removed based on developer feedback and real-world usage.
+
+In many browsers to start audio playback, the user must perform a user-initiated event such as clicking a button. The
+
+useAudioPlayback
+
+hook returns an object with a boolean
+
+canPlayAudio
+
+flag that indicates whether audio playback is allowed in the current context, as well as a
+
+startAudio
+
+function that can be called in a button
+
+onClick
+
+callback to start audio playback in the current context.
+
+Import
+
+import
+
+{
+
+useAudioPlayback
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+room
+
+Room
+
+Optional
+
+#
+
+Returns
+
+{
+
+canPlayAudio
+
+:
+
+boolean
+
+;
+
+startAudio
+
+:
+
+(
+
+)
+
+=>
+
+Promise
+
+<
+
+void
+
+>
+
+;
+
+}
+
+On this page
+
+Import
+
+Properties
+
+Returns

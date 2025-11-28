@@ -1,0 +1,43 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/uselayoutcontext/
+Title: useLayoutContext
+Crawled: 2025-11-01 21:15:17
+================================================================================
+
+GitHub
+
+Source
+
+useLayoutContext
+
+Ensures that a layout context is provided via context. If no layout context is provided, an error is thrown.
+
+Import
+
+import
+
+{
+
+useLayoutContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+LayoutContextType
+
+;
+
+On this page
+
+Import
+
+Returns

@@ -1,17 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+  <div class="min-h-screen">
     <!-- Fixed Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/50 dark:border-slate-800/50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <!-- Logo -->
           <router-link to="/" class="flex items-center gap-3 group">
-            <div class="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-primary to-indigo-600 text-white font-black text-xl shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
-              AI
-            </div>
-            <span class="text-2xl font-black bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">
-              AIOOS
-            </span>
+            <img src="/logo-medium.png" alt="AIOOS" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
+            <span class="text-xl font-bold text-slate-900 dark:text-white">AIOOS</span>
           </router-link>
 
           <!-- Desktop Navigation -->
@@ -287,7 +283,7 @@
               Ready to Build Your Perfect Voice Agent?
             </h2>
             <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Experience the power and flexibility of our platform firsthand. Start your free trial today and see how easy it is to automate your conversations.
+              Join thousands of businesses automating their voice agents with AIOOS
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
               <router-link to="/login" class="px-8 py-4 text-lg font-bold text-primary bg-white rounded-xl hover:shadow-2xl hover:scale-105 transition-all">
@@ -309,9 +305,7 @@
           <!-- Brand -->
           <div class="flex flex-col gap-4">
             <div class="flex items-center gap-3">
-              <div class="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-primary to-indigo-600 text-white font-black text-xl shadow-lg shadow-primary/30">
-                AI
-              </div>
+              <img src="/logo-medium.png" alt="AIOOS" class="w-10 h-10 object-contain" />
               <span class="text-2xl font-black bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">
                 AIOOS
               </span>

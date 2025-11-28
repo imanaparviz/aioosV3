@@ -1,0 +1,865 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/
+Title: 
+Crawled: 2025-11-01 21:13:20
+================================================================================
+
+On this page
+
+Overview
+
+LiveKit Inference
+
+Suggested voices
+
+Usage
+
+Additional parameters
+
+Plugins
+
+Advanced features
+
+Custom TTS
+
+Standalone usage
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+Voice agent speech is produced by a TTS model, configured with a voice profile that specifies tone, accent, and other qualitative characteristics of the speech. The TTS model runs on output from an
+
+LLM
+
+model to speak the agent response to the user.
+
+You can choose a voice model served through LiveKit Inference or you can use a plugin to connect directly to a wider range of model providers with your own account.
+
+LiveKit Inference
+
+The following models are available in
+
+LiveKit Inference
+
+. Refer to the guide for each model for more details on additional configuration options. A limited selection of
+
+Suggested voices
+
+are available, as well as a wider selection through each provider's documentation.
+
+Cartesia
+
+Reference for Cartesia TTS in LiveKit Inference.
+
+ElevenLabs
+
+Reference for ElevenLabs TTS with LiveKit Inference.
+
+Inworld
+
+Reference for Inworld TTS in LiveKit Inference.
+
+Rime
+
+Reference for Rime TTS in LiveKit Inference.
+
+Suggested voices
+
+The following voices are good choices for overall quality and performance. Each provider has a much larger selection of voices to choose from, which you can find in their documentation. In addition to the voices below, you can choose to use other voices through LiveKit Inference.
+
+Click the copy icon to copy the voice ID to use in your agent session.
+
+Search voices
+
+Filter by gender
+
+Filter by gender
+
+Filter by provider
+
+Filter by provider
+
+Use the keyboard
+
+and
+
+arrows to audition voices
+
+Blake
+
+Energetic American adult male
+
+🇺🇸
+
+Daniela
+
+Calm and trusting Mexican female
+
+🇲🇽
+
+Jacqueline
+
+Confident, young American adult female
+
+🇺🇸
+
+Robyn
+
+Neutral, mature Australian female
+
+🇦🇺
+
+Alice
+
+Clear and engaging, friendly British woman
+
+🇬🇧
+
+Chris
+
+Natural and real American male
+
+🇺🇸
+
+Eric
+
+A smooth tenor Mexican male
+
+🇲🇽
+
+Jessica
+
+Young and popular, playful American female
+
+🇺🇸
+
+Astra
+
+Chipper, upbeat American female
+
+🇺🇸
+
+Celeste
+
+Chill Gen-Z American female
+
+🇺🇸
+
+Luna
+
+Chill but excitable American female
+
+🇺🇸
+
+Ursa
+
+Young, emo American male
+
+🇺🇸
+
+Ashley
+
+Warm, natural American female
+
+🇺🇸
+
+Diego
+
+Soothing, gentle Mexican male
+
+🇲🇽
+
+Edward
+
+Fast-talking, emphatic American male
+
+🇺🇸
+
+Olivia
+
+Upbeat, friendly British female
+
+🇬🇧
+
+Use the keyboard
+
+and
+
+arrows to audition voices
+
+Usage
+
+To set up TTS in an
+
+AgentSession
+
+, provide a descriptor with both the desired model and voice. LiveKit Inference manages the connection to the model automatically. Consult the
+
+Suggested voices
+
+list for suggeted voices, or view the model reference for more voices.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+"cartesia/sonic-3:9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"
+
+,
+
+# ... llm, stt, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+tts
+
+:
+
+"cartesia/sonic-3:9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"
+
+,
+
+// ... llm, stt, etc.
+
+}
+
+)
+
+Additional parameters
+
+More configuration options, such as custom pronunciation, are available for each model. To set additional parameters, use the
+
+TTS
+
+class from the
+
+inference
+
+module. Consult each model reference for examples and available parameters.
+
+Plugins
+
+The LiveKit Agents framework also includes a variety of open source
+
+plugins
+
+for a wide range of TTS providers. Plugins are especially useful if you need custom voices, including voice cloning support. These plugins require authentication with the provider yourself, usually via an API key. You are responsible for setting up your own account and managing your own billing and credentials. The plugins are listed below, along with their availability for Python or Node.js.
+
+Provider
+
+Python
+
+Node.js
+
+Amazon Polly
+
+✓
+
+—
+
+Azure AI Speech
+
+✓
+
+—
+
+Azure OpenAI
+
+✓
+
+—
+
+Baseten
+
+✓
+
+—
+
+Cartesia
+
+✓
+
+✓
+
+Deepgram
+
+✓
+
+—
+
+ElevenLabs
+
+✓
+
+✓
+
+Gemini
+
+✓
+
+—
+
+Google Cloud
+
+✓
+
+—
+
+Groq
+
+✓
+
+—
+
+Hume
+
+✓
+
+—
+
+Inworld
+
+✓
+
+—
+
+LMNT
+
+✓
+
+—
+
+Neuphonic
+
+✓
+
+✓
+
+OpenAI
+
+✓
+
+✓
+
+Resemble AI
+
+✓
+
+✓
+
+Rime
+
+✓
+
+✓
+
+Sarvam
+
+✓
+
+—
+
+Smallest AI
+
+✓
+
+—
+
+Speechify
+
+✓
+
+—
+
+Spitch
+
+✓
+
+—
+
+Have another provider in mind? LiveKit is open source and welcomes
+
+new plugin contributions
+
+.
+
+Advanced features
+
+The following sections cover more advanced topics common to all TTS providers. For more detailed reference on individual provider configuration, consult the model reference or plugin documentation for that provider.
+
+Custom TTS
+
+To create an entirely custom TTS, implement the
+
+TTS node
+
+in your agent.
+
+Standalone usage
+
+You can use a
+
+TTS
+
+instance as a standalone component by creating a stream. Use
+
+push_text
+
+to add text to the stream, and then consume a stream of
+
+SynthesizedAudio
+
+to publish as
+
+realtime audio
+
+to another participant.
+
+Here is an example of a standalone TTS app:
+
+agent.py
+
+from
+
+livekit
+
+import
+
+agents
+
+,
+
+rtc
+
+from
+
+livekit
+
+.
+
+agents
+
+.
+
+tts
+
+import
+
+SynthesizedAudio
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+cartesia
+
+from
+
+typing
+
+import
+
+AsyncIterable
+
+async
+
+def
+
+entrypoint
+
+(
+
+ctx
+
+:
+
+agents
+
+.
+
+JobContext
+
+)
+
+:
+
+text_stream
+
+:
+
+AsyncIterable
+
+[
+
+str
+
+]
+
+=
+
+.
+
+.
+
+.
+
+# you need to provide a stream of text
+
+audio_source
+
+=
+
+rtc
+
+.
+
+AudioSource
+
+(
+
+44100
+
+,
+
+1
+
+)
+
+track
+
+=
+
+rtc
+
+.
+
+LocalAudioTrack
+
+.
+
+create_audio_track
+
+(
+
+"agent-audio"
+
+,
+
+audio_source
+
+)
+
+await
+
+ctx
+
+.
+
+room
+
+.
+
+local_participant
+
+.
+
+publish_track
+
+(
+
+track
+
+)
+
+tts
+
+=
+
+cartesia
+
+.
+
+TTS
+
+(
+
+model
+
+=
+
+"sonic-english"
+
+)
+
+tts_stream
+
+=
+
+tts
+
+.
+
+stream
+
+(
+
+)
+
+# create a task to consume and publish audio frames
+
+ctx
+
+.
+
+create_task
+
+(
+
+send_audio
+
+(
+
+tts_stream
+
+)
+
+)
+
+# push text into the stream, TTS stream will emit audio frames along with events
+
+# indicating sentence (or segment) boundaries.
+
+async
+
+for
+
+text
+
+in
+
+text_stream
+
+:
+
+tts_stream
+
+.
+
+push_text
+
+(
+
+text
+
+)
+
+tts_stream
+
+.
+
+end_input
+
+(
+
+)
+
+async
+
+def
+
+send_audio
+
+(
+
+audio_stream
+
+:
+
+AsyncIterable
+
+[
+
+SynthesizedAudio
+
+]
+
+)
+
+:
+
+async
+
+for
+
+a
+
+in
+
+audio_stream
+
+:
+
+await
+
+audio_source
+
+.
+
+capture_frame
+
+(
+
+a
+
+.
+
+audio
+
+.
+
+frame
+
+)
+
+if
+
+__name__
+
+==
+
+"__main__"
+
+:
+
+agents
+
+.
+
+cli
+
+.
+
+run_app
+
+(
+
+agents
+
+.
+
+WorkerOptions
+
+(
+
+entrypoint_fnc
+
+=
+
+entrypoint
+
+)
+
+)
+
+Additional resources
+
+The following resources cover related topics that may be useful for your application.
+
+Agent speech docs
+
+Explore the speech capabilities and features of LiveKit Agents.
+
+Pipeline nodes
+
+Learn how to customize the behavior of your agent by overriding nodes in the voice pipeline.
+
+Inference pricing
+
+The latest pricing information for TTS models in LiveKit Inference.
+
+On this page
+
+Overview
+
+LiveKit Inference
+
+Suggested voices
+
+Usage
+
+Additional parameters
+
+Plugins
+
+Advanced features
+
+Custom TTS
+
+Standalone usage
+
+Additional resources

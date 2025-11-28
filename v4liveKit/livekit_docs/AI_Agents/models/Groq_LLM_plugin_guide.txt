@@ -1,0 +1,265 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/groq/
+Title: 
+Crawled: 2025-11-01 21:21:53
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Try out Groq Talk
+
+See our voice assistant playground using Groq STT, LLM, and TTS
+
+Overview
+
+This plugin allows you to use
+
+Groq
+
+as an LLM provider for your voice agents.
+
+LiveKit Inference
+
+Some Groq models are also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[groq]~=1.2"
+
+Authentication
+
+The Groq plugin requires a
+
+Groq API key
+
+.
+
+Set
+
+GROQ_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use a Groq LLM in your
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+groq
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+groq
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"llama3-8b-8192"
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. For a complete reference of all available parameters,
+
+see the
+
+plugin reference
+
+.
+
+model
+
+string
+
+Optional
+
+Default:
+
+llama-3.3-70b-versatile
+
+#
+
+Name of the LLM model to use. For all options, see the
+
+Groq model list
+
+.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+1.0
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+parallel_tool_calls
+
+bool
+
+Optional
+
+#
+
+Controls whether the model can make multiple tool calls in parallel. When enabled, the model can make multiple tool calls simultaneously, which can improve performance for complex tasks.
+
+tool_choice
+
+ToolChoice | Literal['auto', 'required', 'none']
+
+Optional
+
+Default:
+
+auto
+
+#
+
+Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
+
+Additional resources
+
+The following resources provide more information about using Groq with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-groq
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Groq LLM plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Groq LLM plugin.
+
+Groq docs
+
+Groq's official API documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Groq.
+
+Groq ecosystem overview
+
+Overview of the entire Groq and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

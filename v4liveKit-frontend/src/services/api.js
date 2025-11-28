@@ -179,7 +179,19 @@ export const deleteAgent = async (agentId) => {
 
 /**
  * Get Call Logs - gereftan e call logs
- * @param {object} filters - Optional filters (agent_id, date_from, date_to)
+ * @param {object} filters - Optional filters
+ * @example
+ * getCallLogs({
+ *   agent_id: "123",
+ *   department: "sales",
+ *   date_from: "2023-10-01",
+ *   date_to: "2023-10-31",
+ *   status: "completed",
+ *   duration_filter: "short", // short, medium, long
+ *   search: "caller",
+ *   limit: 10,
+ *   offset: 0
+ * })
  */
 export const getCallLogs = async (filters = {}) => {
   try {
@@ -244,6 +256,74 @@ export const createCalendarEvent = async (eventData) => {
     return response.data
   } catch (error) {
     console.error('Failed to create calendar event:', error)
+    throw error
+  }
+}
+
+/**
+ * Get Analytics Summary
+ * @param {string} range - Date range (7d, 30d, 90d)
+ */
+export const getAnalyticsSummary = async (range = '30d') => {
+  try {
+    const response = await apiClient.get('/api/analytics/summary', { params: { range } })
+    return response.data
+  } catch (error) {
+    console.error('Failed to fetch analytics summary:', error)
+    throw error
+  }
+}
+
+/**
+ * Get Analytics Chart
+ * @param {string} period - Chart period (daily, weekly, monthly)
+ */
+export const getAnalyticsChart = async (period = 'daily') => {
+  try {
+    const response = await apiClient.get('/api/analytics/chart', { params: { period } })
+    return response.data
+  } catch (error) {
+    console.error('Failed to fetch analytics chart:', error)
+    throw error
+  }
+}
+
+/**
+ * Get Top Agents
+ */
+export const getTopAgents = async () => {
+  try {
+    const response = await apiClient.get('/api/analytics/top-agents')
+    return response.data
+  } catch (error) {
+    console.error('Failed to fetch top agents:', error)
+    throw error
+  }
+}
+
+/**
+ * Export Call Logs as CSV
+ * @param {object} filters - Optional filters (agent_id, date_from, date_to)
+ */
+export const exportCallLogs = async (filters = {}) => {
+  try {
+    const response = await apiClient.get('/api/calls/export', {
+      params: filters,
+      responseType: 'blob'  // Important for file download
+    })
+
+    // Create download link
+    const url = window.URL.createObjectURL(new Blob([response.data]))
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', `call_logs_${new Date().toISOString().split('T')[0]}.csv`)
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+
+    return true
+  } catch (error) {
+    console.error('Failed to export call logs:', error)
     throw error
   }
 }

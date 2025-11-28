@@ -1,0 +1,57 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/client/state/room-metadata/
+Title: 
+Crawled: 2025-11-01 21:18:04
+================================================================================
+
+On this page
+
+Overview
+
+Size limits
+
+Copy page
+
+See more page options
+
+Overview
+
+Similar to
+
+Participant metadata
+
+, Rooms also feature a metadata field for application-specific data which is visible to all participants.
+
+Room metadata can only be set using the server APIs, but can be accessed by all participants in the room using the LiveKit SDKs.
+
+To set room metadata, use the
+
+CreateRoom
+
+and
+
+UpdateRoomMetadata
+
+APIs.
+
+To subscribe to updates, you must
+
+handle
+
+the
+
+RoomMetadataChanged
+
+event.
+
+Size limits
+
+Room metadata is limited to 64 KiB.
+
+On this page
+
+Overview
+
+Size limits

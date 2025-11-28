@@ -1,0 +1,221 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/deepgram/
+Title: 
+Crawled: 2025-11-01 21:25:25
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Prompting
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Deepgram
+
+as a TTS provider in your voice agents.
+
+Quick reference
+
+This section provides a quick reference for the Deepgram TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[deepgram]~=1.2"
+
+Authentication
+
+The Deepgram plugin requires a
+
+Deepgram API key
+
+.
+
+Set
+
+DEEPGRAM_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Deepgram TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+deepgram
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+deepgram
+
+.
+
+TTS
+
+(
+
+model
+
+=
+
+"aura-asteria-en"
+
+,
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+aura-asteria-en
+
+#
+
+ID of the model to use for generation. To learn more, see
+
+supported models
+
+.
+
+Prompting
+
+Deepgram supports filler words and natural pauses through prompting. To learn more, see
+
+Text to Speech Prompting
+
+.
+
+Additional resources
+
+The following resources provide more information about using Deepgram with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-deepgram
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Deepgram TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Deepgram TTS plugin.
+
+Deepgram docs
+
+Deepgram's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Deepgram.
+
+Deepgram STT
+
+Guide to the Deepgram STT plugin with LiveKit Agents.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Prompting
+
+Additional resources

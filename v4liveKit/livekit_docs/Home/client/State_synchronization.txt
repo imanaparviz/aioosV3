@@ -1,0 +1,15 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/client/state/
+Title: 
+Crawled: 2025-11-01 21:21:17
+================================================================================
+
+Participant attributes & metadata
+
+A key-value store for every participant that can be used for managing online status, user preferences, and more.
+
+Room metadata
+
+A freeform string for room-wide state, ideal for room configuration and shared settings.

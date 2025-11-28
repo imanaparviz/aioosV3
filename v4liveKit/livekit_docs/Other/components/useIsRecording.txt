@@ -1,0 +1,81 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useisrecording/
+Title: useIsRecording
+Crawled: 2025-11-01 21:15:37
+================================================================================
+
+GitHub
+
+Source
+
+useIsRecording
+
+The
+
+useIsRecording
+
+hook returns a
+
+boolean
+
+that indicates if the room is currently being recorded.
+
+Import
+
+import
+
+{
+
+useIsRecording
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+const
+
+isRecording
+
+=
+
+useIsRecording
+
+(
+
+)
+
+;
+
+Properties
+
+room
+
+Room
+
+Optional
+
+#
+
+Returns
+
+boolean
+
+;
+
+On this page
+
+Import
+
+Usage
+
+Properties
+
+Returns

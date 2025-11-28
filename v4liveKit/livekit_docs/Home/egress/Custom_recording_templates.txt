@@ -1,0 +1,529 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/egress/custom-template/
+Title: 
+Crawled: 2025-11-01 21:02:53
+================================================================================
+
+On this page
+
+Overview
+
+Built-in LiveKit Recording View
+
+Building a Custom Recording View
+
+Building your Application
+
+Deploying your Application
+
+Testing Your Application
+
+Using the Custom Recording View in Production
+
+Recording Process
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit
+
+Room Composite Egress
+
+enables recording of all participants' tracks in a room. This document explains its functionality and customization options.
+
+Built-in LiveKit Recording View
+
+The recording feature in LiveKit is built on a web-based architecture, utilizing a headless Chrome instance to render and capture output. The default view is built using LiveKit's
+
+React Components
+
+. There are a handful of configuration options available including:
+
+layout
+
+to control how the participants are arranged in the view. (You can set or change the layout using either
+
+StartRoomCompositeEgress()
+
+or
+
+UpdateLayout()
+
+.)
+
+Encoding options
+
+to control the quality of the audio and/or video captured
+
+For more advanced customization, LiveKit supports configuring the URL of the web application that will generate the page to be recorded, allowing full customization of the recording view.
+
+Building a Custom Recording View
+
+While you can use any web framework, it's often easiest to start with the built-in React-based application and modify it to meet your requirements. The source code can be found in the
+
+template-default
+
+folder
+
+of the
+
+LiveKit egress repository
+
+. The main files include:
+
+Room.tsx
+
+: the main component that renders the recording view
+
+SpeakerLayout.tsx
+
+,
+
+SingleSpeakerLayout.tsx
+
+: components used for the
+
+speaker
+
+and
+
+single-speaker
+
+layouts
+
+App.tsx
+
+,
+
+index.tsx
+
+: the main entry points for the application
+
+App.css
+
+,
+
+index.css
+
+: the CSS files for the application
+
+Note
+
+The built-in
+
+Room.tsx
+
+component uses the
+
+template SDK
+
+, for common tasks like:
+
+Retrieving query string arguments (Example:
+
+App.tsx
+
+)
+
+Starting a recording (Example:
+
+Room.tsx
+
+)
+
+Ending a recording (Example:
+
+EgressHelper.setRoom()
+
+)
+
+If you are not using
+
+Room.tsx
+
+as a starting point, be sure to leverage the template SDK to handle these and other common tasks.
+
+Building your Application
+
+Make a copy of the above files and modify tnem to meet your requirements.
+
+Example: Move non-speaking participants to the right side of the Speaker view
+
+By default the
+
+Speaker
+
+view shows the non-speaking participants on the left and the speaker on the right. Let's change this so the speaker is on the left and the non-speaking participants are on the right.
+
+Copy the default components and CSS files into a new location
+
+Modify
+
+SpeakerLayout.tsx
+
+to move the
+
+FocusLayout
+
+above
+
+CarouselLayout
+
+so it looks like this:
+
+return
+
+(
+
+<
+
+div
+
+className
+
+=
+
+"
+
+lk-focus-layout
+
+"
+
+>
+
+<
+
+FocusLayout
+
+trackRef
+
+=
+
+{
+
+mainTrack
+
+as
+
+TrackReference
+
+}
+
+/>
+
+<
+
+CarouselLayout
+
+tracks
+
+=
+
+{
+
+remainingTracks
+
+}
+
+>
+
+<
+
+ParticipantTile
+
+/>
+
+</
+
+CarouselLayout
+
+>
+
+</
+
+div
+
+>
+
+)
+
+;
+
+Modify
+
+App.css
+
+to fix the
+
+grid-template-columns
+
+value (reverse the values). It should look like this:
+
+.lk-focus-layout
+
+{
+
+height
+
+:
+
+100
+
+%
+
+;
+
+grid-template-columns
+
+:
+
+5
+
+fr
+
+1
+
+fr
+
+;
+
+}
+
+Deploying your Application
+
+Once your app is ready for testing or deployment, you'll need to host it on a web server. We recommend using
+
+Vercel
+
+for its simplicity, but many other options are available.
+
+Testing Your Application
+
+We have created the
+
+egress test-egress-template
+
+subcommand in the
+
+LiveKit CLI
+
+to make it easier to test.
+
+The
+
+egress test-egress-template
+
+subcommand:
+
+Creates a room
+
+Adds the desired number of virtual publishers who will publish simulated video streams
+
+Opens a browser instance to your app URL with the correct parameters
+
+Once you have your application deployed, you can use this command to test it out.
+
+Usage
+
+export
+
+LIVEKIT_API_SECRET
+
+=
+
+SECRET
+
+export
+
+LIVEKIT_API_KEY
+
+=
+
+KEY
+
+export
+
+LIVEKIT_URL
+
+=
+
+YOUR_LIVEKIT_URL
+
+lk egress test-template
+
+\
+
+--base-url YOUR_WEB_SERVER_URL
+
+\
+
+--room
+
+ROOM_NAME
+
+\
+
+--layout
+
+LAYOUT
+
+\
+
+--publishers
+
+PUBLISHER_COUNT
+
+This command launches a browser and opens:
+
+YOUR_WEB_SERVER_URL?url=<LIVEKIT_INSTANCE WSS URL>&token=<RECORDER TOKEN>&layout=LAYOUT
+
+Example
+
+export
+
+LIVEKIT_API_SECRET
+
+=
+
+SECRET
+
+export
+
+LIVEKIT_API_KEY
+
+=
+
+KEY
+
+export
+
+LIVEKIT_URL
+
+=
+
+YOUR_LIVEKIT_URL
+
+lk egress test-template
+
+\
+
+--base-url http://localhost:3000/lk-recording-view
+
+\
+
+--room
+
+my-room
+
+\
+
+--layout
+
+grid
+
+\
+
+--publishers
+
+3
+
+This command launches a browser and opens:
+
+http://localhost:3000/lk-recording-view?url=wss%3A%2F%2Ftest-1234567890.livekit.cloud&token=<RECORDER TOKEN>&layout=grid
+
+Using the Custom Recording View in Production
+
+Set the
+
+custom_base_url
+
+parameter on the
+
+StartRoomCompositeEgress()
+
+API to the URL where your custom recording application is deployed.
+
+For additional authentication, most customers attach URL parameters to the
+
+custom_base_url
+
+. For example:
+
+https://your-template-url.example.com/?yourparam={auth_info}
+
+(and set this as your
+
+custom_base_url
+
+).
+
+Recording Process
+
+For those curious about the workflow of a recording, the basic steps are:
+
+The
+
+Egress.StartRoomCompositeEgress()
+
+API is invoked
+
+LiveKit assigns an available egress instance to handle the request
+
+The egress recorder creates necessary connection & authentication details
+
+A URL for the rendering web page is constructed with these parameters:
+
+url
+
+: URL of LiveKit Server
+
+token
+
+: Access token for joining the room as a recorder
+
+layout
+
+: Desired layout passed to
+
+StartRoomCompositeEgress()
+
+The egress recorder launches a headless Chrome instance with the constructed URL
+
+The recorder waits for the web page to log
+
+START_RECORDING
+
+to the console
+
+The recording begins
+
+The recorder waits for the web page to log
+
+END_RECORDING
+
+to the console
+
+The recording is terminated
+
+On this page
+
+Overview
+
+Built-in LiveKit Recording View
+
+Building a Custom Recording View
+
+Building your Application
+
+Deploying your Application
+
+Testing Your Application
+
+Using the Custom Recording View in Production
+
+Recording Process

@@ -7,10 +7,10 @@
     <main class="flex-1 p-6 lg:p-10">
       <div class="mx-auto max-w-4xl">
         <!-- Header -->
-        <div class="mb-8">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-8">
           <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Settings</h1>
           <p class="mt-1 text-gray-600 dark:text-gray-400">Manage your account and application preferences.</p>
-        </div>
+        </header>
 
         <div class="flex flex-col gap-12">
           <!-- Profile Section -->
@@ -20,7 +20,7 @@
               <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Update your personal information.</p>
             </div>
             <div class="md:col-span-2">
-              <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900/50">
+              <div class="rounded-lg border border-gray-200 bg-white/80 backdrop-blur-md p-6 dark:border-gray-800 dark:bg-gray-900/50">
                 <div class="space-y-6">
                   <!-- Avatar -->
                   <div class="flex items-center gap-4">
@@ -32,7 +32,7 @@
                     <div>
                       <button
                         @click="handleChangeAvatar"
-                        class="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                        class="rounded-md border border-gray-300 bg-white/80 backdrop-blur-md px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300 dark:hover:bg-gray-700"
                       >
                         Change
                       </button>
@@ -108,7 +108,7 @@
               <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Change your password here.</p>
             </div>
             <div class="md:col-span-2">
-              <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900/50">
+              <div class="rounded-lg border border-gray-200 bg-white/80 backdrop-blur-md p-6 dark:border-gray-800 dark:bg-gray-900/50">
                 <div class="space-y-6">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="current-password">
@@ -166,7 +166,7 @@
               <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Manage your subscription and payment details.</p>
             </div>
             <div class="md:col-span-2">
-              <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900/50">
+              <div class="rounded-lg border border-gray-200 bg-white/80 backdrop-blur-md p-6 dark:border-gray-800 dark:bg-gray-900/50">
                 <div class="space-y-6">
                   <!-- Current Plan -->
                   <div>
@@ -180,7 +180,7 @@
                       </div>
                       <button
                         @click="handleChangePlan"
-                        class="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                        class="rounded-md border border-gray-300 bg-white/80 backdrop-blur-md px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300 dark:hover:bg-gray-700"
                       >
                         Change Plan
                       </button>
@@ -207,7 +207,7 @@
                       </div>
                       <button
                         @click="handleUpdatePayment"
-                        class="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                        class="rounded-md border border-gray-300 bg-white/80 backdrop-blur-md px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300 dark:hover:bg-gray-700"
                       >
                         Update
                       </button>

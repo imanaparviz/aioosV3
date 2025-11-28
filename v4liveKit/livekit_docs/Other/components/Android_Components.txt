@@ -1,0 +1,165 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/android/
+Title: 
+Crawled: 2025-11-01 21:14:16
+================================================================================
+
+On this page
+
+Installation
+
+Copy page
+
+See more page options
+
+Installation
+
+Groovy
+
+Kotlin
+
+In your app's
+
+build.gradle
+
+file:
+
+dependencies {
+
+implementation "io.livekit:livekit-android-compose-components:<current version>"
+
+}
+
+In your app's
+
+build.gradle.kts
+
+file:
+
+dependencies
+
+{
+
+implementation
+
+(
+
+"io
+
+.
+
+livekit
+
+:
+
+livekit
+
+-
+
+android
+
+-
+
+compose
+
+-
+
+components
+
+:
+
+<
+
+current version
+
+>
+
+)
+
+}
+
+See our
+
+releases page
+
+for information on the latest version of the SDK.
+
+You'll also need JitPack as one of your repositories.
+
+Groovy
+
+Kotlin
+
+In your root project's
+
+settings.gradle
+
+file:
+
+dependencyResolutionManagement {
+
+repositories {
+
+google()
+
+mavenCentral()
+
+maven { url 'https://jitpack.io' }
+
+}
+
+}
+
+In your root project's
+
+settings.gradle.kts
+
+file:
+
+dependencyResolutionManagement
+
+{
+
+repositories
+
+{
+
+google
+
+(
+
+)
+
+mavenCentral
+
+(
+
+)
+
+maven
+
+{
+
+url
+
+=
+
+URI
+
+(
+
+"https://jitpack.io"
+
+)
+
+}
+
+}
+
+}
+
+On this page
+
+Installation

@@ -1,0 +1,77 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/uselocalparticipantpermissions/
+Title: useLocalParticipantPermissions
+Crawled: 2025-11-01 21:15:26
+================================================================================
+
+GitHub
+
+Source
+
+useLocalParticipantPermissions
+
+The
+
+useLocalParticipantPermissions
+
+hook returns the local participant's permissions.
+
+Import
+
+import
+
+{
+
+useLocalParticipantPermissions
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+const
+
+{
+
+canPublish
+
+,
+
+canPublishData
+
+}
+
+=
+
+useLocalParticipantPermissions
+
+(
+
+)
+
+;
+
+Returns
+
+ParticipantPermission
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Usage
+
+Returns

@@ -1,0 +1,61 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/toast/
+Title: Toast
+Crawled: 2025-11-01 21:17:20
+================================================================================
+
+GitHub
+
+Source
+
+Toast
+
+The
+
+Toast
+
+component is a rudimentary way to display a message to the user. This message should be short lived and not require user interaction. For example, displaying the current connection state like
+
+ConnectionStateToast
+
+does.
+
+Import
+
+import
+
+{
+
+Toast
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+Toast
+
+>
+
+Connecting...
+
+</
+
+Toast
+
+>
+
+On this page
+
+Import
+
+Usage

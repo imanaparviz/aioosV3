@@ -1,0 +1,103 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useclearpinbutton/
+Title: useClearPinButton
+Crawled: 2025-11-01 21:17:35
+================================================================================
+
+GitHub
+
+Source
+
+useClearPinButton
+
+The
+
+useClearPinButton
+
+hook provides props for the
+
+ClearPinButton()
+
+or your custom implementation of it component. It adds the
+
+onClick
+
+handler to signal the
+
+LayoutContext
+
+that the tile in focus should be cleared.
+
+Import
+
+import
+
+{
+
+useClearPinButton
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+{
+
+buttonProps
+
+:
+
+ClearPinButtonProps
+
+&
+
+{
+
+className
+
+:
+
+string
+
+;
+
+disabled
+
+:
+
+boolean
+
+;
+
+onClick
+
+:
+
+(
+
+)
+
+=>
+
+void
+
+;
+
+}
+
+;
+
+}
+
+On this page
+
+Import
+
+Returns

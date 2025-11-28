@@ -1,0 +1,177 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/integrations/cerebras/
+Title: 
+Crawled: 2025-11-01 21:08:07
+================================================================================
+
+On this page
+
+Cerebras ecosystem support
+
+Getting started
+
+LiveKit Agents overview
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Try Cerebras AI
+
+Experience Cerebras's fast inference in a LiveKit-powered voice AI playground
+
+Cerebras ecosystem support
+
+Cerebras
+
+provides high-throughput, low-latency AI inference for open models like Qwen and GPT-OSS. Cerebras is an OpenAI-compatible LLM provider and LiveKit Agents provides full support for Cerebras inference via the OpenAI plugin. Additionally, some Cerebras models are also available in LiveKit Inference, with billing and integration handled automatically.
+
+Getting started
+
+Use the Voice AI quickstart to build a voice AI app with Cerebras. Select an STT-LLM-TTS pipeline model type and add the following components to build on Cerebras.
+
+Voice AI quickstart
+
+Build your first voice AI app with Cerebras.
+
+Install the OpenAI plugin:
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+Add your Cerebras API key to your
+
+.env
+
+file:
+
+.env
+
+CEREBRAS_API_KEY
+
+=
+
+<
+
+your-cerebras-api-key
+
+>
+
+Use the Cerebras LLM to initialize your
+
+AgentSession
+
+:
+
+agent.py
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+# ...
+
+# in your entrypoint function
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+.
+
+with_cerebras
+
+(
+
+model
+
+=
+
+"llama-3.3-70b"
+
+,
+
+)
+
+,
+
+)
+
+For a full list of supported models, see the
+
+Cerebras docs
+
+.
+
+LiveKit Agents overview
+
+LiveKit Agents is an open source framework for building realtime AI apps in Python and Node.js. It supports complex voice AI
+
+workflows
+
+with multiple agents and discrete processing steps, and includes built-in load balancing.
+
+LiveKit provides SIP support for
+
+telephony integration
+
+and full-featured
+
+frontend SDKs
+
+in multiple languages. It uses
+
+WebRTC
+
+transport for end-user devices, enabling high-quality, low-latency realtime experiences. To learn more, see
+
+LiveKit Agents
+
+.
+
+Additional resources
+
+More information about integrating Llama is available in the following article:
+
+Cerebras LLM plugin
+
+Cerebras LLM plugin for LiveKit Agents.
+
+On this page
+
+Cerebras ecosystem support
+
+Getting started
+
+LiveKit Agents overview
+
+Additional resources

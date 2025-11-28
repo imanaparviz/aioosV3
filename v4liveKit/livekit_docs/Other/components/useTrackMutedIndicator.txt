@@ -1,0 +1,87 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usetrackmutedindicator/
+Title: useTrackMutedIndicator
+Crawled: 2025-11-01 21:15:21
+================================================================================
+
+GitHub
+
+Source
+
+useTrackMutedIndicator
+
+The
+
+useTrackMutedIndicator
+
+hook is used to implement the
+
+TrackMutedIndicator
+
+component and returns the muted state of the given track.
+
+Import
+
+import
+
+{
+
+useTrackMutedIndicator
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+const
+
+{
+
+isMuted
+
+}
+
+=
+
+useTrackMutedIndicator
+
+(
+
+trackRef
+
+)
+
+;
+
+Properties
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+Returns
+
+TrackMutedIndicatorReturnType
+
+;
+
+On this page
+
+Import
+
+Usage
+
+Properties
+
+Returns

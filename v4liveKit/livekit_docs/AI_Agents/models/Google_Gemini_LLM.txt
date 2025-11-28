@@ -1,0 +1,393 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/inference/gemini/
+Title: 
+Crawled: 2025-11-01 21:21:49
+================================================================================
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit Inference offers Gemini models through Google Vertex AI. Pricing is available on the
+
+pricing page
+
+.
+
+Model name
+
+Model ID
+
+Providers
+
+Gemini 2.5 Pro
+
+google/gemini-2.5-pro
+
+google
+
+Gemini 2.5 Flash
+
+google/gemini-2.5-flash
+
+google
+
+Gemini 2.5 Flash Lite
+
+google/gemini-2.5-flash-lite
+
+google
+
+Gemini 2.0 Flash
+
+google/gemini-2.0-flash
+
+google
+
+Gemini 2.0 Flash Lite
+
+google/gemini-2.0-flash-lite
+
+google
+
+Usage
+
+To use Gemini, pass the model id to the
+
+llm
+
+argument in your
+
+AgentSession
+
+. LiveKit Inference manages the connection to the model automatically.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+"google/gemini-2.5-flash-lite"
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+"google/gemini-2.5-flash-lite"
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+To customize additional parameters, use the
+
+LLM
+
+class from the
+
+inference
+
+module.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+,
+
+inference
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+inference
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"google/gemini-2.5-flash-lite"
+
+,
+
+extra_kwargs
+
+=
+
+{
+
+"max_completion_tokens"
+
+:
+
+1000
+
+}
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+,
+
+inference
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+new
+
+inference
+
+.
+
+LLM
+
+(
+
+{
+
+model
+
+:
+
+"google/gemini-2.5-flash-lite"
+
+,
+
+modelOptions
+
+:
+
+{
+
+max_completion_tokens
+
+:
+
+1000
+
+}
+
+}
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+model
+
+string
+
+Required
+
+#
+
+The model ID from the
+
+models list
+
+.
+
+provider
+
+string
+
+Optional
+
+#
+
+Set a specific provider to use for the LLM. Refer to the
+
+models list
+
+for available providers. If not set, LiveKit Inference uses the best available provider, and bills accordingly.
+
+extra_kwargs
+
+dict
+
+Optional
+
+#
+
+Additional parameters to pass to the Gemini Chat Completions API, such as
+
+max_completion_tokens
+
+.
+
+In Node.js this parameter is called
+
+modelOptions
+
+.
+
+Additional resources
+
+The following links provide more information about Gemini in LiveKit Inference.
+
+Gemini Plugin
+
+Plugin to use your own Gemini or Vertex AI account instead of LiveKit Inference.
+
+Gemini docs
+
+Gemini's official API documentation.
+
+Google ecosystem overview
+
+Overview of the entire Google AI ecosystem and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources

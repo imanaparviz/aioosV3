@@ -1,10 +1,12 @@
 <template>
+  <AnimatedBackground />
   <router-view />
 </template>
 
 <script setup>
 import { onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import AnimatedBackground from '@/components/AnimatedBackground.vue'
 
 const authStore = useAuthStore()
 

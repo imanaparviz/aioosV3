@@ -1,0 +1,81 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/trackmutedindicator/
+Title: TrackMutedIndicator
+Crawled: 2025-11-01 21:17:40
+================================================================================
+
+GitHub
+
+Source
+
+TrackMutedIndicator
+
+The
+
+TrackMutedIndicator
+
+shows whether the participant's camera or microphone is muted or not. By default, a muted/unmuted icon is displayed for a camera, microphone, and screen sharing track.
+
+Import
+
+import
+
+{
+
+TrackMutedIndicator
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+TrackMutedIndicator
+
+trackRef
+
+=
+
+{
+
+trackRef
+
+}
+
+/>
+
+Properties
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Required
+
+#
+
+show
+
+'always' | 'muted' | 'unmuted'
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Usage
+
+Properties

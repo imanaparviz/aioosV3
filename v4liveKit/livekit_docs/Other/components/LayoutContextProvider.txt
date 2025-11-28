@@ -1,0 +1,71 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/layoutcontextprovider/
+Title: LayoutContextProvider
+Crawled: 2025-11-01 21:17:32
+================================================================================
+
+GitHub
+
+Source
+
+LayoutContextProvider
+
+Note
+
+This feature is experimental and may change or be removed based on developer feedback and real-world usage.
+
+Import
+
+import
+
+{
+
+LayoutContextProvider
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+onPinChange
+
+(state: PinState) => void
+
+Optional
+
+#
+
+(Optional)
+
+onWidgetChange
+
+(state: WidgetState) => void
+
+Optional
+
+#
+
+(Optional)
+
+value
+
+LayoutContextType
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Properties

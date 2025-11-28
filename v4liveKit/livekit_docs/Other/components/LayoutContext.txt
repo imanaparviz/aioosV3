@@ -1,0 +1,33 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/layoutcontext/
+Title: LayoutContext
+Crawled: 2025-11-01 21:17:44
+================================================================================
+
+GitHub
+
+Source
+
+LayoutContext
+
+Import
+
+import
+
+{
+
+LayoutContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+On this page
+
+Import

@@ -1,0 +1,317 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/azure/
+Title: 
+Crawled: 2025-11-01 21:21:40
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Azure Speech
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section provides a brief overview of the Azure Speech STT plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[azure]~=1.2"
+
+Authentication
+
+The Azure Speech plugin requires an
+
+Azure Speech key
+
+.
+
+Set the following environment variables in your
+
+.env
+
+file:
+
+AZURE_SPEECH_KEY
+
+=
+
+<
+
+azure-speech-key
+
+>
+
+AZURE_SPEECH_REGION
+
+=
+
+<
+
+azure-speech-region
+
+>
+
+AZURE_SPEECH_HOST
+
+=
+
+<
+
+azure-speech-host
+
+>
+
+Usage
+
+Use Azure Speech STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+azure
+
+azure_stt
+
+=
+
+stt
+
+.
+
+STT
+
+(
+
+speech_key
+
+=
+
+"<speech_service_key>"
+
+,
+
+speech_region
+
+=
+
+"<speech_service_region>"
+
+,
+
+)
+
+Note
+
+To create an instance of
+
+azure.STT
+
+, one of the following options must be met:
+
+speech_host
+
+must be set,
+
+or
+
+speech_key
+
+and
+
+speech_region
+
+must both be set,
+
+or
+
+speech_auth_token
+
+and
+
+speech_region
+
+must both be set
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+speech_key
+
+string
+
+Optional
+
+Env:
+
+AZURE_SPEECH_KEY
+
+#
+
+Azure Speech speech-to-text key. To learn more, see
+
+Azure Speech prerequisites
+
+.
+
+speech_region
+
+string
+
+Optional
+
+Env:
+
+AZURE_SPEECH_REGION
+
+#
+
+Azure Speech speech-to-text region. To learn more, see
+
+Azure Speech prerequisites
+
+.
+
+speech_host
+
+string
+
+Optional
+
+Env:
+
+AZURE_SPEECH_HOST
+
+#
+
+Azure Speech endpoint.
+
+speech_auth_token
+
+string
+
+Optional
+
+#
+
+Azure Speech authentication token.
+
+languages
+
+list[string]
+
+Optional
+
+#
+
+List of potential source languages. To learn more, see
+
+Standard locale names
+
+.
+
+Additional resources
+
+The following resources provide more information about using Azure Speech with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-azure
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Azure Speech STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Azure Speech STT plugin.
+
+Azure Speech docs
+
+Azure Speech's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Azure Speech.
+
+Azure ecosystem guide
+
+Overview of the entire Azure AI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

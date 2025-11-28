@@ -1,0 +1,349 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/assemblyai/
+Title: 
+Crawled: 2025-11-01 21:21:44
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Turn detection
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+AssemblyAI
+
+as an STT provider for your voice agents.
+
+LiveKit Inference
+
+AssemblyAI is also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section provides a brief overview of the AssemblyAI STT plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[assemblyai]~=1.2"
+
+Authentication
+
+The AssemblyAI plugin requires an
+
+AssemblyAI API key
+
+.
+
+Set
+
+ASSEMBLYAI_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use AssemblyAI STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+assemblyai
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+assemblyai
+
+.
+
+STT
+
+(
+
+)
+
+,
+
+# ... vad, llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+format_turns
+
+bool
+
+Optional
+
+Default:
+
+True
+
+#
+
+Whether to return formatted final transcripts. If enabled, formatted final transcripts are emitted shortly following an end-of-turn detection.
+
+end_of_turn_confidence_threshold
+
+float
+
+Optional
+
+Default:
+
+0.7
+
+#
+
+The confidence threshold to use when determining if the end of a turn has been reached.
+
+min_end_of_turn_silence_when_confident
+
+int
+
+Optional
+
+Default:
+
+160
+
+#
+
+The minimum duration of silence required to detect end of turn when confident.
+
+max_turn_silence
+
+int
+
+Optional
+
+Default:
+
+2400
+
+#
+
+The maximum duration of silence allowed in a turn before end of turn is triggered.
+
+Turn detection
+
+AssemblyAI includes a custom phrase endpointing model that uses both audio and linguistic information to detect turn boundaries. To use this model for
+
+turn detection
+
+, set
+
+turn_detection="stt"
+
+in the
+
+AgentSession
+
+constructor. You should also provide a VAD plugin for responsive interruption handling.
+
+session
+
+=
+
+AgentSession
+
+(
+
+turn_detection
+
+=
+
+"stt"
+
+,
+
+stt
+
+=
+
+assemblyai
+
+.
+
+STT
+
+(
+
+end_of_turn_confidence_threshold
+
+=
+
+0.7
+
+,
+
+min_end_of_turn_silence_when_confident
+
+=
+
+160
+
+,
+
+max_turn_silence
+
+=
+
+2400
+
+,
+
+)
+
+,
+
+vad
+
+=
+
+silero
+
+.
+
+VAD
+
+.
+
+load
+
+(
+
+)
+
+,
+
+# Recommended for responsive interruption handling
+
+# ... llm, tts, etc.
+
+)
+
+Additional resources
+
+The following resources provide more information about using AssemblyAI with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-assemblyai
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the AssemblyAI STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit AssemblyAI STT plugin.
+
+AssemblyAI docs
+
+AssemblyAI's full docs for the Universal Streaming API.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and AssemblyAI.
+
+AssemblyAI LiveKit guide
+
+Guide to using AssemblyAI Universal Streaming STT with LiveKit.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Turn detection
+
+Additional resources

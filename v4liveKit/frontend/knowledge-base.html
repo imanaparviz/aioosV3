@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Voice AI Agents - Knowledge Base</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4182ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111721",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            border: 3px solid #e2e8f0;
+            border-top-color: #4182ec;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+        .processing-animation {
+            animation: progress 2s infinite;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 shrink-0 bg-white dark:bg-background-dark border-r border-slate-200 dark:border-slate-800 flex flex-col p-4">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-full size-10 flex items-center justify-center text-white font-bold">AI</div>
+            <div class="flex flex-col">
+                <h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal">AIOOS Platform</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Workspace</p>
+            </div>
+        </div>
+
+        <nav class="flex flex-col gap-2 flex-grow">
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="/">
+                <span class="material-symbols-outlined text-slate-700 dark:text-slate-300">dashboard</span>
+                <p class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-normal">Dashboard</p>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" href="/agents">
+                <span class="material-symbols-outlined text-slate-700 dark:text-slate-300">support_agent</span>
+                <p class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-normal">Agents</p>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 dark:bg-primary/30" href="#">
+                <span class="material-symbols-outlined text-primary">source_environment</span>
+                <p class="text-primary text-sm font-medium leading-normal">Knowledge Base</p>
+            </a>
+        </nav>
+
+        <div class="flex flex-col gap-1">
+            <div class="px-3 py-2">
+                <p class="text-xs text-slate-500 dark:text-slate-400">Storage</p>
+                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 my-1.5">
+                    <div id="storageBar" class="bg-gradient-to-r from-blue-400 to-purple-500 h-1.5 rounded-full" style="width: 0%"></div>
+                </div>
+                <p id="storageText" class="text-xs text-slate-500 dark:text-slate-400">0 MB of 100 MB used</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 overflow-y-auto">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <header class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                <div>
+                    <h1 class="text-slate-900 dark:text-white text-3xl font-bold tracking-tight">Knowledge Base</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1">Manage files that your voice agents use for information.</p>
+                </div>
+                <button onclick="openFilePicker()" class="flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary/90">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">upload_file</span>
+                    <span>Upload Files</span>
+                </button>
+            </header>
+
+            <!-- Drag & Drop Zone -->
+            <div id="dropZone" onclick="openFilePicker()" class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-8 text-center bg-white dark:bg-slate-900/50 hover:border-primary dark:hover:border-primary transition-colors cursor-pointer mb-8">
+                <div class="flex justify-center items-center">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
+                        <span class="material-symbols-outlined text-3xl text-slate-500 dark:text-slate-400">cloud_upload</span>
+                    </div>
+                </div>
+                <p class="mt-4 text-lg font-semibold text-slate-900 dark:text-white">Drag & drop files here or click to browse</p>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Supports: TXT, CSV, PDF, DOCX, XLSX (max 10MB)</p>
+                <input type="file" id="fileInput" multiple accept=".txt,.csv,.pdf,.docx,.xlsx" style="display: none" onchange="handleFileSelect(event)"/>
+            </div>
+
+            <!-- Upload Progress -->
+            <div id="uploadProgress" class="mb-8" style="display: none;">
+                <!-- Progress items will be inserted here -->
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                <div class="relative flex-grow max-w-lg">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">search</span>
+                    <input id="searchInput" oninput="filterFiles()" class="w-full h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/50 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Search files by name..." type="text"/>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <label class="text-sm text-slate-500 dark:text-slate-400">Sort by:</label>
+                        <select id="sortSelect" onchange="filterFiles()" class="h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
+                            <option value="date">Upload Date</option>
+                            <option value="name">Name</option>
+                            <option value="size">Size</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-16" style="display: none;">
+                <div class="spinner w-12 h-12 mx-auto mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400">Loading files...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-16" style="display: none;">
+                <span class="material-symbols-outlined text-6xl text-slate-300 dark:text-slate-600 mb-4">folder_open</span>
+                <p class="text-xl font-semibold text-slate-700 dark:text-slate-300 mb-2">No documents uploaded yet</p>
+                <p class="text-slate-500 dark:text-slate-400">Upload your first document to get started.</p>
+            </div>
+
+            <!-- Files List -->
+            <div id="filesList" class="grid grid-cols-1 gap-5">
+                <!-- Files will be inserted here -->
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Delete Confirmation Dialog -->
+<div id="deleteDialog" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" style="display: none;" onclick="closeDeleteDialog()">
+    <div class="bg-white dark:bg-slate-900 rounded-xl p-6 max-w-md w-full mx-4" onclick="event.stopPropagation()">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Delete File?</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Are you sure you want to delete <strong id="deleteFileName"></strong>? This will also delete all associated chunks and cannot be undone.</p>
+        <div class="flex gap-3 justify-end">
+            <button onclick="closeDeleteDialog()" class="px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Cancel</button>
+            <button onclick="confirmDelete()" class="px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700">Delete</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Global state
+let files = [];
+let fileToDelete = null;
+const AGENT_ID = new URLSearchParams(window.location.search).get('agent_id') || '823dfd3b-af97-46a0-beb1-5e14a4ec0137'; // Default for testing
+const API_URL = 'http://localhost:8000';
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    setupDragAndDrop();
+    fetchFiles();
+});
+
+// Drag and drop handlers
+function setupDragAndDrop() {
+    const dropZone = document.getElementById('dropZone');
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('border-primary', 'bg-blue-50', 'dark:bg-blue-900/20');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('border-primary', 'bg-blue-50', 'dark:bg-blue-900/20');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('border-primary', 'bg-blue-50', 'dark:bg-blue-900/20');
+        const droppedFiles = Array.from(e.dataTransfer.files);
+        uploadFiles(droppedFiles);
+    });
+}
+
+function openFilePicker() {
+    document.getElementById('fileInput').click();
+}
+
+function handleFileSelect(event) {
+    const selectedFiles = Array.from(event.target.files);
+    uploadFiles(selectedFiles);
+    event.target.value = ''; // Reset
+}
+
+// Fetch files from API
+async function fetchFiles() {
+    const loadingState = document.getElementById('loadingState');
+    const emptyState = document.getElementById('emptyState');
+    const filesList = document.getElementById('filesList');
+
+    loadingState.style.display = 'block';
+    emptyState.style.display = 'none';
+    filesList.innerHTML = '';
+
+    try {
+        const response = await fetch(`${API_URL}/api/knowledge/${AGENT_ID}`);
+        if (response.ok) {
+            files = await response.json();
+            renderFiles();
+            updateStorage();
+        } else {
+            console.error('Failed to fetch files');
+        }
+    } catch (error) {
+        console.error('Error fetching files:', error);
+    } finally {
+        loadingState.style.display = 'none';
+    }
+}
+
+// Render files
+function renderFiles() {
+    const filesList = document.getElementById('filesList');
+    const emptyState = document.getElementById('emptyState');
+
+    if (files.length === 0) {
+        emptyState.style.display = 'block';
+        filesList.innerHTML = '';
+        return;
+    }
+
+    emptyState.style.display = 'none';
+    filesList.innerHTML = files.map(file => createFileCard(file)).join('');
+}
+
+function createFileCard(file) {
+    const icon = getFileIcon(file.file_type);
+    const iconClass = getFileIconClass(file.file_type);
+    const statusClass = getStatusClass(file.upload_status);
+    const statusText = file.upload_status.charAt(0).toUpperCase() + file.upload_status.slice(1);
+
+    return `
+        <div class="bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconClass}">
+                        <span class="material-symbols-outlined">${icon}</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-900 dark:text-white">${file.file_name}</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">${formatFileSize(file.file_size_bytes)} • ${formatDate(file.created_at)}</p>
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                        ${file.content_preview || 'No preview available'}
+                    </p>
+                </div>
+                <div class="flex flex-col sm:items-end shrink-0 gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="${statusClass}">${statusText}</span>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">${file.total_chunks} chunks</p>
+                    </div>
+                    <div class="flex items-center gap-2 mt-1">
+                        <button onclick="deleteFilePrompt('${file.id}', '${file.file_name}')" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-red-500 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            ${file.upload_status === 'processing' ? `
+            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1 mt-3 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-400 to-purple-500 h-1 rounded-full processing-animation" style="width: 75%"></div>
+            </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// Upload files
+async function uploadFiles(filesToUpload) {
+    const uploadProgress = document.getElementById('uploadProgress');
+
+    for (const file of filesToUpload) {
+        // Validate file size
+        if (file.size > 10 * 1024 * 1024) {
+            alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+            continue;
+        }
+
+        // Validate file type
+        const validTypes = ['txt', 'csv', 'pdf', 'docx', 'xlsx'];
+        const extension = file.name.split('.').pop().toLowerCase();
+        if (!validTypes.includes(extension)) {
+            alert(`File ${file.name} has unsupported format.`);
+            continue;
+        }
+
+        // Show progress
+        uploadProgress.style.display = 'block';
+        const progressId = `progress-${Date.now()}`;
+        uploadProgress.innerHTML += `
+            <div id="${progressId}" class="bg-white dark:bg-slate-900 rounded-lg p-4 mb-3 border border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-blue-500">description</span>
+                    <span class="font-medium flex-1">${file.name}</span>
+                    <span class="text-sm text-slate-500">0%</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                    <div class="bg-gradient-to-r from-blue-400 to-purple-500 h-1.5 rounded-full transition-all" style="width: 0%"></div>
+                </div>
+            </div>
+        `;
+
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('agent_id', AGENT_ID);
+
+            const response = await fetch(`${API_URL}/api/knowledge/upload`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                // Update progress to 100%
+                const progressEl = document.getElementById(progressId);
+                progressEl.querySelector('.bg-gradient-to-r').style.width = '100%';
+                progressEl.querySelector('.text-sm').textContent = '100%';
+
+                // Remove after short delay
+                setTimeout(() => {
+                    progressEl.remove();
+                    if (uploadProgress.children.length === 0) {
+                        uploadProgress.style.display = 'none';
+                    }
+                }, 1500);
+
+                // Refresh files list
+                await fetchFiles();
+            } else {
+                const error = await response.text();
+                alert(`Failed to upload ${file.name}: ${error}`);
+                document.getElementById(progressId).remove();
+            }
+        } catch (error) {
+            console.error('Upload error:', error);
+            alert(`Error uploading ${file.name}`);
+            document.getElementById(progressId)?.remove();
+        }
+    }
+}
+
+// Delete handlers
+function deleteFilePrompt(fileId, fileName) {
+    fileToDelete = fileId;
+    document.getElementById('deleteFileName').textContent = fileName;
+    document.getElementById('deleteDialog').style.display = 'flex';
+}
+
+function closeDeleteDialog() {
+    document.getElementById('deleteDialog').style.display = 'none';
+    fileToDelete = null;
+}
+
+async function confirmDelete() {
+    if (!fileToDelete) return;
+
+    try {
+        const response = await fetch(`${API_URL}/api/knowledge/${fileToDelete}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            closeDeleteDialog();
+            await fetchFiles();
+        } else {
+            alert('Failed to delete file');
+        }
+    } catch (error) {
+        console.error('Delete error:', error);
+        alert('Error deleting file');
+    }
+}
+
+// Filter and sort
+function filterFiles() {
+    const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    const sortBy = document.getElementById('sortSelect').value;
+
+    let filtered = [...files];
+
+    // Search filter
+    if (searchQuery) {
+        filtered = filtered.filter(f => f.file_name.toLowerCase().includes(searchQuery));
+    }
+
+    // Sort
+    filtered.sort((a, b) => {
+        if (sortBy === 'date') {
+            return new Date(b.created_at) - new Date(a.created_at);
+        } else if (sortBy === 'name') {
+            return a.file_name.localeCompare(b.file_name);
+        } else if (sortBy === 'size') {
+            return b.file_size_bytes - a.file_size_bytes;
+        }
+        return 0;
+    });
+
+    // Render filtered results
+    const filesList = document.getElementById('filesList');
+    const emptyState = document.getElementById('emptyState');
+
+    if (filtered.length === 0) {
+        emptyState.style.display = 'block';
+        filesList.innerHTML = '';
+    } else {
+        emptyState.style.display = 'none';
+        filesList.innerHTML = filtered.map(file => createFileCard(file)).join('');
+    }
+}
+
+// Utility functions
+function getFileIcon(fileType) {
+    const icons = {
+        pdf: 'picture_as_pdf',
+        docx: 'description',
+        txt: 'description',
+        csv: 'table_chart',
+        xlsx: 'table_chart'
+    };
+    return icons[fileType] || 'description';
+}
+
+function getFileIconClass(fileType) {
+    const classes = {
+        pdf: 'bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400',
+        docx: 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400',
+        txt: 'bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400',
+        csv: 'bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400',
+        xlsx: 'bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400'
+    };
+    return classes[fileType] || 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400';
+}
+
+function getStatusClass(status) {
+    const classes = {
+        completed: 'inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300',
+        processing: 'inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900/50 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-300',
+        failed: 'inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/50 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-300'
+    };
+    return classes[status] || classes.processing;
+}
+
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
+function updateStorage() {
+    const totalBytes = files.reduce((sum, f) => sum + f.file_size_bytes, 0);
+    const totalMB = (totalBytes / (1024 * 1024)).toFixed(1);
+    const maxMB = 100;
+    const percentage = Math.min((totalMB / maxMB) * 100, 100);
+
+    document.getElementById('storageBar').style.width = percentage + '%';
+    document.getElementById('storageText').textContent = `${totalMB} MB of ${maxMB} MB used`;
+}
+</script>
+
+</body>
+</html>

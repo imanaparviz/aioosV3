@@ -7,7 +7,7 @@
     <main class="flex-1 p-8 overflow-y-auto">
       <div class="max-w-7xl mx-auto">
         <!-- Header -->
-        <header class="flex flex-wrap justify-between items-center gap-4 mb-8">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-8 flex flex-wrap justify-between items-center gap-4">
           <div>
             <h1 class="text-slate-900 dark:text-white text-3xl font-bold tracking-tight">
               Knowledge Base
@@ -32,7 +32,7 @@
             <select
               v-model="selectedAgentId"
               @change="onAgentChange"
-              class="appearance-none w-full h-12 px-4 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-base font-medium text-slate-900 dark:text-white bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              class="appearance-none w-full h-12 px-4 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-base font-medium text-slate-900 dark:text-white bg-white/80 backdrop-blur-md dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
               <option :value="null">Select an agent...</option>
               <option v-for="agent in availableAgents" :key="agent.id" :value="agent.id">
@@ -51,7 +51,7 @@
           class="border-2 border-dashed rounded-xl p-8 text-center mb-8 cursor-pointer transition-colors"
           :class="{
             'border-primary bg-primary/5': isDragging,
-            'border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/50 hover:border-primary dark:hover:border-primary': !isDragging
+            'border-slate-300 dark:border-slate-700 bg-white/80 backdrop-blur-md dark:bg-slate-900/50 hover:border-primary dark:hover:border-primary': !isDragging
           }"
           @dragover.prevent="isDragging = true"
           @dragleave.prevent="isDragging = false"
@@ -85,7 +85,7 @@
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">search</span>
             <input
               v-model="searchQuery"
-              class="w-full h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/50 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+              class="w-full h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 backdrop-blur-md dark:bg-slate-900/50 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
               placeholder="Search files by name..."
               type="text"
             />
@@ -95,7 +95,7 @@
               <label class="text-sm text-slate-500 dark:text-slate-400" for="sort">Sort by:</label>
               <select
                 v-model="sortBy"
-                class="h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                class="h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 backdrop-blur-md dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                 id="sort"
               >
                 <option value="date">Upload Date</option>
@@ -129,7 +129,7 @@
             <div
               v-for="file in filteredFiles"
               :key="file.id"
-              class="bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:shadow-md transition-shadow"
+              class="bg-white/80 backdrop-blur-md dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:shadow-md transition-shadow"
             >
               <div class="flex flex-col sm:flex-row gap-4">
                 <div class="flex items-center gap-4">
@@ -190,7 +190,7 @@
             <div
               v-for="file in uploadingFiles"
               :key="'uploading-' + file.name"
-              class="bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm"
+              class="bg-white/80 backdrop-blur-md dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm"
             >
               <div class="flex flex-col sm:flex-row gap-4">
                 <div class="flex items-center gap-4">

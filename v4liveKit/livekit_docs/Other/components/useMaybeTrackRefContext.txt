@@ -1,0 +1,55 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usemaybetrackrefcontext/
+Title: useMaybeTrackRefContext
+Crawled: 2025-11-01 21:15:23
+================================================================================
+
+GitHub
+
+Source
+
+useMaybeTrackRefContext
+
+Returns a track reference from the
+
+TrackRefContext
+
+if it exists, otherwise
+
+undefined
+
+.
+
+Import
+
+import
+
+{
+
+useMaybeTrackRefContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+TrackReferenceOrPlaceholder
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Returns

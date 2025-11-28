@@ -1,0 +1,277 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/baseten/
+Title: 
+Crawled: 2025-11-01 21:25:13
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Model deployment
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Baseten
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section provides a quick reference for the Baseten TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[baseten]~=1.2"
+
+Authentication
+
+The Baseten plugin requires a
+
+Baseten API key
+
+.
+
+Set the following in your
+
+.env
+
+file:
+
+BASETEN_API_KEY
+
+=
+
+<
+
+your-baseten-api-key
+
+>
+
+Model deployment
+
+You must deploy a TTS model such as
+
+Orpheus
+
+to Baseten to use it with LiveKit Agents. Your deployment includes a private model endpoint URL to provide to the LiveKit Agents integration.
+
+Usage
+
+Use Baseten TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+baseten
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+baseten
+
+.
+
+TTS
+
+(
+
+model_endpoint
+
+=
+
+"<your-model-endpoint>"
+
+,
+
+voice
+
+=
+
+"tara"
+
+,
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model_endpoint
+
+string
+
+Optional
+
+Env:
+
+BASETEN_MODEL_ENDPOINT
+
+#
+
+The endpoint URL for your deployed model. You can find this in your Baseten dashboard.
+
+voice
+
+string
+
+Optional
+
+Default:
+
+tara
+
+#
+
+The voice to use for speech synthesis.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language of output audio in
+
+ISO-639-1
+
+format.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+0.6
+
+#
+
+Controls the randomness of the generated speech. Higher values make the output more random.
+
+Additional resources
+
+The following resources provide more information about using Baseten with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-baseten
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Baseten TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Baseten TTS plugin.
+
+Baseten docs
+
+Baseten's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Baseten.
+
+Baseten STT
+
+Guide to the Baseten STT plugin with LiveKit Agents.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Model deployment
+
+Usage
+
+Parameters
+
+Additional resources

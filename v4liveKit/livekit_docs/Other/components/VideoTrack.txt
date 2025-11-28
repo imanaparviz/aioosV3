@@ -1,0 +1,117 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/videotrack/
+Title: VideoTrack
+Crawled: 2025-11-01 21:13:39
+================================================================================
+
+GitHub
+
+Source
+
+VideoTrack
+
+The
+
+VideoTrack
+
+component is responsible for rendering participant video tracks like
+
+camera
+
+and
+
+screen_share
+
+. This component must have access to the participant's context, or alternatively pass it a
+
+Participant
+
+as a property.
+
+Import
+
+import
+
+{
+
+VideoTrack
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+VideoTrack
+
+trackRef
+
+=
+
+{
+
+trackRef
+
+}
+
+/>
+
+Properties
+
+manageSubscription
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+onSubscriptionStatusChanged
+
+(subscribed: boolean) => void
+
+Optional
+
+#
+
+(Optional)
+
+onTrackClick
+
+(evt: ParticipantClickEvent) => void
+
+Optional
+
+#
+
+(Optional)
+
+trackRef
+
+TrackReference
+
+Optional
+
+#
+
+(Optional)
+
+The track reference of the track to render.
+
+On this page
+
+Import
+
+Usage
+
+Properties

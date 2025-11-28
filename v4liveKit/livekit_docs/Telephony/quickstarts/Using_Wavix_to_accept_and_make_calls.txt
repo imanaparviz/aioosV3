@@ -1,0 +1,737 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/sip/quickstarts/configuring-wavix-trunk/
+Title: 
+Crawled: 2025-11-01 21:12:21
+================================================================================
+
+On this page
+
+Prerequisites
+
+Accepting inbound calls
+
+Step 1: Configure inbound call routing in Wavix
+
+Step 2: Create an inbound trunk in LiveKit
+
+Step 3: Create a dispatch rule in LiveKit
+
+Test inbound calls
+
+Making outbound calls
+
+Step 1: Create a SIP trunk in Wavix
+
+Step 2: Configure outbound calls
+
+Transfer calls
+
+Enable call encryption
+
+Troubleshooting outbound calls
+
+Next steps
+
+Copy page
+
+See more page options
+
+Prerequisites
+
+The following are required to complete the steps in this guide:
+
+A
+
+Wavix account
+
+account.
+
+A
+
+purchased phone number
+
+from Wavix.
+
+A project on
+
+LiveKit Cloud
+
+.
+
+Accepting inbound calls
+
+Complete the following steps to accept inbound calls with Wavix and LiveKit.
+
+Step 1: Configure inbound call routing in Wavix
+
+To receive calls with Wavix and LiveKit, you need to set up inbound call routing.
+
+For this step, you need your LiveKit
+
+SIP endpoint
+
+. This is your LiveKit SIP URI without the
+
+sip:
+
+prefix. You can find your SIP URI on your
+
+Project settings
+
+page.
+
+Sign in to your
+
+Wavix account
+
+.
+
+Select
+
+Numbers & trunks
+
+→
+
+My numbers
+
+.
+
+Select the more (
+
+⋮
+
+) menu and choose
+
+Edit number
+
+.
+
+For
+
+Destination
+
+→
+
+Configure inbound call routing
+
+, select
+
+SIP URI
+
+.
+
+Enter the destination in the format:
+
+[did]@[LiveKit SIP endpoint]
+
+, for example:
+
+[did]@vjnxecm0tjk.sip.livekit.cloud
+
+.
+
+Note
+
+The
+
+[did]
+
+placeholder in the destination string is automatically replaced with your Wavix phone number.
+
+Select
+
+Save
+
+.
+
+Step 2: Create an inbound trunk in LiveKit
+
+An
+
+inbound trunk
+
+allows you to accept incoming phone calls to your Wavix phone number. To create an inbound trunk in LiveKit, use the following steps:
+
+Sign in to
+
+LiveKit Cloud
+
+.
+
+Select
+
+Telephony
+
+→
+
+Configuration
+
+.
+
+Select the
+
++Create new
+
+button →
+
+Trunk
+
+.
+
+For
+
+Trunk direction
+
+, select
+
+Inbound
+
+.
+
+Enter a comma-separated list of Wavix numbers to associate with the trunk.
+
+Select
+
+Create
+
+.
+
+Step 3: Create a dispatch rule in LiveKit
+
+In addition to an inbound trunk, you need a
+
+dispatch rule
+
+to determine how callers are dispatched to LiveKit rooms.
+
+Create a dispatch rule using the following steps:
+
+Navigate to the
+
+Telephony
+
+→
+
+Configuration
+
+page.
+
+Select the
+
++Create new
+
+button →
+
+Dispatch rule
+
+.
+
+Complete the
+
+Rule name
+
+and
+
+Room name
+
+fields.
+
+Select
+
+Match trunks
+
+and select the inbound trunk you created in the previous step.
+
+Additional options
+
+Selecting trunks to match a dispatch rule is optional. By default, a dispatch rule applies to all inbound calls for your LiveKit project.
+
+The default
+
+Rule type
+
+is
+
+Direct
+
+. This means all callers are placed in the same room. For alternative rule types, see
+
+SIP dispatch rule
+
+.
+
+Test inbound calls
+
+After you complete the setup steps, start a voice AI agent and call your Wavix phone number. Your agent should answer the call. If you don't have an agent, see the
+
+Voice AI quickstart
+
+to create one.
+
+Making outbound calls
+
+Complete the following steps to make outbound calls using LiveKit and Wavix.
+
+Step 1: Create a SIP trunk in Wavix
+
+Create a Wavix SIP trunk for outgoing calls, using the following steps.
+
+Sign in to your
+
+Wavix account
+
+.
+
+Navigate to
+
+Numbers & Trunks
+
+→
+
+Trunks
+
+.
+
+Select the
+
+Create new
+
+button.
+
+Enter a
+
+SIP trunk name
+
+.
+
+In the
+
+Caller ID
+
+section, select one of the phone numbers you purchased.
+
+Under
+
+Authentication Method
+
+, select
+
+Digest
+
+and complete the
+
+Password
+
+fields.
+
+Select
+
+Next
+
+.
+
+Optionally, configure additional limits:
+
+Max outbound call duration
+
+Max number of simultaneous calls via the SIP trunk
+
+Max call cost
+
+Select
+
+Save
+
+.
+
+After the SIP trunk is successfully created, it appears in your account's SIP trunks list. Note the 5-digit SIP trunk ID that is generated automatically. Your SIP trunk ID is needed for the next step when you create an outbound trunk in LiveKit.
+
+Step 2: Configure outbound calls
+
+For outbound calls, you need to create an outbound trunk in LiveKit using the Wavix SIP trunk credentials:
+
+Sign in to
+
+LiveKit Cloud
+
+.
+
+Select
+
+Telephony
+
+→
+
+Configuration
+
+.
+
+Select the
+
++ Create new
+
+button →
+
+Trunk
+
+.
+
+For
+
+Trunk direction
+
+, select
+
+Outbound
+
+.
+
+Configure the outbound trunk with the following settings:
+
+Address
+
+: Use the Wavix SIP gateway (e.g.,
+
+<country-code>.wavix.net
+
+)
+
+Numbers
+
+: Enter your Wavix phone number.
+
+Select
+
+Optional settings
+
+and complete the following fields:
+
+Username
+
+: Your 5-digit SIP trunk ID from Wavix.
+
+Password
+
+: The SIP trunk password you set in Wavix.
+
+Select
+
+Create
+
+.
+
+Tip
+
+Choose the primary gateway closest to your location. A full list of Wavix regional gateways is available at the bottom of your
+
+Wavix trunks page
+
+.
+
+Transfer calls
+
+Wavix supports cold call transfers using the SIP REFER command. To transfer a call, you need two Wavix numbers—one for the incoming call and one to transfer calls to.
+
+To transfer an active LiveKit call, use the
+
+TransferSIPParticipant
+
+server API. The following is a Node.js example. To learn more and for additional examples, see
+
+Call forwarding
+
+.
+
+import
+
+{
+
+SipClient
+
+}
+
+from
+
+'livekit-server-sdk'
+
+;
+
+async
+
+function
+
+transferParticipant
+
+(
+
+participant
+
+)
+
+{
+
+console
+
+.
+
+log
+
+(
+
+"transfer participant initiated"
+
+)
+
+;
+
+const
+
+sipTransferOptions
+
+=
+
+{
+
+playDialtone
+
+:
+
+false
+
+}
+
+;
+
+const
+
+sipClient
+
+=
+
+new
+
+SipClient
+
+(
+
+process
+
+.
+
+env
+
+.
+
+LIVEKIT_URL
+
+,
+
+process
+
+.
+
+env
+
+.
+
+LIVEKIT_API_KEY
+
+,
+
+process
+
+.
+
+env
+
+.
+
+LIVEKIT_API_SECRET
+
+)
+
+;
+
+const
+
+transferTo
+
+=
+
+"sip:+19495550100@us.wavix.net"
+
+;
+
+await
+
+sipClient
+
+.
+
+transferSipParticipant
+
+(
+
+'open-room'
+
+,
+
+participant
+
+.
+
+identity
+
+,
+
+transferTo
+
+,
+
+sipTransferOptions
+
+)
+
+;
+
+console
+
+.
+
+log
+
+(
+
+'transfer participant'
+
+)
+
+;
+
+}
+
+Replace the
+
+transferTo
+
+value with your Wavix number using the format:
+
+sip:+[YOUR_WAVIX_NUMBER]@[WAVIX_SIP_GATEWAY]
+
+.
+
+Enable call encryption
+
+You can choose to encrypt call media for enhanced security. Contact Wavix support to enable encryption for your Wavix numbers or trunks. After enabling encryption, see
+
+Secure trunking
+
+to configure encryption for LiveKit trunks.
+
+Troubleshooting outbound calls
+
+The following tables lists common issues with outbound calls.
+
+Issue
+
+Cause
+
+603 Declined response
+
+This might occur when calling a destination with a per-minute rate higher than the Max call rate set for your account. Contact Wavix support to request a change to your max call rate.
+
+Registration issues
+
+Check the registration status of your SIP trunk.
+
+Wrong number format
+
+Make sure you dial the full international number (
+
+E.164
+
+format): For example,
+
++19085550100
+
+(US),
+
++44946001218
+
+(UK). Strip prefixes like
+
+0
+
+,
+
+00
+
+, or
+
+011
+
+before the dialed number.
+
+For additional troubleshooting help, see the
+
+SIP troubleshooting guide
+
+.
+
+Next steps
+
+The following guides provide next steps for building your telephony app.
+
+Voice AI quickstart
+
+A quickstart guide to build a voice AI agent to answer incoming calls.
+
+Agents telephony integration
+
+Learn how to receive and make calls with a voice AI agent
+
+Call forwarding using SIP REFER
+
+How to forward calls to another number or SIP endpoint with SIP REFER.
+
+Agent-assisted warm transfer
+
+A comprehensive guide to transferring calls using an AI agent to provide context.
+
+Secure trunking for SIP calls
+
+How to enable secure trunking for LiveKit SIP.
+
+Region pinning for SIP
+
+Use region pinning to restrict calls to a specific region.
+
+On this page
+
+Prerequisites
+
+Accepting inbound calls
+
+Step 1: Configure inbound call routing in Wavix
+
+Step 2: Create an inbound trunk in LiveKit
+
+Step 3: Create a dispatch rule in LiveKit
+
+Test inbound calls
+
+Making outbound calls
+
+Step 1: Create a SIP trunk in Wavix
+
+Step 2: Configure outbound calls
+
+Transfer calls
+
+Enable call encryption
+
+Troubleshooting outbound calls
+
+Next steps

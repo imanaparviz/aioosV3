@@ -1,5 +1,13 @@
 <template>
   <aside class="w-64 shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col p-4">
+    <!-- Logo Area -->
+    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700">
+      <router-link to="/" class="flex items-center gap-3 group">
+        <img src="/logo-medium.png" alt="AIOOS" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
+        <span class="text-xl font-bold text-slate-900 dark:text-white">AIOOS</span>
+      </router-link>
+    </div>
+
     <!-- User Profile -->
     <div class="flex items-center gap-3 mb-8">
       <div

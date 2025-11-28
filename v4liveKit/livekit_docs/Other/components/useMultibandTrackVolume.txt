@@ -1,0 +1,107 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usemultibandtrackvolume/
+Title: useMultibandTrackVolume
+Crawled: 2025-11-01 21:16:15
+================================================================================
+
+GitHub
+
+Source
+
+useMultibandTrackVolume
+
+Note
+
+This feature is experimental and may change or be removed based on developer feedback and real-world usage.
+
+Hook for tracking the volume of an audio track across multiple frequency bands using the Web Audio API.
+
+Import
+
+import
+
+{
+
+useMultibandTrackVolume
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+options.analyserOptions
+
+AnalyserOptions
+
+Optional
+
+#
+
+options.bands
+
+number
+
+Optional
+
+#
+
+options.hiPass
+
+number
+
+Optional
+
+#
+
+cut off of frequency bins on the higher end Note: this is not a frequency measure, but in relation to analyserOptions.fftSize,
+
+options.loPass
+
+number
+
+Optional
+
+#
+
+cut off of frequency bins on the lower end Note: this is not a frequency measure, but in relation to analyserOptions.fftSize,
+
+options.updateInterval
+
+number
+
+Optional
+
+#
+
+update should run every x ms
+
+trackOrTrackReference
+
+LocalAudioTrack | RemoteAudioTrack | TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+Returns
+
+number
+
+[
+
+]
+
+On this page
+
+Import
+
+Properties
+
+Returns

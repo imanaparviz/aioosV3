@@ -1,0 +1,61 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/roomname/
+Title: RoomName
+Crawled: 2025-11-01 21:16:13
+================================================================================
+
+GitHub
+
+Source
+
+RoomName
+
+The
+
+RoomName
+
+component renders the name of the connected LiveKit room inside a span tag.
+
+Import
+
+import
+
+{
+
+RoomName
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+RoomName
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+On this page
+
+Import
+
+Usage

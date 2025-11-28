@@ -1,0 +1,279 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/inworld/
+Title: 
+Crawled: 2025-11-01 21:25:33
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Inworld
+
+as a TTS provider for your voice agents.
+
+LiveKit Inference
+
+Inworld TTS is also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a brief overview of the Inworld TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[inworld]~=1.2"
+
+Authentication
+
+The Inworld plugin requires Base64
+
+Inworld API key
+
+.
+
+Set
+
+INWORLD_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Inworld TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+inworld
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+inworld
+
+.
+
+TTS
+
+(
+
+voice
+
+=
+
+"Hades"
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+"inworld-tts-1"
+
+#
+
+ID of the model to use for generation. See
+
+supported models
+
+.
+
+voice
+
+string
+
+Optional
+
+Default:
+
+"Ashley"
+
+#
+
+ID of the voice to use for generation. Use the
+
+List voices API endpoint
+
+for possible values.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+0.8
+
+#
+
+Controls randomness in the output. Recommended to set between 0.6 and 1.0. See
+
+docs
+
+.
+
+speaking_rate
+
+float
+
+Optional
+
+Default:
+
+1.0
+
+#
+
+Controls how fast the voice speaks. 1.0 is the normal native speed, while 0.5 is half the normal speed and 1.5 is 1.5x faster than the normal speed. See
+
+docs
+
+.
+
+pitch
+
+float
+
+Optional
+
+Default:
+
+0.0
+
+#
+
+Adjusts how high or low the voice sounds. Negative values make the voice deeper/lower, while positive values make it higher/squeakier. See
+
+docs
+
+.
+
+Additional resources
+
+The following resources provide more information about using Inworld with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-inworld
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Inworld TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Inworld TTS plugin.
+
+Inworld docs
+
+Inworld TTS docs.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

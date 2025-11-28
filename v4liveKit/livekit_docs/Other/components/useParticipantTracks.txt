@@ -1,0 +1,67 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useparticipanttracks/
+Title: useParticipantTracks
+Crawled: 2025-11-01 21:17:07
+================================================================================
+
+GitHub
+
+Source
+
+useParticipantTracks
+
+useParticipantTracks
+
+is a custom React that allows you to get tracks of a specific participant only, by specifiying the participant's identity. If the participant identity is not passed the hook will try to get the participant from a participant context.
+
+Import
+
+import
+
+{
+
+useParticipantTracks
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+sources
+
+Track.Source[]
+
+Required
+
+#
+
+participantIdentity
+
+string
+
+Optional
+
+#
+
+Returns
+
+TrackReference
+
+[
+
+]
+
+On this page
+
+Import
+
+Properties
+
+Returns

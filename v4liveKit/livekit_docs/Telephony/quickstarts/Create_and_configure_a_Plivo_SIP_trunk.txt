@@ -1,0 +1,425 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/sip/quickstarts/configuring-plivo-trunk/
+Title: 
+Crawled: 2025-11-01 21:12:26
+================================================================================
+
+On this page
+
+Prerequisites
+
+Inbound calling
+
+Create a SIP trunk
+
+Connect your phone number
+
+Configure LiveKit to accept calls
+
+Test incoming calls
+
+Troubleshooting
+
+Outbound calling
+
+Create an outbound trunk in Plivo
+
+Configure LiveKit to make outbound calls
+
+Place an outbound call
+
+Troubleshooting
+
+Regional restrictions
+
+Next steps
+
+Copy page
+
+See more page options
+
+Connect
+
+Plivo's
+
+SIP trunking with LiveKit for inbound and outbound calls.
+
+Prerequisites
+
+The following are required to complete the steps in this guide:
+
+Plivo account
+
+LiveKit Cloud project
+
+Inbound calling
+
+To accept inbound calls with Plivo and LiveKit, complete the steps in the following sections.
+
+Create a SIP trunk
+
+Create an inbound trunk in Plivo, setting your LiveKit SIP endpoint as the primary URI.
+
+Sign in to the
+
+Plivo Console
+
+.
+
+Navigate to
+
+Zentrunk
+
+→
+
+Inbound Trunks
+
+.
+
+Select
+
+Create New Inbound Trunk
+
+and provide a descriptive name for your trunk.
+
+For
+
+Primary URI
+
+, select
+
+Add New URI
+
+and enter your LiveKit
+
+SIP endpoint
+
+. Include
+
+;transport=tcp
+
+in the URI. For example,
+
+vjnxecm0tjk.sip.livekit.cloud;transport=tcp
+
+.
+
+If you're signed in to LiveKit Cloud, your SIP endpoint is automatically included in the following example:
+
+<
+
+your SIP subdomain
+
+>
+
+.sip.livekit.cloud
+
+;
+
+transport
+
+=
+
+tcp
+
+Secure trunking
+
+If you're setting up
+
+secure trunking
+
+, use
+
+;transport=tls
+
+instead of
+
+;transport=tcp
+
+.
+
+Select
+
+Create Trunk
+
+.
+
+Connect your phone number
+
+Connect your Plivo phone number to the inbound trunk.
+
+Navigate to
+
+Phone Numbers
+
+→
+
+Your Numbers
+
+.
+
+Select the phone number to connect to the trunk.
+
+In the
+
+Number Configuration
+
+section →
+
+Application Type
+
+, select
+
+Zentrunk
+
+.
+
+For
+
+Trunk
+
+, select the trunk you created in the previous step.
+
+Select
+
+Update
+
+.
+
+Configure LiveKit to accept calls
+
+Set up an
+
+inbound trunk
+
+and
+
+dispatch rule
+
+in LiveKit to accepts calls to your Plivo phone number.
+
+Test incoming calls
+
+Start your LiveKit agent and call your Plivo phone number. Your agent should answer the call. If you don't have an agent, see the
+
+Voice AI quickstart
+
+to create one.
+
+Troubleshooting
+
+For help troubleshooting inbound calls, check the following logs:
+
+First check the
+
+Plivo logs
+
+.
+
+Then check the
+
+call logs
+
+in your LiveKit Cloud dashboard.
+
+Outbound calling
+
+To make outbound calls with LiveKit and Plivo and LiveKit, complete the steps in the following sections.
+
+Create an outbound trunk in Plivo
+
+Set up an outbound trunk with username and password authentication in Plivo.
+
+Sign in to the
+
+Plivo Console
+
+.
+
+Navigate to
+
+Zentrunk
+
+→
+
+Outbound Trunks
+
+.
+
+Select
+
+Create New Outbound Trunk
+
+and provide a descriptive name for your trunk.
+
+In the
+
+Trunk Authentication
+
+section →
+
+Credentials List
+
+, select
+
+Add New Credentials List
+
+.
+
+Add a username and strong password for outbound call authentication. Make sure these values match the username and password you use for your LiveKit outbound trunk.
+
+For
+
+Secure Trunking
+
+, select
+
+Enabled
+
+(recommended).
+
+Secure trunking
+
+If you enable secure trunking in Plivo, you must also enable secure trunking in LiveKit. To learn more, see
+
+Secure trunking
+
+.
+
+Select
+
+Create Trunk
+
+to complete your outbound trunk configuration.
+
+Copy the
+
+Termination SIP Domain
+
+for the next step.
+
+Configure LiveKit to make outbound calls
+
+Create an
+
+outbound trunk
+
+in LiveKit using the
+
+Termination SIP Domain
+
+, and username and password from the previous section.
+
+Place an outbound call
+
+Test your configuration by placing an outbound call with LiveKit using the
+
+CreateSIPParticipant
+
+API. To learn more, see
+
+Creating a SIP participant
+
+.
+
+Troubleshooting
+
+If the call fails to connect, check the following common issues:
+
+Verify your SIP URI. It must include
+
+;transport=tcp
+
+.
+
+Verify your Plivo phone number is associated with the correct trunk.
+
+For outbound calls, check the following logs:
+
+First check the
+
+call logs
+
+in your LiveKit Cloud dashboard.
+
+Then check the
+
+Plivo logs
+
+.
+
+For error codes, see the
+
+Plivo hangup codes
+
+reference.
+
+Regional restrictions
+
+If your calls are made from a Plivo India phone number, or you're dialing numbers in India, you must enable
+
+region pinning
+
+for your LiveKit project. This restricts calls to India to comply with local telephony regulations. Your calls will fail to connect if region pinning is not enabled.
+
+For other countries, select the region closest to the location of your call traffic for optimal performance.
+
+Next steps
+
+The following guides provide next steps for building your LiveKit telephony app.
+
+Voice AI quickstart
+
+A quickstart guide to build a voice AI agent to answer incoming calls.
+
+Agents telephony integration
+
+Learn how to receive and make calls with a voice AI agent
+
+Call forwarding using SIP REFER
+
+How to forward calls to another number or SIP endpoint with SIP REFER.
+
+Agent-assisted warm transfer
+
+A comprehensive guide to transferring calls using an AI agent to provide context.
+
+Secure trunking for SIP calls
+
+How to enable secure trunking for LiveKit SIP.
+
+Region pinning for SIP
+
+Use region pinning to restrict calls to a specific region.
+
+On this page
+
+Prerequisites
+
+Inbound calling
+
+Create a SIP trunk
+
+Connect your phone number
+
+Configure LiveKit to accept calls
+
+Test incoming calls
+
+Troubleshooting
+
+Outbound calling
+
+Create an outbound trunk in Plivo
+
+Configure LiveKit to make outbound calls
+
+Place an outbound call
+
+Troubleshooting
+
+Regional restrictions
+
+Next steps

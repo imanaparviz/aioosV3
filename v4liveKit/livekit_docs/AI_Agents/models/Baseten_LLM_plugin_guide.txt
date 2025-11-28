@@ -1,0 +1,255 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/baseten/
+Title: 
+Crawled: 2025-11-01 21:21:50
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Model selection
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Baseten
+
+as an LLM provider for your voice agents.
+
+LiveKit Inference
+
+Some Baseten models are also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[baseten]~=1.2"
+
+Authentication
+
+The Baseten plugin requires a
+
+Baseten API key
+
+.
+
+Set the following in your
+
+.env
+
+file:
+
+BASETEN_API_KEY
+
+=
+
+<
+
+your-baseten-api-key
+
+>
+
+Model selection
+
+LiveKit Agents integrates with Baseten's Model API, which supports the most popular open source LLMs with per-token billing. To use the Model API, you only need to activate the model and then copy its name.
+
+Activate your desired model in the
+
+Model API
+
+Copy its name from your model API endpoint dialog in your
+
+model library
+
+Use the model name in the plugin (e.g.
+
+"openai/gpt-oss-120b"
+
+)
+
+Usage
+
+Use a Baseten LLM in your
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+baseten
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+baseten
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"openai/gpt-oss-120b"
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. For a complete reference of all available parameters,
+
+see the
+
+plugin reference
+
+.
+
+model
+
+string
+
+Optional
+
+Default:
+
+meta-llama/Llama-4-Maverick-17B-128E-Instruct
+
+#
+
+Name of the LLM model to use from the
+
+Model API
+
+. See
+
+Model selection
+
+for more information.
+
+Additional resources
+
+The following resources provide more information about using Baseten with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-baseten
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Baseten LLM plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Baseten LLM plugin.
+
+Baseten docs
+
+Baseten docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Baseten.
+
+Baseten TTS
+
+Baseten TTS integration guide.
+
+Baseten STT
+
+Baseten STT integration guide.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Model selection
+
+Usage
+
+Parameters
+
+Additional resources

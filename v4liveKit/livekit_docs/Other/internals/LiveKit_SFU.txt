@@ -1,0 +1,43 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/internals/livekit-sfu/
+Title: 
+Crawled: 2025-11-01 21:04:44
+================================================================================
+
+On this page
+
+P2P vs. MCU vs. SFU
+
+LiveKit SFU Architecture
+
+Copy page
+
+See more page options
+
+P2P vs. MCU vs. SFU
+
+Plain WebRTC is a peer-to-peer (P2P) protocol. When two peers connect with one another, they exchange—ignoring data channels—audio and video ("media") directly. This works well for a set of 2-3 peers, but how many people have an internet connection which can consistently upload five 720p (1.5Mbps) video streams simultaneously? Not many. Thus, scaling WebRTC to groups of more than 2-3 people requires a client-server model.
+
+One popular flavor of this model is an Multipoint Conferencing Unit (MCU) architecture. In an MCU setup, a user in a conference sends media streams, each encoded and compressed, to a central server (the "MCU"). The MCU decompresses and decodes each stream it receives, "glues" them together with incoming streams from other users (collectively referred to as "publishers"), and transmits a single media stream down to each recipient (a "subscriber"). For audio, streams are mixed together, and for video, they're typically composited into a predefined layout, like a row or grid of tiles.
+
+The clear advantages of an MCU approach are each publisher need only send one copy of a media stream, and each subscriber receives just a single, composite stream; a huge savings in bandwidth on either end. A key tradeoff is flexibility. If your application relies on being able to tweak the volume of an individual audio stream, you're out of luck. If your app's UI doesn't map to a row or grid of videos, you'll need to either compromise on your interface design or write code to segment the single video stream from the server back into individual tiles. Another major disadvantage of the MCU approach is scale. You'll need a beefy machine to decode, composite and re-encode all those streams, and if a session grows too large to fit on one server, then what?
+
+We chose to base LiveKit on another common client-server architecture: a Selective Forwarding Unit (SFU). You can think of an SFU as a specialized router, one optimized for low-latency, high-bandwidth media forwarding. In this setup, a publisher sends media streams—once again, encoded and compressed—to a server (the "SFU"), except this time, the server forwards a copy of each stream (in WebRTC parlance, a "track") to each interested subscriber without manipulating any underlying packets.
+
+Similar to an MCU, a publisher need only transmit a single copy of their media streams, saving a client significant upstream bandwidth. However, an SFU trades downstream bandwidth efficiency for flexibility and scalability by contrast. A user subscribed to camera feeds of five others would pull down five individual video streams (as opposed to one with an MCU). The benefit is your application is no longer tightly-coupled to side-effects of your media infrastructure — you have complete control over every individual audio and video track. If a session exhausts the resources of one server, there are options for splitting it across multiple nodes. LiveKit's SFU also contains smarts on both the server and client (via SDK) to automatically (and invisibly) measure a subscriber's downstream bandwidth and adjust track parameters (e.g. resolution or bitrate) accordingly. As a developer, you'll rarely, if ever, have to think about how many tracks your application is pulling down.
+
+LiveKit SFU Architecture
+
+LiveKit is written in Go, leveraging
+
+Pion
+
+'s Go-based WebRTC implementation. The SFU is horizontally-scalable: you can run it on one or one hundred nodes with an identical configuration. Nodes use peer-to-peer routing via Redis, ensuring clients joining a particular room all connect to the same node. When running LiveKit as a single node, there are no external dependencies, but Redis is required for distributed, multi-node setups.
+
+On this page
+
+P2P vs. MCU vs. SFU
+
+LiveKit SFU Architecture

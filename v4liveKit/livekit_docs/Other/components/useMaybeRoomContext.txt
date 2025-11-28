@@ -1,0 +1,47 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usemayberoomcontext/
+Title: useMaybeRoomContext
+Crawled: 2025-11-01 21:17:28
+================================================================================
+
+GitHub
+
+Source
+
+useMaybeRoomContext
+
+Returns the room context if it exists, otherwise undefined.
+
+Import
+
+import
+
+{
+
+useMaybeRoomContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+Room
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Returns

@@ -1,0 +1,211 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/resemble/
+Title: 
+Crawled: 2025-11-01 21:25:18
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Customizing pronunciation
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Resemble AI
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section includes a brief overview of the Resemble AI TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[resemble]~=1.2"
+
+Authentication
+
+The Resemble AI plugin requires a
+
+Resemble AI API key
+
+.
+
+Set
+
+RESEMBLE_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Resemble AI TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example, you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+resemble
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+resemble
+
+.
+
+TTS
+
+(
+
+voice_uuid
+
+=
+
+"55592656"
+
+,
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+voice_uuid
+
+string
+
+Required
+
+Default:
+
+55592656
+
+#
+
+ID of the voice to use.
+
+Customizing pronunciation
+
+Resemble AI supports custom pronunciation with Speech Synthesis Markup Language (SSML), an XML-based markup language that gives you granular control over speech output. With SSML, you can leverage XML tags to craft audio content that delivers a more natural and engaging listening experience. To learn more, see
+
+SSML
+
+.
+
+Additional resources
+
+The following resources provide more information about using Resemble AI with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-resemble
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Resemble AI TTS plugin.
+
+Resemble AI docs
+
+Resemble AI docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Resemble AI TTS.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Customizing pronunciation
+
+Additional resources

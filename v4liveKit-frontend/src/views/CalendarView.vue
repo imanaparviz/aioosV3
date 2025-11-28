@@ -45,7 +45,7 @@
               <select
                 v-model="selectedAgentId"
                 @change="onAgentChange"
-                class="appearance-none h-10 px-4 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                class="appearance-none h-10 px-4 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-gray-900 dark:text-white bg-white/80 backdrop-blur-md dark:bg-gray-800/80 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option :value="null">All Events</option>
                 <option v-for="agent in availableAgents" :key="agent.id" :value="agent.id">
@@ -56,7 +56,7 @@
                 <span class="material-symbols-outlined text-lg">expand_more</span>
               </div>
             </div>
-            <div class="flex items-center border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800">
+            <div class="flex items-center border border-slate-300 dark:border-slate-700 rounded-lg bg-white/80 backdrop-blur-md dark:bg-slate-800/80">
               <button
                 @click="previousMonth"
                 class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary"
@@ -75,19 +75,19 @@
             </div>
             <button
               @click="goToToday"
-              class="h-10 px-4 border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-900 dark:text-white bg-white dark:bg-slate-800 hover:bg-primary/10"
+              class="h-10 px-4 border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-900 dark:text-white bg-white/80 backdrop-blur-md dark:bg-slate-800/80 hover:bg-primary/10"
             >
               Today
             </button>
           </div>
 
           <!-- View Switcher -->
-          <div class="flex items-center gap-2 p-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700">
+          <div class="flex items-center gap-2 p-1 rounded-lg bg-slate-100/80 backdrop-blur-md dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700">
             <button
               @click="currentView = 'month'"
               class="px-3 py-1 text-sm font-medium rounded-md"
               :class="currentView === 'month'
-                ? 'bg-white dark:bg-slate-700 text-primary'
+                ? 'bg-white/80 backdrop-blur-md dark:bg-slate-700 text-primary'
                 : 'text-slate-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700'"
             >
               Month
@@ -96,7 +96,7 @@
               @click="currentView = 'week'"
               class="px-3 py-1 text-sm font-medium rounded-md"
               :class="currentView === 'week'
-                ? 'bg-white dark:bg-slate-700 text-primary'
+                ? 'bg-white/80 backdrop-blur-md dark:bg-slate-700 text-primary'
                 : 'text-slate-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700'"
             >
               Week
@@ -105,7 +105,7 @@
               @click="currentView = 'day'"
               class="px-3 py-1 text-sm font-medium rounded-md"
               :class="currentView === 'day'
-                ? 'bg-white dark:bg-slate-700 text-primary'
+                ? 'bg-white/80 backdrop-blur-md dark:bg-slate-700 text-primary'
                 : 'text-slate-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700'"
             >
               Day
@@ -114,12 +114,12 @@
         </div>
 
         <!-- Calendar Grid -->
-        <div class="flex-1 grid grid-cols-7 auto-rows-fr gap-px border-l border-t border-slate-300 dark:border-slate-700 bg-slate-300 dark:bg-slate-700 rounded-xl overflow-hidden">
+        <div class="flex-1 grid grid-cols-7 auto-rows-fr gap-px border-l border-t border-slate-300 dark:border-slate-700 bg-slate-300/50 backdrop-blur-sm dark:bg-slate-700 rounded-xl overflow-hidden">
           <!-- Day Headers -->
           <div
             v-for="day in daysOfWeek"
             :key="day"
-            class="text-center py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 border-r border-b border-slate-300 dark:border-slate-700"
+            class="text-center py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-white/80 backdrop-blur-md dark:bg-slate-900 border-r border-b border-slate-300 dark:border-slate-700"
           >
             {{ day }}
           </div>
@@ -128,7 +128,7 @@
           <div
             v-for="day in calendarDays"
             :key="day.date"
-            class="relative p-2 text-sm font-medium bg-white dark:bg-slate-900 border-r border-b border-slate-300 dark:border-slate-700 min-h-[100px]"
+            class="relative p-2 text-sm font-medium bg-white/80 backdrop-blur-md dark:bg-slate-900 border-r border-b border-slate-300 dark:border-slate-700 min-h-[100px]"
             :class="{
               'bg-slate-50 dark:bg-slate-950 text-slate-400': !day.isCurrentMonth,
               'bg-primary/10': day.isToday
@@ -165,7 +165,7 @@
           <div v-if="selectedAgentId">
             <BusinessHoursConfig :agent-id="selectedAgentId" />
           </div>
-          <div v-else class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+          <div v-else class="bg-white/80 backdrop-blur-md dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
             <span class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-600">event_available</span>
             <h3 class="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
               Select an Agent

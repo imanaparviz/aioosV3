@@ -1,0 +1,111 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/chatentry/
+Title: ChatEntry
+Crawled: 2025-11-01 21:16:06
+================================================================================
+
+GitHub
+
+Source
+
+ChatEntry
+
+The
+
+ChatEntry
+
+component holds and displays one chat message.
+
+Import
+
+import
+
+{
+
+ChatEntry
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+Chat
+
+>
+
+<
+
+ChatEntry
+
+/>
+
+</
+
+Chat
+
+>
+
+Properties
+
+entry
+
+ReceivedChatMessage
+
+Required
+
+#
+
+The chat massage object to display.
+
+hideName
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+Hide sender name. Useful when displaying multiple consecutive chat messages from the same person.
+
+hideTimestamp
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+Hide message timestamp.
+
+messageFormatter
+
+MessageFormatter
+
+Optional
+
+#
+
+(Optional)
+
+An optional formatter for the message body.
+
+On this page
+
+Import
+
+Usage
+
+Properties

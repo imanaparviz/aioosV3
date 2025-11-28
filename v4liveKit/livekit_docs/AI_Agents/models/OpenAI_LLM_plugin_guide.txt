@@ -1,0 +1,335 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/openai/
+Title: 
+Crawled: 2025-11-01 21:21:57
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use the
+
+OpenAI platform
+
+as an LLM provider for your voice agents.
+
+LiveKit Inference
+
+OpenAI models are also available in LiveKit Inference with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Authentication
+
+The OpenAI plugin requires an
+
+OpenAI API key
+
+.
+
+Set
+
+OPENAI_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use OpenAI within an
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"gpt-4o-mini"
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+openai
+
+.
+
+LLM
+
+(
+
+model
+
+:
+
+"gpt-4o-mini"
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+gpt-4o-mini
+
+#
+
+The model to use for the LLM. For more information, see the
+
+OpenAI documentation
+
+.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+0.8
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+Valid values are between
+
+0
+
+and
+
+2
+
+.
+
+tool_choice
+
+ToolChoice | Literal['auto', 'required', 'none']
+
+Optional
+
+Default:
+
+auto
+
+#
+
+Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
+
+Additional resources
+
+The following resources provide more information about using OpenAI with LiveKit Agents.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+OpenAI docs
+
+OpenAI platform documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and OpenAI.
+
+OpenAI ecosystem overview
+
+Overview of the entire OpenAI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

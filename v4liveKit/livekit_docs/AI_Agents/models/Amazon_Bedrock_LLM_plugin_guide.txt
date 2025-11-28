@@ -1,0 +1,289 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/aws/
+Title: 
+Crawled: 2025-11-01 21:21:55
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Amazon Nova Sonic
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Amazon Bedrock
+
+as a LLM provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[aws]~=1.2"
+
+Authentication
+
+The AWS plugin requires AWS credentials. Set the following environment variables in your
+
+.env
+
+file:
+
+AWS_ACCESS_KEY_ID
+
+=
+
+<
+
+your-aws-access-key-id
+
+>
+
+AWS_SECRET_ACCESS_KEY
+
+=
+
+<
+
+your-aws-secret-access-key
+
+>
+
+Usage
+
+Use Bedrock within an
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+aws
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+aws
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"anthropic.claude-3-5-sonnet-20240620-v1:0"
+
+,
+
+temperature
+
+=
+
+0.8
+
+,
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. For a complete reference of all available parameters, see the
+
+plugin reference
+
+.
+
+model
+
+string | TEXT_MODEL
+
+Optional
+
+Default:
+
+anthropic.claude-3-5-sonnet-20240620-v1:0
+
+#
+
+The model to use for the LLM. For more information, see the documentation for the
+
+modelId
+
+parameter in the
+
+Amazon Bedrock API reference
+
+.
+
+region
+
+string
+
+Optional
+
+Default:
+
+us-east-1
+
+#
+
+The region to use for AWS API requests.
+
+temperature
+
+float
+
+Optional
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+Default values vary depending on the model you select. To learn more, see
+
+Inference request parameters and response fields for foundation models
+
+.
+
+tool_choice
+
+[ToolChoice | Literal['auto', 'required', 'none']]
+
+Optional
+
+Default:
+
+auto
+
+#
+
+Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
+
+Amazon Nova Sonic
+
+To use Amazon Nova Sonic on AWS Bedrock, refer to the following integration guide:
+
+Amazon Nova Sonic
+
+Integration guide for the Amazon Nova Sonic speech-to-speech model on AWS Bedrock.
+
+Additional resources
+
+The following links provide more information about the Amazon Bedrock LLM plugin.
+
+Python package
+
+The
+
+livekit-plugins-aws
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Amazon Bedrock LLM plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Amazon Bedrock LLM plugin.
+
+Bedrock docs
+
+Amazon Bedrock docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Amazon Bedrock.
+
+AWS ecosystem guide
+
+Overview of the entire AWS and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Amazon Nova Sonic
+
+Additional resources

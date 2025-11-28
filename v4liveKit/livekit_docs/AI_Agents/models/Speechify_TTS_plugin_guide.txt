@@ -1,0 +1,301 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/speechify/
+Title: 
+Crawled: 2025-11-01 21:25:11
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Customizing pronunciation
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Speechify
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section includes a brief overview of the Speechify TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[speechify]~=1.2"
+
+Authentication
+
+The Speechify plugin requires a
+
+Speechify API key
+
+.
+
+Set
+
+SPEECHIFY_API_KEY
+
+in your .env file.
+
+Usage
+
+Use Speechify TTS within an AgentSession or as a standalone speech generator. For example, you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+speechify
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+speechify
+
+.
+
+TTS
+
+(
+
+model
+
+=
+
+"simba-english"
+
+,
+
+voice_id
+
+=
+
+"jack"
+
+,
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+voice_id
+
+string
+
+Required
+
+Default:
+
+jack
+
+#
+
+ID of the voice to be used for synthesizing speech. Refer to
+
+list_voices()
+
+method in the
+
+plugin reference
+
+.
+
+model
+
+string
+
+Optional
+
+#
+
+ID of the model to use for generation. Use
+
+simba-english
+
+or
+
+simba-multilingual
+
+To learn more, see:
+
+supported models
+
+.
+
+language
+
+string
+
+Optional
+
+#
+
+Language of input text in ISO-639-1 format. See the
+
+supported languages
+
+.
+
+encoding
+
+string
+
+Optional
+
+Default:
+
+wav_48000
+
+#
+
+Audio encoding to use. Choose between
+
+wav_48000
+
+,
+
+mp3_24000
+
+,
+
+ogg_24000
+
+or
+
+aac_24000
+
+.
+
+loudness_normalization
+
+boolean
+
+Optional
+
+#
+
+Determines whether to normalize the audio loudness to a standard level. When enabled, loudness normalization aligns the audio output to the following standards: Integrated loudness: -14 LUFS True peak: -2 dBTP Loudness range: 7 LU If disabled, the audio loudness will match the original loudness of the selected voice, which may vary significantly and be either too quiet or too loud. Enabling loudness normalization can increase latency due to additional processing required for audio level adjustments.
+
+text_normalization
+
+boolean
+
+Optional
+
+#
+
+Determines whether to normalize the text. If enabled, it will transform numbers, dates, etc. into words. For example, "55" is normalized into "fifty five". This can increase latency due to additional processing required for text normalization.
+
+Customizing pronunciation
+
+Speechify supports custom pronunciation with Speech Synthesis Markup Language (SSML), an XML-based markup language that gives you granular control over speech output. With SSML, you can leverage XML tags to craft audio content that delivers a more natural and engaging listening experience. To learn more, see
+
+SSML
+
+.
+
+Additional resources
+
+The following resources provide more information about using Speechify with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-speechify
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Speechify TTS plugin.
+
+Speechify docs
+
+Speechify docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Speechify TTS.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Customizing pronunciation
+
+Additional resources

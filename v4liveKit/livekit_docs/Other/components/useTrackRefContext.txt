@@ -1,0 +1,47 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usetrackrefcontext/
+Title: useTrackRefContext
+Crawled: 2025-11-01 21:15:55
+================================================================================
+
+GitHub
+
+Source
+
+useTrackRefContext
+
+Ensures that a track reference is provided via context. If not inside a
+
+TrackRefContext
+
+, an error is thrown.
+
+Import
+
+import
+
+{
+
+useTrackRefContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+TrackReferenceOrPlaceholder
+
+;
+
+On this page
+
+Import
+
+Returns

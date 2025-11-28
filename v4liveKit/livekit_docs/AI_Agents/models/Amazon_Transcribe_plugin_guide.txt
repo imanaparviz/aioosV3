@@ -1,0 +1,345 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/aws/
+Title: 
+Crawled: 2025-11-01 21:21:35
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Amazon Transcribe
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section provides a brief overview of the Amazon Transcribe STT plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[aws]~=1.2"
+
+Authentication
+
+The Amazon Transcribe plugin requires an
+
+AWS API key
+
+.
+
+Set the following environment variables in your
+
+.env
+
+file:
+
+AWS_ACCESS_KEY_ID
+
+=
+
+<
+
+aws-access-key-id
+
+>
+
+AWS_SECRET_ACCESS_KEY
+
+=
+
+<
+
+aws-secret-access-key
+
+>
+
+AWS_DEFAULT_REGION
+
+=
+
+<
+
+aws-deployment-region
+
+>
+
+Usage
+
+Use Amazon Transcribe STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+aws
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+aws
+
+.
+
+STT
+
+(
+
+session_id
+
+=
+
+"my-session-id"
+
+,
+
+language
+
+=
+
+"en-US"
+
+,
+
+vocabulary_name
+
+=
+
+"my-vocabulary"
+
+,
+
+vocab_filter_name
+
+=
+
+"my-vocab-filter"
+
+,
+
+vocab_filter_method
+
+=
+
+"mask"
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+speech_region
+
+string
+
+Optional
+
+Default:
+
+us-east-1
+
+Env:
+
+AWS_DEFAULT_REGION
+
+#
+
+The region of the AWS deployment. Required if the environment variable isn't set.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en-US
+
+#
+
+The language of the audio. For a full list of supported languages, see the
+
+Supported languages
+
+page.
+
+vocabulary_name
+
+string
+
+Optional
+
+Default:
+
+None
+
+#
+
+Name of the custom vocabulary you want to use when processing your transcription. To learn more, see
+
+Custom vocabularies
+
+.
+
+session_id
+
+string
+
+Optional
+
+#
+
+Name for your transcription session. If left empty, Amazon Transcribe generates an ID and returns it in the response.
+
+vocab_filter_name
+
+string
+
+Optional
+
+Default:
+
+None
+
+#
+
+Name of the custom vocabulary filter that you want to use when processing your transcription. To learn more, see
+
+Using custom vocabulary filters to delete, mask, or flag words
+
+.
+
+vocab_filter_method
+
+string
+
+Optional
+
+Default:
+
+None
+
+#
+
+Display method for the vocabulary filter. To learn more, see
+
+Using custom vocabulary filters to delete, mask, or flag words
+
+.
+
+Additional resources
+
+The following resources provide more information about using Amazon Transcribe with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-aws
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Amazon Transcribe STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Amazon Transcribe STT plugin.
+
+AWS docs
+
+Amazon Transcribe's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Amazon Transcribe.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

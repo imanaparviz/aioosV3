@@ -7,7 +7,7 @@
     <main class="flex-1 overflow-y-auto p-6 lg:p-8">
       <div class="mx-auto max-w-7xl">
         <!-- Page Heading -->
-        <div class="flex flex-wrap items-center justify-between gap-4">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-8 flex flex-wrap items-center justify-between gap-4">
           <h1 class="text-text-light dark:text-text-dark text-3xl font-black leading-tight tracking-[-0.033em]">
             Phone Number Management
           </h1>
@@ -18,7 +18,7 @@
             <span class="material-symbols-outlined mr-2">add</span>
             <span class="truncate">Acquire New Number</span>
           </button>
-        </div>
+        </header>
 
         <!-- Control Bar -->
         <div class="mt-8 flex flex-col gap-4">
@@ -26,12 +26,12 @@
           <div>
             <label class="flex flex-col min-w-40 h-12 w-full">
               <div class="flex w-full flex-1 items-stretch rounded-full h-full">
-                <div class="text-text-muted-light dark:text-text-muted-dark flex border-r border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 items-center justify-center pl-4 rounded-l-full">
+                <div class="text-text-muted-light dark:text-text-muted-dark flex border-r border-slate-300 dark:border-slate-700 bg-white/80 backdrop-blur-md dark:bg-slate-800/80 items-center justify-center pl-4 rounded-l-full">
                   <span class="material-symbols-outlined">search</span>
                 </div>
                 <input
                   v-model="searchQuery"
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-white dark:bg-slate-800 h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 pl-2 text-base font-normal leading-normal"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-white/80 backdrop-blur-md dark:bg-slate-800/80 h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 pl-2 text-base font-normal leading-normal"
                   placeholder="Search by number or agent name..."
                 />
               </div>
@@ -42,21 +42,21 @@
           <div class="flex gap-3 flex-wrap">
             <button
               @click="toggleStatusFilter"
-              class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-slate-800 pl-4 pr-3 border border-slate-300 dark:border-slate-700 hover:border-primary/50"
+              class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/80 backdrop-blur-md dark:bg-slate-800/80 pl-4 pr-3 border border-slate-300 dark:border-slate-700 hover:border-primary/50"
             >
               <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Status</p>
               <span class="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
             </button>
             <button
               @click="toggleAgentFilter"
-              class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-slate-800 pl-4 pr-3 border border-slate-300 dark:border-slate-700 hover:border-primary/50"
+              class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/80 backdrop-blur-md dark:bg-slate-800/80 pl-4 pr-3 border border-slate-300 dark:border-slate-700 hover:border-primary/50"
             >
               <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Assigned Agent</p>
               <span class="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
             </button>
             <button
               @click="toggleRegionFilter"
-              class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-slate-800 pl-4 pr-3 border border-slate-300 dark:border-slate-700 hover:border-primary/50"
+              class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/80 backdrop-blur-md dark:bg-slate-800/80 pl-4 pr-3 border border-slate-300 dark:border-slate-700 hover:border-primary/50"
             >
               <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Region</p>
               <span class="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Data Table -->
-        <div class="mt-8 overflow-x-auto bg-white dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-800">
+        <div class="mt-8 overflow-x-auto bg-white/80 backdrop-blur-md dark:bg-slate-900/80 rounded border border-slate-200 dark:border-slate-800">
           <table class="w-full text-left">
             <thead class="border-b border-slate-200 dark:border-slate-800">
               <tr>
@@ -157,7 +157,7 @@
         <!-- Empty State (shown when no results) -->
         <div
           v-if="filteredNumbers.length === 0"
-          class="mt-8 flex flex-col items-center justify-center text-center p-12 bg-white dark:bg-slate-900 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-700"
+          class="mt-8 flex flex-col items-center justify-center text-center p-12 bg-white/80 backdrop-blur-md dark:bg-slate-900/80 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-700"
         >
           <span class="material-symbols-outlined text-6xl text-slate-400 mb-4">phone_disabled</span>
           <h3 class="text-xl font-bold text-slate-900 dark:text-white">No Phone Numbers Yet</h3>

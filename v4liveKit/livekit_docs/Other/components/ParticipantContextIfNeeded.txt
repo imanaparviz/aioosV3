@@ -1,0 +1,79 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/participantcontextifneeded/
+Title: ParticipantContextIfNeeded
+Crawled: 2025-11-01 21:16:07
+================================================================================
+
+GitHub
+
+Source
+
+ParticipantContextIfNeeded
+
+The
+
+ParticipantContextIfNeeded
+
+component only creates a
+
+ParticipantContext
+
+if there is no
+
+ParticipantContext
+
+already.
+
+Import
+
+import
+
+{
+
+ParticipantContextIfNeeded
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+ParticipantContextIfNeeded
+
+participant
+
+=
+
+{
+
+trackReference
+
+.
+
+participant
+
+}
+
+>
+
+...
+
+</
+
+ParticipantContextIfNeeded
+
+>
+
+On this page
+
+Import
+
+Usage

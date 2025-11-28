@@ -1,0 +1,83 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/audioconference/
+Title: AudioConference
+Crawled: 2025-11-01 21:17:47
+================================================================================
+
+GitHub
+
+Source
+
+AudioConference
+
+This component is the default setup of a classic LiveKit audio conferencing app. It provides functionality like switching between participant grid view and focus view.
+
+Import
+
+import
+
+{
+
+AudioConference
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+The component is implemented with other LiveKit components like
+
+FocusContextProvider
+
+,
+
+GridLayout
+
+,
+
+ControlBar
+
+,
+
+FocusLayoutContainer
+
+and
+
+FocusLayout
+
+.
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+AudioConference
+
+/>
+
+<
+
+LiveKitRoom
+
+>
+
+On this page
+
+Import
+
+Remarks
+
+Usage

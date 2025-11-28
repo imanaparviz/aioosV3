@@ -1,0 +1,215 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/mistralai/
+Title: 
+Crawled: 2025-11-01 21:21:46
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+This plugin allows you to use
+
+Mistral AI
+
+as an LLM provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the LiveKit Mistral AI plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[mistralai]~=1.2"
+
+Authentication
+
+The Mistral AI integration requires a
+
+Mistral AI API key
+
+.
+
+Set the
+
+MISTRAL_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Mistral AI within an
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+mistralai
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+mistralai
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"mistral-medium-latest"
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+string | ChatModels
+
+Optional
+
+Default:
+
+ministral-8b-2410
+
+#
+
+Which Mistral AI model to use. You can pass a string or a typed enum from
+
+ChatModels
+
+.
+
+temperature
+
+float
+
+Optional
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+Additional resources
+
+The following resources provide more information about using Mistral AI with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-mistralai
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Mistral AI LLM plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Mistral AI LLM plugin.
+
+Mistral AI STT docs
+
+Mistral AI STT documentation.
+
+Mistral AI docs
+
+Mistral AI platform documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Mistral AI.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

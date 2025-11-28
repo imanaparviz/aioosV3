@@ -4,10 +4,10 @@
     <SidebarNav />
 
     <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+    <main class="flex-1 overflow-y-auto">
       <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Header -->
-        <div class="flex flex-col gap-4 mb-8">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-8 flex flex-col gap-4">
           <router-link
             to="/dashboard"
             class="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary"
@@ -22,10 +22,10 @@
           <p class="text-base text-gray-600 dark:text-gray-400">
             Test your voice agent directly in the browser before connecting it to a phone number.
           </p>
-        </div>
+        </header>
 
         <!-- Test Interface -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
           <!-- Agent Selection -->
           <div v-if="!selectedAgent" class="flex flex-col gap-4">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white">Select an Agent to Test</h2>
@@ -154,7 +154,7 @@
               </div>
 
               <!-- Audio Elements (hidden) -->
-              <audio ref="remoteAudio" autoplay></audio>
+              <audio ref="remoteAudioRef" autoplay></audio>
 
               <!-- Error Display -->
               <div v-if="error" class="w-full p-4 bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-700 rounded-lg">
@@ -183,11 +183,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import SidebarNav from '@/components/SidebarNav.vue'
 import { getAgents } from '@/services/api'
-import { Room, RoomEvent } from 'livekit-client'
+import { useLiveKit } from '@/composables/useLiveKit'
 
 const router = useRouter()
 
@@ -196,12 +196,17 @@ const agents = ref([])
 const selectedAgent = ref(null)
 const loading = ref(false)
 const error = ref(null)
+const remoteAudioRef = ref(null)
 
-// LiveKit
-const room = ref(null)
-const isConnecting = ref(false)
-const isConnected = ref(false)
-const remoteAudio = ref(null)
+// LiveKit Composable
+const { 
+  isConnected, 
+  isConnecting, 
+  error: livekitError, 
+  remoteAudioTracks, 
+  connect, 
+  disconnect 
+} = useLiveKit()
 
 // Computed
 const connectionStatusText = computed(() => {
@@ -215,6 +220,18 @@ const connectionHintText = computed(() => {
   if (isConnected.value) return 'Speak naturally with the agent'
   return 'Click the button below to start testing'
 })
+
+// Watch for remote audio tracks to attach them
+watch(remoteAudioTracks, (tracks) => {
+  nextTick(() => {
+    if (tracks.length > 0 && remoteAudioRef.value) {
+      const latestTrack = tracks[tracks.length - 1]
+      console.log('🔊 Attaching audio track to element', latestTrack.sid)
+      latestTrack.track.attach(remoteAudioRef.value)
+      remoteAudioRef.value.play().catch(e => console.error('Play error:', e))
+    }
+  })
+}, { deep: true })
 
 // Load agents
 const loadAgents = async () => {
@@ -240,13 +257,8 @@ const selectAgent = (agent) => {
 
 // Reset test
 const resetTest = () => {
-  if (room.value) {
-    room.value.disconnect()
-    room.value = null
-  }
+  disconnect()
   selectedAgent.value = null
-  isConnected.value = false
-  isConnecting.value = false
   error.value = null
 }
 
@@ -254,7 +266,6 @@ const resetTest = () => {
 const startTest = async () => {
   if (!selectedAgent.value) return
 
-  isConnecting.value = true
   error.value = null
 
   try {
@@ -277,134 +288,20 @@ const startTest = async () => {
     const sessionData = await response.json()
     console.log('Test session created:', sessionData)
 
-    // Connect to LiveKit room
-    room.value = new Room()
-
-    // Set up event listeners
-    room.value.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
-      console.log('🔊 Track subscribed:', track.kind, 'from', participant.identity)
-
-      if (track.kind === 'audio') {
-        console.log('🔊 Attaching audio track to element...')
-        // Attach remote audio track to audio element
-        const element = track.attach(remoteAudio.value)
-        console.log('✅ Audio element:', element)
-        console.log('✅ Audio element volume:', element.volume)
-        console.log('✅ Audio element muted:', element.muted)
-
-        // Make sure it's not muted and volume is up
-        element.volume = 1.0
-        element.muted = false
-        element.play().catch(e => console.error('Failed to play audio:', e))
-
-        console.log('✅ Agent audio attached and should be playing NOW!')
-      }
-    })
-
-    room.value.on(RoomEvent.ParticipantConnected, (participant) => {
-      console.log('👤 Participant connected:', participant.identity)
-    })
-
-    room.value.on(RoomEvent.TrackPublished, (publication, participant) => {
-      console.log('📢 Track published:', publication.kind, 'by', participant.identity)
-    })
-
-    room.value.on(RoomEvent.LocalTrackPublished, (publication) => {
-      console.log('✅ Local track published:', publication.kind)
-    })
-
-    room.value.on(RoomEvent.Connected, async () => {
-      console.log('✅ Connected to room')
-      isConnected.value = true
-      isConnecting.value = false
-
-      // IMPORTANT: Enable local microphone after connecting
-      try {
-        console.log('🎤 Requesting microphone access...')
-
-        // Get microphone track manually (workaround for structuredClone bug)
-        const audioDevices = await navigator.mediaDevices.enumerateDevices()
-        const microphones = audioDevices.filter(d => d.kind === 'audioinput')
-
-        console.log(`Found ${microphones.length} microphones`)
-
-        // Request simple microphone access
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: {
-            echoCancellation: true,
-            noiseSuppression: true,
-            autoGainControl: true,
-          },
-          video: false
-        })
-
-        console.log('✅ Got microphone stream')
-
-        // Publish the audio track to room
-        const audioTrack = stream.getAudioTracks()[0]
-        await room.value.localParticipant.publishTrack(audioTrack, {
-          name: 'microphone',
-          source: 'microphone'
-        })
-
-        console.log('✅ Microphone track published!')
-      } catch (micError) {
-        console.error('❌ Failed to enable microphone:', micError)
-        error.value = `Microphone error: ${micError.message}. Please grant microphone permission in your browser.`
-
-        // Disconnect if mic fails
-        room.value.disconnect()
-      }
-    })
-
-    room.value.on(RoomEvent.Disconnected, (reason) => {
-      console.log('Disconnected from room. Reason:', reason)
-      isConnected.value = false
-      isConnecting.value = false
-    })
-
-    room.value.on(RoomEvent.MediaDevicesError, (error) => {
-      console.error('❌ Media device error:', error)
-      error.value = `Media device error: ${error.message}`
-    })
-
-    // Connect to room WITHOUT auto-publishing (we'll do it manually)
-    console.log('🔌 Connecting to LiveKit room...')
-    await room.value.connect(sessionData.livekit_url, sessionData.token, {
-      audio: false,  // Don't auto-publish audio - we'll do it manually
-      video: false,
-    })
-
-    console.log('✅ Room connected successfully!')
-
-    // Small delay to ensure connection is stable
-    await new Promise(resolve => setTimeout(resolve, 500))
+    // Connect using composable
+    await connect(sessionData.livekit_url, sessionData.token)
 
   } catch (err) {
     console.error('Failed to start test:', err)
     error.value = err.message || 'Failed to start test'
-    isConnecting.value = false
-    isConnected.value = false
   }
 }
 
 // End test
 const endTest = () => {
-  if (room.value) {
-    room.value.disconnect()
-    room.value = null
-  }
-  isConnected.value = false
-  isConnecting.value = false
+  disconnect()
 }
 
 // Load agents on mount
 loadAgents()
-
-// Cleanup on unmount
-onUnmounted(() => {
-  if (room.value) {
-    room.value.disconnect()
-  }
-})
 </script>

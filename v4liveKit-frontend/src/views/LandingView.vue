@@ -1,17 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+  <div class="min-h-screen">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/50 dark:border-slate-800/50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <!-- Logo -->
           <router-link to="/" class="flex items-center gap-3 group cursor-pointer">
-            <div class="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-primary to-indigo-600 text-white font-black text-xl shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
-              AI
-            </div>
-            <span class="text-2xl font-black bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">
-              AIOOS
-            </span>
+            <img src="/logo-medium.png" alt="AIOOS" class="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
+            <span class="text-xl font-bold text-slate-900 dark:text-white">AIOOS</span>
           </router-link>
 
           <!-- Desktop Navigation -->
@@ -525,9 +521,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div class="col-span-2 md:col-span-1">
             <div class="flex items-center gap-2 mb-4">
-              <div class="flex items-center justify-center size-8 rounded-lg bg-gradient-to-br from-primary to-indigo-600 text-white font-black text-sm">
-                AI
-              </div>
+              <img src="/logo-medium.png" alt="AIOOS" class="w-8 h-8 object-contain" />
               <span class="text-xl font-black text-slate-900 dark:text-white">AIOOS</span>
             </div>
             <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">

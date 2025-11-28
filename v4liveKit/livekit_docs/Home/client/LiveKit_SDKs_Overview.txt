@@ -1,0 +1,495 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/client/
+Title: 
+Crawled: 2025-11-01 21:02:51
+================================================================================
+
+On this page
+
+Overview
+
+Realtime SDKs
+
+Web and mobile platforms
+
+Additional client platforms
+
+Server-side SDKs
+
+Core server SDKs
+
+Community SDKs
+
+UI Components
+
+Agents Framework
+
+Telephony Integration
+
+Key features across SDKs
+
+Realtime capabilities
+
+Server-side capabilities
+
+Cross-platform consistency
+
+Getting started
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit provides a comprehensive ecosystem of SDKs for building realtime applications, including
+
+realtime SDKs
+
+for building user-facing applications, and
+
+server-side SDKs
+
+for backend operations and media processing. The SDKs are designed to work together, and support multiple platforms and languages.
+
+Realtime SDKs
+
+Realtime SDKs let you build applications that connect to LiveKit rooms and participate in realtime communication. These SDKs handle WebRTC connections, media capture, and room management.
+
+Web and mobile platforms
+
+These are the primary client platforms used for building realtime applications. Each SDK is optimized for its target platform and provides native integration capabilities.
+
+JavaScript
+
+JavaScript SDK
+
+JavaScript/TypeScript SDK for web browsers. Supports all major browsers and provides React hooks for easy integration.
+
+Apple
+
+iOS/macOS/visionOS
+
+Native Swift SDK for Apple platforms including iOS, macOS, and visionOS. Optimized for Apple's ecosystem.
+
+Android
+
+Android
+
+Native Kotlin SDK for Android applications. Provides comprehensive media handling and room management.
+
+Flutter
+
+Flutter
+
+Cross-platform SDK for Flutter applications. Write once, run on iOS, Android, web, and desktop.
+
+React
+
+React Native
+
+React Native SDK for building cross-platform mobile applications with JavaScript/TypeScript.
+
+Unity
+
+Unity
+
+Unity SDK for game development and virtual reality applications. Supports both native and WebGL builds.
+
+Additional client platforms
+
+LiveKit also supports specialized platforms and use cases beyond the main web and mobile platforms:
+
+Rust SDK
+
+: For systems programming and embedded applications.
+
+Unity WebGL
+
+: For web-based Unity applications.
+
+ESP32
+
+: For IoT and embedded devices.
+
+Server-side SDKs
+
+Server-side SDKs provide backend integration capabilities, enabling you to create programmatic participants, manage rooms, and process media streams. They can also generate access tokens, call server APIs, and receive webhooks.
+
+The Go SDK additionally offers client capabilities, allowing you to build automations that act like end users.
+
+Core server SDKs
+
+Node.js
+
+Node.js
+
+JavaScript SDK for Node.js applications. Includes room management, participant control, and webhook handling.
+
+Python
+
+Python
+
+Python SDK for backend applications. Provides comprehensive media processing and room management capabilities.
+
+Go
+
+Golang
+
+Go SDK for high-performance server applications. Optimized for scalability and low latency. Includes client capabilities.
+
+Ruby
+
+Ruby
+
+Ruby SDK for Ruby on Rails and other Ruby applications. Full-featured server integration.
+
+Kotlin
+
+Java/Kotlin
+
+Java and Kotlin SDK for JVM-based applications. Enterprise-ready with comprehensive features.
+
+Rust
+
+Rust
+
+Rust SDK for systems programming and high-performance applications. Memory-safe and fast.
+
+Community SDKs
+
+PHP
+
+: Community-maintained SDK for PHP applications.
+
+.NET
+
+: Community-maintained SDK for .NET applications.
+
+UI Components
+
+LiveKit provides pre-built UI components to accelerate development:
+
+React Components
+
+React components for video, audio, and chat interfaces. Drop-in components for rapid development.
+
+Android Compose
+
+Jetpack Compose components for Android applications. Modern UI components for Android development.
+
+SwiftUI
+
+SwiftUI components for iOS and macOS applications. Native UI components for Apple platforms.
+
+Flutter
+
+Flutter widgets for cross-platform applications. Reusable UI components for Flutter apps.
+
+Agents Framework
+
+LiveKit provides the Agents Framework for building AI agents and programmatic participants:
+
+Agents docs
+
+Learn how to build voice AI agents using the Agents Framework.
+
+Voice AI quickstart
+
+Voice AI agent quickstart guide. The fastest way to get an agent up and running.
+
+Agents Framework
+
+Python framework for building AI agents and programmatic participants. Production-ready with comprehensive AI integrations.
+
+AgentsJS
+
+JavaScript/TypeScript framework for building AI agents. Modern architecture with TypeScript support.
+
+Telephony Integration
+
+LiveKit's SIP integration enables your applications to connect with traditional phone systems and telephony infrastructure. Server-side SDKs include SIP capabilities for building telephony applications. To learn more, see
+
+SIP
+
+.
+
+Key features across SDKs
+
+LiveKit SDKs provide a consistent set of features across all platforms, ensuring that your applications work reliably regardless of the target platform. These core capabilities are designed to handle the complexities of realtime communication while providing a simple, unified API.
+
+Realtime capabilities
+
+Realtime SDKs focus on connecting users to LiveKit rooms and managing realtime communication. These capabilities enable applications to capture, transmit, and receive media streams with minimal latency.
+
+Media capture
+
+: Camera, microphone, and screen sharing.
+
+Room management
+
+: Join, leave, and manage room participants.
+
+Track handling
+
+: Subscribe to and publish audio and video tracks.
+
+Data channels
+
+: Realtime messaging between participants.
+
+Connection management
+
+: Automatic reconnection and quality adaptation.
+
+Server-side capabilities
+
+Server-side SDKs provide the infrastructure and control needed to manage LiveKit rooms and participants. These capabilities enable backend applications to orchestrate realtime sessions and process media streams.
+
+Room control
+
+: Create, manage, and monitor rooms.
+
+Participant management
+
+: Control participant permissions and behavior.
+
+Media processing
+
+: Subscribe to and process media streams.
+
+Webhook handling
+
+: Respond to room and participant events.
+
+Recording
+
+: Capture and store room sessions.
+
+Cross-platform consistency
+
+All SDKs provide consistent APIs and features across platforms:
+
+Unified room model
+
+: Same room concepts across all platforms.
+
+Consistent track handling
+
+: Standardized audio and video track management.
+
+Shared data APIs
+
+: Common data channel and messaging patterns.
+
+Quality adaptation
+
+: Automatic quality adjustment based on network conditions.
+
+Getting started
+
+To get started with LiveKit SDKs:
+
+Choose your platform
+
+: Select the appropriate client and server SDKs for your use case.
+
+Set up LiveKit
+
+: Deploy LiveKit server or use
+
+LiveKit Cloud
+
+.
+
+Build your app
+
+: Use the SDKs to create your realtime application.
+
+Add UI components
+
+: Integrate pre-built components for faster development.
+
+Deploy and scale
+
+: Use LiveKit's production-ready infrastructure.
+
+To get started with LiveKit Agents, see the
+
+Voice AI quickstart
+
+.
+
+On this page
+
+Overview
+
+Realtime SDKs
+
+Web and mobile platforms
+
+Additional client platforms
+
+Server-side SDKs
+
+Core server SDKs
+
+Community SDKs
+
+UI Components
+
+Agents Framework
+
+Telephony Integration
+
+Key features across SDKs
+
+Realtime capabilities
+
+Server-side capabilities
+
+Cross-platform consistency
+
+Getting started
+
+Models
+Choose the right AI models for your voice agent.
+
+Copy page
+See more page options
+Overview
+Voice agents require one or more AI models to provide understanding, intelligence, and speech. You can choose to use a high-performance STT-LLM-TTS voice pipeline constructed from multiple specialized models, or to use a realtime model with direct speech-to-speech capabilities.
+
+LiveKit Agents includes support for a wide variety of AI providers, from the largest research companies to emerging startups. You can use LiveKit Inference to access many of these models directly through LiveKit Cloud, or you can use the open source plugins to connect directly to a wider range of model providers.
+
+Models 
+The following guides cover all models available in LiveKit Agents, both through LiveKit Inference and additional plugins. Refer to these guides for model availability, configuration options, and usage instructions.
+
+Large language models (LLM)
+Chat and reasoning models from the largest research companies and emerging startups.
+
+Speech-to-text (STT)
+Transcription models from providers including Deepgram and AssemblyAI.
+
+Text-to-speech (TTS)
+Speech models and custom voices from providers including Cartesia and ElevenLabs.
+
+Realtime models
+Speech-to-speech models including the OpenAI Realtime API and Gemini Live.
+
+Virtual avatars
+Realtime video avatars from providers including Hedra and Tavus.
+
+Usage
+Use models with the AgentSession class. This class accepts models in the stt, tts, and llm arguments. You can pass a string descriptor for a model available on LiveKit Inference, or an instance of the LLM, STT, TTS, or RealtimeModel class from a plugin.
+
+For instance, a simple AgentSession built on LiveKit Inference might look like the following:
+
+PythonNode.js
+from livekit.agents import AgentSession
+
+session = AgentSession(
+    stt="assemblyai/universal-streaming:en",
+    llm="openai/gpt-4.1-mini",
+    tts="cartesia/sonic-3:9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
+)
+
+import { AgentSession } from '@livekit/agents';
+
+session = new AgentSession({
+    stt: "assemblyai/universal-streaming:en",
+    llm: "openai/gpt-4.1-mini",
+    tts: "cartesia/sonic-3:9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
+});
+
+To use plugins instead, you can configure it like this:
+
+PythonNode.js
+from livekit.agents import AgentSession
+from livekit.plugins import openai, cartesia, assemblyai
+
+session = AgentSession(
+    llm=openai.LLM(model="gpt-4.1-mini"),
+    tts=cartesia.TTS(model="sonic-3", voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"),
+    stt=assemblyai.STT(language="en"),
+)
+
+import { AgentSession } from '@livekit/agents';
+import * as openai from '@livekit/agents-plugin-openai';
+import * as cartesia from '@livekit/agents-plugin-cartesia';
+import * as assemblyai from '@livekit/agents-plugin-assemblyai';
+
+session = new AgentSession({
+    llm: new openai.LLM(model="gpt-4.1-mini"),
+    tts: new cartesia.TTS(model="sonic-3", voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"),
+    stt: new assemblyai.STT(language="en"),
+});
+
+You can use a combination of LiveKit Inference and plugins to build your voice agent. Additionally, you can change models during a session to optimize for different use cases or conversation phases. For more information, see Workflows.
+
+LiveKit Inference 
+Overview showing LiveKit Inference serving a STT-LLM-TTS pipeline for a voice agent.
+LiveKit Inference provides access to many of the best models and providers for voice agents, including models from OpenAI, Google, AssemblyAI, Deepgram, Cartesia, ElevenLabs and more. LiveKit Inference is included in LiveKit Cloud, and does not require any additional plugins. See the guides for LLM, STT, and TTS for supported models and configuration options.
+
+If you're interested in learning more about LiveKit Inference, see the blog post Introducing LiveKit Inference: A unified model interface for voice AI.
+
+Agents SDK version
+LiveKit Inference requires the latest Agents SDK versions:
+
+Python SDK v1.2.13 or greater
+Node.js SDK v1.0.7 or greater
+Billing
+Inference billing is based on usage, with competitive rates for each supported model. Refer to the following articles for more information on quotas, limits, and billing for LiveKit Inference. The latest pricing is always available on the LiveKit Inference pricing page.
+
+Quotas and limits
+Guide to quotas and limits for LiveKit Cloud plans.
+
+Billing
+Guide to LiveKit Cloud invoices and billing cycles.
+
+Plugins 
+LiveKit Agents includes a large ecosystem of open source plugins for a variety of AI providers. Each plugin is designed to support a single provider, but may cover a range of functionality depending on the provider. For instance, the OpenAI plugin includes support for OpenAI language models, speech, transcription, and the Realtime API.
+
+For Python, the plugins are offered as optional dependencies on the base SDK. For instance, to install the SDK with the OpenAI plugin, run the following command:
+
+uv add "livekit-agents[openai]~=1.2"
+
+For Node.js, the plugins are offered as individual packages. For instance, to install the OpenAI plugin, use the following command:
+
+pnpm add "@livekit/agents-plugin-openai@1.x"
+
+Each plugin requires that you have your own account with the provider, as well as an API key or other credentials. You can find authentication instructions in the documentation for each individual plugin.
+
+OpenAI API compatibility
+Many providers have standardized around the OpenAI API format for chat completions and more. Support for a number of these providers is included out-of-the-box with the OpenAI plugin, and you can find specific instructions in the associated documentation. For any provider not included, you can override the API key and base URL at initialization for the LLM, STT, and TTS interfaces in the plugin.
+
+PythonNode.js
+from livekit.plugins import openai
+import os
+
+session = AgentSession(
+   llm=openai.LLM(
+      model="model-name", 
+      base_url="https://api.provider.com/v1", 
+      api_key=os.getenv("PROVIDER_API_KEY")
+   ),
+    # ... stt, tts, etc ...
+)
+
+import * as openai from '@livekit/agents-plugin-openai';
+
+const session = new voice.AgentSession({
+   llm: openai.LLM({ 
+      model: "model-name", 
+      baseURL: "https://api.provider.com/v1", 
+      apiKey: process.env.PROVIDER_API_KEY
+   }),
+   // ... stt, tts, etc ...
+});
+
+Contributing 
+The LiveKit Agents plugin framework is extensible and community-driven. Your plugin can integrate with new providers or directly load models for local inference. LiveKit especially welcomes new TTS, STT, and LLM plugins.
+
+To learn more, see the guidelines for contributions to the Python and Node.js SDKs.

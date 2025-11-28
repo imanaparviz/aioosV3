@@ -1,0 +1,323 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/xai/
+Title: 
+Crawled: 2025-11-01 21:21:57
+================================================================================
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+xAI
+
+as an LLM provider for your voice agents.
+
+Usage
+
+Install the OpenAI plugin to add xAI support:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Set the following environment variable in your
+
+.env
+
+file:
+
+XAI_API_KEY
+
+=
+
+<
+
+your-xai-api-key
+
+>
+
+Create a Grok LLM using the
+
+with_x_ai
+
+method:
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+.
+
+with_x_ai
+
+(
+
+model
+
+=
+
+"grok-3-mini"
+
+,
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+openai
+
+.
+
+LLM
+
+.
+
+withXAI
+
+(
+
+{
+
+model
+
+:
+
+"grok-3-mini"
+
+,
+
+}
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. For a complete reference of all available parameters, see the
+
+plugin reference links in the
+
+Additional resources
+
+section.
+
+model
+
+str | XAIChatModels
+
+Optional
+
+Default:
+
+grok-2-public
+
+#
+
+Grok model to use. To learn more, see the
+
+xAI Grok models
+
+page.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+1.0
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+Valid values are between
+
+0
+
+and
+
+2
+
+. To learn more, see the optional parameters for
+
+Chat completions
+
+parallel_tool_calls
+
+bool
+
+Optional
+
+#
+
+Controls whether the model can make multiple tool calls in parallel. When enabled, the model can make multiple tool calls simultaneously, which can improve performance for complex tasks.
+
+tool_choice
+
+ToolChoice | Literal['auto', 'required', 'none']
+
+Optional
+
+Default:
+
+auto
+
+#
+
+Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
+
+Additional resources
+
+The following links provide more information about the xAI Grok LLM integration.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+xAI docs
+
+xAI Grok documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and xAI Grok.
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources

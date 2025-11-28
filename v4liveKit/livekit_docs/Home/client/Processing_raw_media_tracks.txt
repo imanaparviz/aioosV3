@@ -1,0 +1,443 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/client/tracks/raw-tracks/
+Title: 
+Crawled: 2025-11-01 21:15:13
+================================================================================
+
+On this page
+
+Overview
+
+Subscribing to participant tracks
+
+Publishing local audio files
+
+Publishing media
+
+Saving media to a file
+
+Process media with the Agents Framework
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit's
+
+server-side SDKs
+
+give you full control over how media is processed and published. You can work directly with participant tracks or media files to apply custom processing.
+
+A typical media-processing workflow involves three steps:
+
+Iterate over frames from a stream or file.
+
+Apply processing logic to each frame.
+
+Publish or save the processed output.
+
+Subscribing to participant tracks
+
+When you subscribe to participant tracks, the SDK handles frame segmentation automatically. You can construct an
+
+AudioStream
+
+or
+
+VideoStream
+
+from any participant track. The media streams are asynchronous iterators that deliver individual audio or video frames. You can process these frames and either publish them back to the room or save them.
+
+The diagram below shows the process of subscribing to a participant track. The same applies to video.
+
+Loading diagram…
+
+For example, iterate through an audio stream:
+
+stream
+
+=
+
+rtc
+
+.
+
+AudioStream
+
+(
+
+track
+
+,
+
+sample_rate
+
+=
+
+SAMPLE_RATE
+
+,
+
+num_channels
+
+=
+
+NUM_CHANNELS
+
+)
+
+async
+
+for
+
+frame_event
+
+in
+
+stream
+
+:
+
+frame
+
+=
+
+frame_event
+
+.
+
+frame
+
+# ... do something with frame.data ...
+
+The following example demonstrates how iterate through audio frames from a participant track and publish them back to the room. The same principles apply to video tracks.
+
+Local audio device example
+
+Python app that demonstrates how to publish microphone audio, and receive and play back audio from other participants.
+
+Publishing local audio files
+
+When reading a local audio file, you must manually handle chunking and resampling before processing or output. For audio files, determine the number of channels and sample rate; this information is required to produce correct output audio. Split the audio into fixed-size chunks (WebRTC commonly uses 20 ms chunks) and create an audio frame for each chunk.
+
+The input and output sample rates must match to ensure correct playback speed and fidelity. When subscribing to a participant track, LiveKit automatically handles any required resampling. However, when reading from a local file, you are responsible for resampling if needed.
+
+See the following for a detailed example.
+
+Read and write audio files
+
+This tool allows you to read a local audio file, process it with noise filtering, and save the output to a local file.
+
+Publishing media
+
+Publishing audio or video to a room requires creating a local track and an audio or video source. For audio, push audio frames to the
+
+AudioSource
+
+. The
+
+LocalAudioTrack
+
+object is used to publish the audio source as a track. All subscribed participants hear the published track
+
+For example, publish audio from a microphone:
+
+self
+
+.
+
+source
+
+=
+
+rtc
+
+.
+
+AudioSource
+
+(
+
+SAMPLE_RATE
+
+,
+
+NUM_CHANNELS
+
+)
+
+track
+
+=
+
+rtc
+
+.
+
+LocalAudioTrack
+
+.
+
+create_audio_track
+
+(
+
+"mic"
+
+,
+
+source
+
+)
+
+options
+
+=
+
+rtc
+
+.
+
+TrackPublishOptions
+
+(
+
+)
+
+options
+
+.
+
+source
+
+=
+
+rtc
+
+.
+
+TrackSource
+
+.
+
+SOURCE_MICROPHONE
+
+publication
+
+=
+
+await
+
+room
+
+.
+
+local_participant
+
+.
+
+publish_track
+
+(
+
+track
+
+,
+
+options
+
+)
+
+The diagram below shows the process of publishing audio to a room. The same applies to video.
+
+Loading diagram…
+
+Saving media to a file
+
+You can save audio or video to a file by pushing frames to an array and then writing the array to a file. For example, to create a
+
+WAV
+
+file from an audio stream, you can use the following code:
+
+import
+
+wave
+
+output_file
+
+=
+
+"output.wav"
+
+# Create a list to store processed audio frames
+
+processed_frames
+
+=
+
+[
+
+]
+
+# Push audio frames to the list
+
+async
+
+for
+
+audio_event
+
+in
+
+stream
+
+:
+
+processed_frames
+
+.
+
+append
+
+(
+
+audio_event
+
+.
+
+frame
+
+)
+
+# Write the audio frames to the file
+
+with
+
+wave
+
+.
+
+open
+
+(
+
+output_file
+
+,
+
+"wb"
+
+)
+
+as
+
+wav_file
+
+:
+
+wav_file
+
+.
+
+setnchannels
+
+(
+
+CHANNELS
+
+)
+
+wav_file
+
+.
+
+setsampwidth
+
+(
+
+2
+
+)
+
+# 16-bit
+
+wav_file
+
+.
+
+setframerate
+
+(
+
+SAMPLERATE
+
+)
+
+for
+
+frame_data
+
+in
+
+processed_frames
+
+:
+
+wav_file
+
+.
+
+writeframes
+
+(
+
+frame_data
+
+)
+
+Process media with the Agents Framework
+
+You can build and dispatch a programmatic participant with the Agents Framework. You can use the framework to create the following:
+
+An AI agent that can be automatically or explicitly dispatched to rooms.
+
+A programmatic participant that's automatically dispatched to rooms.
+
+Use the Agents Framework
+
+entrypoint
+
+function for your audio processing logic.
+
+To learn more, see the following links.
+
+Agents Framework
+
+Build voice AI agents and programmatic participants to process and publish media from the backend.
+
+Echo Agent
+
+An example that uses the
+
+entrypoint
+
+function to echo back audio from a participant track.
+
+On this page
+
+Overview
+
+Subscribing to participant tracks
+
+Publishing local audio files
+
+Publishing media
+
+Saving media to a file
+
+Process media with the Agents Framework

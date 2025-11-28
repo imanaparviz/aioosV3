@@ -1,0 +1,331 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/cerebras/
+Title: 
+Crawled: 2025-11-01 21:19:53
+================================================================================
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Cerebras
+
+as an LLM provider for your voice agents.
+
+LiveKit Inference
+
+Some Cerebras models are also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Usage
+
+Install the OpenAI plugin to add Cerebras support:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Set the following environment variable in your
+
+.env
+
+file:
+
+CEREBRAS_API_KEY
+
+=
+
+<
+
+your-cerebras-api-key
+
+>
+
+Create a Cerebras LLM using the
+
+with_cerebras
+
+method:
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+.
+
+with_cerebras
+
+(
+
+model
+
+=
+
+"llama3.1-8b"
+
+,
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+openai
+
+.
+
+LLM
+
+.
+
+withCerebras
+
+(
+
+{
+
+model
+
+:
+
+"llama3.1-8b"
+
+,
+
+}
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for a complete list of all available parameters.
+
+model
+
+str | CerebrasChatModels
+
+Optional
+
+Default:
+
+llama3.1-8b
+
+#
+
+Model to use for inference. To learn more, see
+
+supported models
+
+.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+1.0
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+Valid values are between
+
+0
+
+and
+
+1.5
+
+. To learn more, see the
+
+Cerebras documentation
+
+.
+
+parallel_tool_calls
+
+bool
+
+Optional
+
+#
+
+Controls whether the model can make multiple tool calls in parallel. When enabled, the model can make multiple tool calls simultaneously, which can improve performance for complex tasks.
+
+tool_choice
+
+ToolChoice | Literal['auto', 'required', 'none']
+
+Optional
+
+Default:
+
+auto
+
+#
+
+Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
+
+Additional resources
+
+The following links provide more information about the Cerebras LLM integration.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+Cerebras docs
+
+Cerebras inference docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Cerebras.
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources

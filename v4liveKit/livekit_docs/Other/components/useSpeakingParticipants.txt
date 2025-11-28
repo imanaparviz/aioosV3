@@ -1,0 +1,77 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usespeakingparticipants/
+Title: useSpeakingParticipants
+Crawled: 2025-11-01 21:17:57
+================================================================================
+
+GitHub
+
+Source
+
+useSpeakingParticipants
+
+The
+
+useSpeakingParticipants
+
+hook returns only the active speakers of all participants.
+
+Import
+
+import
+
+{
+
+useSpeakingParticipants
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+const
+
+activeSpeakers
+
+=
+
+useSpeakingParticipants
+
+(
+
+)
+
+;
+
+Returns
+
+import
+
+(
+
+'livekit-client'
+
+)
+
+.
+
+Participant
+
+[
+
+]
+
+On this page
+
+Import
+
+Usage
+
+Returns

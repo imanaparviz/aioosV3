@@ -61,7 +61,7 @@
         <!-- Live Status & Metrics Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <!-- Live Status Panel -->
-          <div class="lg:col-span-1 bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark flex flex-col justify-center items-center text-center">
+          <div class="lg:col-span-1 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md p-6 rounded-xl border border-border-light dark:border-border-dark flex flex-col justify-center items-center text-center">
             <span class="material-symbols-outlined text-4xl text-subtext-light dark:text-subtext-dark mb-2">
               phone_in_talk
             </span>
@@ -72,7 +72,7 @@
 
           <!-- Key Metrics Cards -->
           <div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-6">
-            <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
+            <div class="bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md p-6 rounded-xl border border-border-light dark:border-border-dark">
               <h3 class="text-subtext-light dark:text-subtext-dark text-sm font-medium mb-2">Total Calls (24h)</h3>
               <p class="text-3xl font-bold">{{ metrics.totalCalls }}</p>
               <div class="flex items-center text-sm mt-1" :class="metrics.totalCallsTrend > 0 ? 'text-success' : 'text-danger'">
@@ -83,7 +83,7 @@
               </div>
             </div>
 
-            <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
+            <div class="bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md p-6 rounded-xl border border-border-light dark:border-border-dark">
               <h3 class="text-subtext-light dark:text-subtext-dark text-sm font-medium mb-2">Avg. Call Duration</h3>
               <p class="text-3xl font-bold">{{ metrics.avgDuration }}</p>
               <div class="flex items-center text-sm mt-1" :class="metrics.avgDurationTrend > 0 ? 'text-danger' : 'text-success'">
@@ -94,7 +94,7 @@
               </div>
             </div>
 
-            <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
+            <div class="bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md p-6 rounded-xl border border-border-light dark:border-border-dark">
               <h3 class="text-subtext-light dark:text-subtext-dark text-sm font-medium mb-2">Success Rate</h3>
               <p class="text-3xl font-bold">{{ metrics.successRate }}%</p>
               <div class="flex items-center text-sm mt-1" :class="metrics.successRateTrend > 0 ? 'text-success' : 'text-danger'">
@@ -108,7 +108,7 @@
         </div>
 
         <!-- Performance Chart -->
-        <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark mb-8">
+        <div class="bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md p-6 rounded-xl border border-border-light dark:border-border-dark mb-8">
           <div class="flex flex-wrap justify-between items-center mb-4 gap-4">
             <h3 class="text-lg font-bold">Call Volume</h3>
             <div class="flex items-center gap-1 bg-background-light dark:bg-background-dark p-1 rounded-lg border border-border-light dark:border-border-dark">
@@ -140,7 +140,7 @@
         <!-- Recent Calls Table -->
         <div>
           <h3 class="text-lg font-bold mb-4">Recent Calls</h3>
-          <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+          <div class="bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full text-left text-sm">
                 <thead class="bg-background-light dark:bg-background-dark text-subtext-light dark:text-subtext-dark uppercase tracking-wider">

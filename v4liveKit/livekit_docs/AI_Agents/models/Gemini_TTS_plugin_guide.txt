@@ -1,0 +1,391 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/gemini/
+Title: 
+Crawled: 2025-11-01 21:25:29
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Beta
+
+|
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Gemini TTS
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[google]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-google@1.x
+
+Authentication
+
+Credentials must be provided by one of the following methods:
+
+To use VertexAI: Set the
+
+GOOGLE_APPLICATION_CREDENTIALS
+
+environment variable to the path of the
+
+service account key
+
+file.
+
+To use Gemini API: Set the
+
+api_key
+
+argument or the
+
+GOOGLE_API_KEY
+
+environment variable.
+
+Usage
+
+Use a Gemini TTS in an
+
+AgentSession
+
+or as a standalone speech generator. For example, you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+google
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+google
+
+.
+
+beta
+
+.
+
+GeminiTTS
+
+(
+
+model
+
+=
+
+"gemini-2.5-flash-preview-tts"
+
+,
+
+voice_name
+
+=
+
+"Zephyr"
+
+,
+
+instructions
+
+=
+
+"Speak in a friendly and engaging tone."
+
+,
+
+)
+
+,
+
+# ... llm, stt, etc.
+
+)
+
+import
+
+*
+
+as
+
+google
+
+from
+
+'@livekit/agents-plugin-google'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+tts
+
+:
+
+new
+
+google
+
+.
+
+beta
+
+.
+
+TTS
+
+(
+
+model
+
+:
+
+"gemini-2.5-flash-preview-tts"
+
+,
+
+voiceName
+
+:
+
+"Zephyr"
+
+,
+
+instructions
+
+:
+
+"Speak in a friendly and engaging tone."
+
+,
+
+)
+
+,
+
+// ... llm, stt, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+gemini-2.5-flash-preview-tts
+
+#
+
+The model to use for speech generation. For a list of models, see
+
+Supported models
+
+.
+
+voice_name
+
+string
+
+Optional
+
+Default:
+
+Kore
+
+#
+
+Voice name. For supported voices, see
+
+Voice options
+
+.
+
+voice_name
+
+string
+
+Optional
+
+#
+
+Name of the voice to use for speech. For a full list of voices,
+
+see
+
+Supported voices and languages
+
+.
+
+instructions
+
+string
+
+Optional
+
+#
+
+Prompt to control the style, tone, accent, and pace. To learn more, see
+
+Controlling speech style with prompts
+
+.
+
+Additional resources
+
+The following resources provide more information about using Gemini TTS with LiveKit Agents.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+Gemini TTS docs
+
+Gemini Developer API docs for TTS.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Gemini TTS.
+
+Google ecosystem guide
+
+Overview of the entire Google AI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

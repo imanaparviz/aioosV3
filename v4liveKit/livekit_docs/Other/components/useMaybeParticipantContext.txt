@@ -1,0 +1,55 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usemaybeparticipantcontext/
+Title: useMaybeParticipantContext
+Crawled: 2025-11-01 21:15:29
+================================================================================
+
+GitHub
+
+Source
+
+useMaybeParticipantContext
+
+Returns a participant from the
+
+ParticipantContext
+
+if it exists, otherwise
+
+undefined
+
+.
+
+Import
+
+import
+
+{
+
+useMaybeParticipantContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+Participant
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Returns

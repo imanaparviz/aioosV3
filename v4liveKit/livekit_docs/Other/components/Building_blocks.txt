@@ -1,0 +1,81 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/concepts/building-blocks/
+Title: 
+Crawled: 2025-11-01 21:17:03
+================================================================================
+
+On this page
+
+Components
+
+Prefabricated components
+
+Hooks
+
+Copy page
+
+See more page options
+
+Components
+
+Components are the basic building blocks of your LiveKit application, enriched with additional functionality and LiveKit state. Most components are simply a wrapper around a standard HTML element. This allows you to pass standard HTML attributes like
+
+classNames
+
+and
+
+padding
+
+directly to the underlying HTML element to style it exactly how you want.
+
+Prefabricated components
+
+Prefabs use components under the hood and add additional features, styles, but also reasonable defaults. They are designed to be opinionated and aren't meant to be extended. Prefabs include the following:
+
+VideoConference
+
+: This component is the default setup of a classic LiveKit video conferencing app.
+
+AudioConference
+
+: This component is the default setup of a classic LiveKit audio conferencing app.
+
+PreJoin
+
+: The PreJoin prefab component is normally presented to the user before he enters a room.
+
+ControlBar
+
+: The ControlBar prefab component gives the user the basic user interface to control their media devices and leave the room.
+
+Chat
+
+: The Chat component adds a basis chat functionality to the LiveKit room. The messages are distributed to all participants in the room.
+
+Hooks
+
+There are a wide range of React hooks that give you fine-grained control to build the app you want. Some hooks are foundational and are needed for almost every LiveKit app, while others are only needed if you want to build some custom components and go low-level.
+
+The most important and frequently used hooks are the following:
+
+useTracks
+
+: The useTracks hook returns an array of current tracks that can be looped, filtered, and processed.
+
+useParticipants
+
+: The useParticipants hook returns all participants (local and remote) of the current room.
+
+useConnectionState
+
+: The useConnectionState hook allows you to simply implement your own ConnectionState component.
+
+On this page
+
+Components
+
+Prefabricated components
+
+Hooks

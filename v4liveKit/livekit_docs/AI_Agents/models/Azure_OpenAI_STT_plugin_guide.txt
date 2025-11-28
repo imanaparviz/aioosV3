@@ -1,0 +1,365 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/azure-openai/
+Title: 
+Crawled: 2025-11-01 21:21:42
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Azure OpenAI
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Support for Azure OpenAI STT is available in the
+
+openai
+
+plugin.
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+Authentication
+
+The Azure OpenAI TTS requires
+
+authentication
+
+using an API key or a managed identity.
+
+Set the following environment variables in your
+
+.env
+
+file:
+
+AZURE_OPENAI_API_KEY
+
+=
+
+<
+
+azure-openai-api-key
+
+>
+
+AZURE_OPENAI_AD_TOKEN
+
+=
+
+<
+
+azure-openai-ad-token
+
+>
+
+AZURE_OPENAI_ENDPOINT
+
+=
+
+<
+
+azure-openai-endpoint
+
+>
+
+Usage
+
+Use Azure OpenAI STT within an
+
+AgentSession
+
+or as a standalone transcription service. For example,
+
+you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+openai
+
+.
+
+STT
+
+.
+
+with_azure
+
+(
+
+model
+
+=
+
+"gpt-4o-transcribe"
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. For a complete reference of all available parameters, see the
+
+plugin reference
+
+.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language code for the transcription.
+
+model
+
+STTModels | string
+
+Optional
+
+Default:
+
+gpt-4o-mini-transcribe
+
+#
+
+ID of the model to use for speech-to-text.
+
+prompt
+
+string
+
+Optional
+
+#
+
+Initial prompt to guide the transcription.
+
+azure_endpoint
+
+string
+
+Optional
+
+Env:
+
+AZURE_OPENAI_ENDPOINT
+
+#
+
+Azure OpenAI endpoint in the following format:
+
+https://{your-resource-name}.openai.azure.com
+
+.
+
+azure_deployment
+
+string
+
+Optional
+
+#
+
+Name of your model deployment.
+
+api_version
+
+string
+
+Optional
+
+Env:
+
+OPENAI_API_VERSION
+
+#
+
+OpenAI REST API version used for the request.
+
+api_key
+
+string
+
+Optional
+
+Env:
+
+AZURE_OPENAI_API_KEY
+
+#
+
+Azure OpenAI API key.
+
+azure_ad_token
+
+string
+
+Optional
+
+Env:
+
+AZURE_OPENAI_AD_TOKEN
+
+#
+
+Azure Active Directory token.
+
+organization
+
+string
+
+Optional
+
+Env:
+
+OPENAI_ORG_ID
+
+#
+
+OpenAI organization ID.
+
+project
+
+string
+
+Optional
+
+Env:
+
+OPENAI_PROJECT_ID
+
+#
+
+OpenAI project ID.
+
+Additional resources
+
+The following resources provide more information about using Azure OpenAI with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-openai
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Azure OpenAI STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Azure OpenAI plugin.
+
+Azure OpenAI
+
+Azure OpenAI documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Azure OpenAI.
+
+Azure ecosystem guide
+
+Overview of the entire Azure AI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

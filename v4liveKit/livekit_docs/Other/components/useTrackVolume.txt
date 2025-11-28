@@ -1,0 +1,59 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usetrackvolume/
+Title: useTrackVolume
+Crawled: 2025-11-01 21:17:18
+================================================================================
+
+GitHub
+
+Source
+
+useTrackVolume
+
+Note
+
+This feature is experimental and may change or be removed based on developer feedback and real-world usage.
+
+Hook for tracking the volume of an audio track using the Web Audio API.
+
+Import
+
+import
+
+{
+
+useTrackVolume
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+trackOrTrackReference
+
+LocalAudioTrack | RemoteAudioTrack | TrackReference
+
+Optional
+
+#
+
+Returns
+
+number
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

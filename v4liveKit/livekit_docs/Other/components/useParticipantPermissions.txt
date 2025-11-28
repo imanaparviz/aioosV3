@@ -1,0 +1,57 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useparticipantpermissions/
+Title: useParticipantPermissions
+Crawled: 2025-11-01 21:15:59
+================================================================================
+
+GitHub
+
+Source
+
+useParticipantPermissions
+
+Import
+
+import
+
+{
+
+useParticipantPermissions
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+options.participant
+
+Participant
+
+Optional
+
+#
+
+Returns
+
+ParticipantPermission
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

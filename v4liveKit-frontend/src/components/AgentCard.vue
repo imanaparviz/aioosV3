@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="`/agents/${agent.id}?name=${encodeURIComponent(agent.name)}`"
-    class="block bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col cursor-pointer"
+    class="block bg-white/80 dark:bg-slate-900/50 backdrop-blur-md rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col cursor-pointer"
   >
     <!-- Header -->
     <div class="p-5">
@@ -41,7 +41,7 @@
     </div>
 
     <!-- Stats -->
-    <div class="px-5 py-4 bg-slate-50 dark:bg-slate-800/50">
+    <div class="px-5 py-4 bg-slate-50/50 dark:bg-slate-800/50">
       <div class="flex justify-around text-center">
         <div>
           <p class="text-xs text-slate-500 dark:text-slate-400">Total Calls</p>

@@ -1,0 +1,443 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/ops/deployment/logs/
+Title: 
+Crawled: 2025-11-01 21:20:48
+================================================================================
+
+On this page
+
+Overview
+
+Log types
+
+Follow runtime logs
+
+View build logs
+
+Forward runtime logs
+
+Datadog integration
+
+CloudWatch integration
+
+Sentry integration
+
+New Relic integration
+
+Log levels
+
+Log retention
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit Cloud provides realtime logging for your deployed agents, helping you monitor performance, debug issues, and understand your agent's behavior in production. Logs are collected from all phases of your agent's lifecycle—from build to runtime—and can be forwarded to external monitoring services such as
+
+Datadog
+
+,
+
+CloudWatch
+
+,
+
+Sentry
+
+, and
+
+New Relic
+
+. You can also view some logs with the LiveKit CLI. LiveKit Cloud does not store runtime logs.
+
+Log types
+
+LiveKit Cloud collects two types of logs for your agents:
+
+Runtime logs
+
+: Your agent's app logs, including stdout, stderr, and any other
+
+logging
+
+you implement.
+
+Build logs
+
+: Output from the container build process, including Dockerfile execution and dependency installation.
+
+Follow runtime logs
+
+Use the LiveKit CLI to follow logs from your deployed agents in realtime.
+
+lk agent logs
+
+This command continuously streams logs from the latest running instance of your agent. It also includes a short snapshot of recent logs.
+
+Single instance
+
+The LiveKit CLI only shows logs from the newest worker instance of your agent, which can include multiple jobs. All logs from this worker are included, but it is not a comprehensive view of all logs from all instances for agents running at scale. To collect logs from all instances, use an external logging service by using the
+
+Forward runtime logs
+
+feature.
+
+View build logs
+
+Use the LiveKit CLI to view the Docker build logs from the currently deployed version of your agent.
+
+lk agent logs --log-type
+
+=
+
+build
+
+This command prints the logs to stdout, but does not perform a live tail.
+
+Build logs from more versions of your agent are available in the
+
+LiveKit Cloud dashboard
+
+.
+
+Forward runtime logs
+
+Forward your agent logs to external monitoring services for long-term storage, advanced analytics, and integration with your existing observability stack.
+
+The currently supported destinations are Datadog, CloudWatch, Sentry, and New Relic.
+
+Datadog integration
+
+Add a
+
+Datadog
+
+client token as a
+
+secret
+
+to automatically enable log forwarding. If your account is in a region other than
+
+us1
+
+, you can also set the region. All runtime logs are automatically forwarded to your Datadog account.
+
+lk agent update-secrets
+
+--secrets
+
+"DATADOG_TOKEN=your-client-token"
+
+DATADOG_TOKEN
+
+string
+
+Required
+
+#
+
+Your Datadog
+
+client token
+
+.
+
+DATADOG_REGION
+
+string
+
+Optional
+
+Default:
+
+us1
+
+#
+
+Your Datadog region. Supported regions are
+
+us1
+
+,
+
+us3
+
+,
+
+us5
+
+,
+
+us1-fed
+
+,
+
+eu
+
+, and
+
+ap1
+
+.
+
+Log fields
+
+The following log fields are set in Datadog for all log lines sent from LiveKit Cloud:
+
+Field
+
+Value
+
+Description
+
+host
+
+<worker-id>
+
+A unique identifier for the specific worker instance emitting the log.
+
+source
+
+<agent-id>
+
+The ID of the agent, as in
+
+livekit.toml
+
+and the dashboard,
+
+service
+
+"cloud.livekit.io"
+
+stream
+
+stdout
+
+or
+
+stderr
+
+Indicates whether the log originated from stdout or stderr.
+
+CloudWatch integration
+
+Add a
+
+CloudWatch
+
+AWS_ACCESS_KEY_ID
+
+and
+
+AWS_SECRET_ACCESS_KEY
+
+as
+
+secrets
+
+to automatically enable log forwarding. The AWS region defaults to
+
+us-west-2
+
+, you can set it by setting the
+
+AWS_REGION
+
+secret. All runtime logs are automatically forwarded to your CloudWatch account.
+
+lk agent update-secrets
+
+--secrets
+
+"AWS_ACCESS_KEY_ID=your-access-key-id"
+
+--secrets
+
+"AWS_SECRET_ACCESS_KEY=your-secret-access-key"
+
+AWS_ACCESS_KEY_ID
+
+string
+
+Required
+
+#
+
+Your AWS
+
+access key ID
+
+.
+
+AWS_SECRET_ACCESS_KEY
+
+string
+
+Required
+
+#
+
+Your AWS
+
+secret access key
+
+.
+
+AWS_REGION
+
+string
+
+Optional
+
+Default:
+
+us-west-2
+
+#
+
+Your AWS region. See the
+
+AWS regions
+
+page for a list of all supported regions.
+
+Sentry integration
+
+Add a
+
+Sentry
+
+SENTRY_DSN
+
+as a
+
+secret
+
+to automatically enable log forwarding. All runtime logs are automatically forwarded to your Sentry account.
+
+lk agent update-secrets
+
+--secrets
+
+"SENTRY_DSN=your-sentry-dsn"
+
+SENTRY_DSN
+
+string
+
+Required
+
+#
+
+Your Sentry
+
+DSN
+
+.
+
+New Relic integration
+
+Add a
+
+New Relic
+
+NEW_RELIC_LICENSE_KEY
+
+as a
+
+secret
+
+to automatically enable log forwarding. All runtime logs are automatically forwarded to your New Relic account.
+
+lk agent update-secrets
+
+--secrets
+
+"NEW_RELIC_LICENSE_KEY=your-license-key"
+
+NEW_RELIC_LICENSE_KEY
+
+string
+
+Required
+
+#
+
+Your New Relic
+
+license key
+
+.
+
+Log levels
+
+Your agent worker configuration determines the log levels that are collected and forwarded. The default log level is
+
+INFO
+
+. To use a different value, set the log level in your Dockerfile:
+
+CMD ["python", "agent.py", "start", "--log-level=DEBUG"]
+
+For more information on log levels, see the
+
+worker options
+
+page.
+
+Log retention
+
+LiveKit Cloud does not store runtime logs. Build logs are stored indefinitely for the most recently deployed version.
+
+Additional resources
+
+The following resources may be helpful to design a logging strategy for your agent:
+
+Logs, metrics, and telemetry
+
+Guide to collecting logs, metrics, and telemetry data from your agent.
+
+Worker options
+
+Learn how to configure your agent worker.
+
+Secrets management
+
+Learn how to securely manage API keys for log forwarding.
+
+Agents CLI reference
+
+Reference for the agent deployment commands in the LiveKit CLI.
+
+On this page
+
+Overview
+
+Log types
+
+Follow runtime logs
+
+View build logs
+
+Forward runtime logs
+
+Datadog integration
+
+CloudWatch integration
+
+Sentry integration
+
+New Relic integration
+
+Log levels
+
+Log retention
+
+Additional resources

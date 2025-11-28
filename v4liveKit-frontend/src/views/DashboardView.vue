@@ -19,7 +19,7 @@
         </div>
 
         <!-- Error State -->
-        <div v-else-if="error" class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 mb-6">
+        <div v-else-if="error" class="bg-red-50/80 backdrop-blur-md dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 mb-6">
           <div class="flex items-center gap-3">
             <span class="material-symbols-outlined text-red-600 dark:text-red-400">error</span>
             <div>

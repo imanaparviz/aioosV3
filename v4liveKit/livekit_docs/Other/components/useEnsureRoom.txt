@@ -1,0 +1,55 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useensureroom/
+Title: useEnsureRoom
+Crawled: 2025-11-01 21:16:25
+================================================================================
+
+GitHub
+
+Source
+
+useEnsureRoom
+
+Ensures that a room is provided, either via context or explicitly as a parameter. If no room is provided, an error is thrown.
+
+Import
+
+import
+
+{
+
+useEnsureRoom
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+room
+
+Room
+
+Optional
+
+#
+
+Returns
+
+Room
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

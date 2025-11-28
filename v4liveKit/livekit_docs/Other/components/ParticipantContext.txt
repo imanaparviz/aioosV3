@@ -1,0 +1,33 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/participantcontext/
+Title: ParticipantContext
+Crawled: 2025-11-01 21:17:26
+================================================================================
+
+GitHub
+
+Source
+
+ParticipantContext
+
+Import
+
+import
+
+{
+
+ParticipantContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+On this page
+
+Import

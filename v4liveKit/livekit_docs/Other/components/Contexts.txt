@@ -1,0 +1,357 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/concepts/contexts/
+Title: 
+Crawled: 2025-11-01 21:16:05
+================================================================================
+
+On this page
+
+What is a context
+
+Room context
+
+Participant context
+
+Accessing contexts
+
+Copy page
+
+See more page options
+
+What is a context
+
+Contexts
+
+are used to allow child components to access parent state without having to pass it down the component tree via props. However, this means that if a component depends on a context, you must make sure that context is provided somewhere up the component tree.
+
+// ✅ This works!
+
+// ConnectionState depends on the RoomContext which is provided by LiveKitRoom.
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+ConnectionState
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+// ✅ This works!
+
+// The context provider (LiveKitRoom) does not have to be a immediate parent of the component (ConnectionState) needing the context.
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+div
+
+>
+
+<
+
+ConnectionState
+
+/>
+
+</
+
+div
+
+>
+
+</
+
+LiveKitRoom
+
+>
+
+// ❌ This will cause an error!
+
+// ConnectionState depends on a parent component to provide the RoomContext.
+
+<
+
+LiveKitRoom
+
+>
+
+</
+
+LiveKitRoom
+
+>
+
+<
+
+ConnectionState
+
+/>
+
+If you only use LiveKit Components without creating custom components yourself, you don't need to interact with the contexts. Just make sure that the component tree meets the context requirements of all components. If it doesn't, you'll get an error message telling you which context is missing.
+
+The two most important contexts are:
+
+Room context
+
+The
+
+RoomContext
+
+provides the
+
+Room
+
+object as a context. While previously this was primarily provided through the
+
+LiveKitRoom
+
+component, we recommend using
+
+RoomContext.Provider
+
+directly:
+
+const
+
+MyApp
+
+=
+
+(
+
+)
+
+=>
+
+{
+
+const
+
+[
+
+room
+
+]
+
+=
+
+useState
+
+(
+
+(
+
+)
+
+=>
+
+new
+
+Room
+
+(
+
+)
+
+)
+
+;
+
+useEffect
+
+(
+
+(
+
+)
+
+=>
+
+{
+
+room
+
+.
+
+connect
+
+(
+
+'server-url'
+
+,
+
+'user-access-token'
+
+)
+
+;
+
+return
+
+(
+
+)
+
+=>
+
+room
+
+.
+
+disconnect
+
+(
+
+)
+
+;
+
+}
+
+,
+
+[
+
+room
+
+]
+
+)
+
+;
+
+return
+
+(
+
+<
+
+RoomContext.Provider
+
+value
+
+=
+
+{
+
+room
+
+}
+
+>
+
+{
+
+/* Components that need room context */
+
+}
+
+<
+
+ConnectionState
+
+/>
+
+</
+
+RoomContext.Provider
+
+>
+
+)
+
+;
+
+}
+
+;
+
+This approach gives you more control over the Room lifecycle while still providing the necessary context for all LiveKit components.
+
+Participant context
+
+The
+
+ParticipantContext
+
+provides a
+
+Participant
+
+object to all child components.
+
+/* 1️⃣ ParticipantTile provides the ParticipantContext. */
+
+<
+
+ParticipantTile
+
+>
+
+{
+
+/* 2️⃣ ParticipantName uses the ParticipantContext to get the participant name. */
+
+}
+
+<
+
+ParticipantName
+
+/>
+
+</
+
+ParticipantTile
+
+>
+
+Accessing contexts
+
+Context access is not required to build an application using LiveKit Components. However, if you want to build custom components that depend on a context, you can use one of the hooks we provide.
+
+For example, you can use the
+
+useRoomContext
+
+hook to access the
+
+Room
+
+object and the
+
+useParticipantContext
+
+hook to access the
+
+Participant
+
+object.
+
+On this page
+
+What is a context
+
+Room context
+
+Participant context
+
+Accessing contexts

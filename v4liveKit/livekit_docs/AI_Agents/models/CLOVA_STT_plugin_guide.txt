@@ -1,0 +1,237 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/clova/
+Title: 
+Crawled: 2025-11-01 21:21:27
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+CLOVA Speech Recognition
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section provides a brief overview of the CLOVA STT plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[clova]~=1.2"
+
+Authentication
+
+The CLOVA plugin requires the following keys, which may set as environment variables or passed to the constructor.
+
+CLOVA_STT_SECRET_KEY
+
+=
+
+<
+
+your-api-key
+
+>
+
+CLOVA_STT_INVOKE_URL
+
+=
+
+<
+
+your-invoke-url
+
+>
+
+Usage
+
+Create a CLOVA STT to use within an
+
+AgentSession
+
+or as a standalone transcription service.
+
+For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+clova
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+clova
+
+.
+
+STT
+
+(
+
+word_boost
+
+=
+
+[
+
+"LiveKit"
+
+]
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+language
+
+ClovaSttLanguages
+
+Optional
+
+Default:
+
+en-US
+
+#
+
+Speech recognition language. Clova supports English, Korean, Japanese, and Chinese. Valid values are
+
+ko-KR
+
+,
+
+en-US
+
+,
+
+enko
+
+,
+
+ja
+
+,
+
+zh-cn
+
+,
+
+zh-tw
+
+.
+
+Additional resources
+
+The following resources provide more information about using CLOVA with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-clova
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the CLOVA STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit CLOVA STT plugin.
+
+CLOVA docs
+
+CLOVA's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and CLOVA.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

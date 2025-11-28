@@ -1,0 +1,49 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/connectionqualityindicator/
+Title: ConnectionQualityIndicator
+Crawled: 2025-11-01 21:16:11
+================================================================================
+
+GitHub
+
+Source
+
+ConnectionQualityIndicator
+
+The
+
+ConnectionQualityIndicator
+
+shows the individual connection quality of a participant.
+
+Import
+
+import
+
+{
+
+ConnectionQualityIndicator
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+ConnectionQualityIndicator
+
+/>
+
+On this page
+
+Import
+
+Usage

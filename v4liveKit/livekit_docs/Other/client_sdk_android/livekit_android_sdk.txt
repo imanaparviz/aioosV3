@@ -1,0 +1,177 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/client-sdk-android/index.html
+Title: livekit-android-sdk
+Crawled: 2025-11-01 21:14:33
+================================================================================
+
+livekit-android-sdk
+
+Android Client SDK to
+
+LiveKit
+
+.
+
+Packages
+
+io.livekit.android
+
+Link copied to clipboard
+
+SDK
+
+This package contains the initial
+
+connect
+
+function.
+
+io.livekit.android.annotations
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.audio
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.coroutines
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.e2ee
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.events
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.renderer
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room
+
+Link copied to clipboard
+
+SDK
+
+Room is the primary class that manages the connection to the LiveKit Room. It exposes listeners that lets you hook into room events.
+
+io.livekit.android.room.datastream
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.datastream.incoming
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.datastream.outgoing
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.network
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.participant
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.provisions
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.rpc
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.track
+
+Link copied to clipboard
+
+SDK
+
+AudioTrack
+
+and
+
+VideoTrack
+
+are the classes that represent the types of media streams that can be subscribed and published.
+
+io.livekit.android.room.track.screencapture
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.track.video
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.room.types
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.rpc
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.stats
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.token
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.webrtc
+
+Link copied to clipboard
+
+SDK
+
+io.livekit.android.webrtc.peerconnection
+
+Link copied to clipboard
+
+SDK

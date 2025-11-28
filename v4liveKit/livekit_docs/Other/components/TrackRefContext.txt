@@ -1,0 +1,39 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/trackrefcontext/
+Title: TrackRefContext
+Crawled: 2025-11-01 21:16:46
+================================================================================
+
+GitHub
+
+Source
+
+TrackRefContext
+
+This context provides a
+
+TrackReferenceOrPlaceholder
+
+to all child components.
+
+Import
+
+import
+
+{
+
+TrackRefContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+On this page
+
+Import

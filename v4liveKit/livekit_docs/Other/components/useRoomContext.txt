@@ -1,0 +1,43 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useroomcontext/
+Title: useRoomContext
+Crawled: 2025-11-01 21:16:05
+================================================================================
+
+GitHub
+
+Source
+
+useRoomContext
+
+Ensures that a room is provided via context. If no room is provided, an error is thrown.
+
+Import
+
+import
+
+{
+
+useRoomContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+Room
+
+;
+
+On this page
+
+Import
+
+Returns

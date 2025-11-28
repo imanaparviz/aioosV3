@@ -1,0 +1,69 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/start/playground/
+Title: 
+Crawled: 2025-11-01 21:08:03
+================================================================================
+
+On this page
+
+Overview
+
+Links
+
+Copy page
+
+See more page options
+
+Overview
+
+The LiveKit Agents playground is a versatile web frontend that makes it easy to test your multimodal AI agent without having to worry about UI until you're happy with your AI.
+
+To use the playground, you first need to have an agent running in
+
+dev
+
+or
+
+start
+
+mode. If you haven't done that yet, first follow the
+
+Voice AI quickstart
+
+.
+
+Feature
+
+Notes
+
+Audio
+
+Mic input and speaker output with visualizer
+
+Text
+
+Live transcription and chat input
+
+Video
+
+Live webcam input, live output
+
+Links
+
+Follow these links to get started with the playground.
+
+Hosted playground
+
+A hosted playground that seamlessly integrates with LiveKit Cloud.
+
+Source code
+
+Run the playground yourself or use it as a starting point for your own application.
+
+On this page
+
+Overview
+
+Links

@@ -1,0 +1,449 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/sip/quickstarts/configuring-sip-trunk/
+Title: 
+Crawled: 2025-11-01 21:12:29
+================================================================================
+
+On this page
+
+Overview
+
+External provider setup
+
+SIP endpoint
+
+Provider-specific instructions
+
+LiveKit setup
+
+Inbound trunk setup
+
+Create a dispatch rule
+
+Create an outbound trunk
+
+Next steps
+
+Additional documentation
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit is compatible with any SIP trunking provider. This guide provides general instructions for setting up a SIP trunk with an external provider and then associating it with your LiveKit Cloud project.
+
+External provider setup
+
+The usual steps to create a SIP trunk are as follows:
+
+Create a SIP trunk with your provider.
+
+Add authentication or limit trunk usage by phone numbers or IP addresses.
+
+Purchase a phone number and associate it with your SIP trunk.
+
+Add your
+
+LiveKit SIP endpoint
+
+to the SIP trunk.
+
+SIP endpoint
+
+Depending on your SIP trunking provider, you might need to use a
+
+SIP endpoint
+
+to configure inbound calls instead of your SIP URI. The SIP endpoint is your LiveKit SIP URI without the
+
+sip:
+
+prefix. You can find your SIP URI on the
+
+Project settings
+
+page.
+
+For example, if your SIP URI is
+
+sip:vjnxecm0tjk.sip.livekit.cloud
+
+, your SIP endpoint is
+
+vjnxecm0tjk.sip.livekit.cloud
+
+.
+
+Region-based endpoints
+
+To restrict calls to a specific region, replace your global LiveKit SIP endpoint with a
+
+region-based endpoint
+
+.
+
+Provider-specific instructions
+
+For step-by-step instructions for Telnyx, Twilio, or Plivo, Wavix, see the following quickstarts:
+
+Twilio Setup
+
+Step-by-step instructions for setting up a SIP trunk with Twilio.
+
+Telnyx Setup
+
+Step-by-step instructions for setting up a SIP trunk with Telnyx.
+
+Plivo Setup
+
+Step-by-step instructions for setting up a SIP trunk with Plivo.
+
+Wavix Setup
+
+Step-by-step instructions for setting up a SIP trunk with Wavix.
+
+LiveKit setup
+
+Now you are ready to configure your LiveKit Cloud project to use the SIP trunk.
+
+The following steps are common to all SIP trunking providers.
+
+LiveKit CLI
+
+These examples use the
+
+LiveKit Cloud
+
+. For additional examples and full documentation, see the linked documentation for each component.
+
+Inbound trunk setup
+
+An
+
+inbound trunk
+
+allows you to accept incoming phone calls.
+
+Create an inbound trunk using the LiveKit Cloud dashboard.
+
+Sign in to the
+
+Telephony
+
+→
+
+Configuration
+
+page.
+
+Select
+
+Create new
+
+→
+
+Trunk
+
+.
+
+Select the
+
+JSON editor
+
+tab.
+
+Select
+
+Inbound
+
+for
+
+Trunk direction
+
+.
+
+Copy and paste the following text into the editor, replacing the phone number with the number you purchased from your SIP trunk provider:
+
+{
+
+"name"
+
+:
+
+"My inbound trunk"
+
+,
+
+"numbers"
+
+:
+
+[
+
+"+15105550123"
+
+]
+
+}
+
+Select
+
+Create
+
+.
+
+Create a dispatch rule
+
+You must set up at least one
+
+dispatch rule
+
+to accept incoming calls into a LiveKit room.
+
+This example creates a dispatch rule that puts each caller into a randomly generated unique room using the name prefix
+
+call-
+
+. For many applications, this is the only configuration you need.
+
+Sign to the
+
+Telephony
+
+→
+
+Configuration
+
+page.
+
+Select
+
+Create new
+
+→
+
+Dispatch rule
+
+.
+
+Select the
+
+JSON editor
+
+tab.
+
+Copy and paste the following text into the editor:
+
+{
+
+"name"
+
+:
+
+"My dispatch rule"
+
+,
+
+"rule"
+
+:
+
+{
+
+"dispatchRuleIndividual"
+
+:
+
+{
+
+"roomPrefix"
+
+:
+
+"call-"
+
+}
+
+}
+
+}
+
+Select
+
+Create
+
+.
+
+After you create an inbound trunk and dispatch rule, you can create an agent to answer incoming calls. To learn more, see the resources in the
+
+Next steps
+
+section.
+
+Create an outbound trunk
+
+Create an
+
+outbound trunk
+
+to make outgoing phone calls with LiveKit.
+
+This example creates an username and password authenticated outbound trunk with the phone number
+
++15105550123
+
+and the trunk domain name
+
+my-trunk-domain-name
+
+.
+
+Sign in to the
+
+Telephony
+
+→
+
+Configuration
+
+page.
+
+Select
+
+Create new
+
+→
+
+Trunk
+
+.
+
+Select the
+
+JSON editor
+
+tab.
+
+Select
+
+Outbound
+
+for
+
+Trunk direction
+
+.
+
+Copy and paste the following text into the editor:
+
+{
+
+"name"
+
+:
+
+"My outbound trunk"
+
+,
+
+"address"
+
+:
+
+"<my-trunk-domain-name>"
+
+,
+
+"numbers"
+
+:
+
+[
+
+"+15105550123"
+
+]
+
+,
+
+"authUsername"
+
+:
+
+"<username>"
+
+,
+
+"authPassword"
+
+:
+
+"<password>"
+
+}
+
+Select
+
+Create
+
+.
+
+Now you are ready to
+
+place outgoing calls
+
+.
+
+Next steps
+
+See the following guides to continue building your telephony app.
+
+Telephony agents
+
+Building telephony-based voice AI apps with LiveKit Agents.
+
+Make outbound calls
+
+Detailed instructions for making outbound calls.
+
+Additional documentation
+
+See the following documentation for more details on the topics covered in this guide.
+
+Inbound trunk
+
+Detailed instructions for setting up inbound trunks.
+
+Dispatch rule
+
+Detailed instructions for setting up dispatch rules.
+
+Outbound trunk
+
+Detailed instructions for setting up outbound trunks.
+
+On this page
+
+Overview
+
+External provider setup
+
+SIP endpoint
+
+Provider-specific instructions
+
+LiveKit setup
+
+Inbound trunk setup
+
+Create a dispatch rule
+
+Create an outbound trunk
+
+Next steps
+
+Additional documentation

@@ -1,0 +1,257 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/lmnt/
+Title: 
+Crawled: 2025-11-01 21:25:25
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+LMNT
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section provides a quick reference for the LMNT TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[lmnt]~=1.2"
+
+Authentication
+
+The LMNT plugin requires an
+
+LMNT API key
+
+.
+
+Set
+
+LMNT_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use LMNT TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+lmnt
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+lmnt
+
+.
+
+TTS
+
+(
+
+voice
+
+=
+
+"leah"
+
+,
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the parameters you can set when you create an LMNT TTS. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+blizzard
+
+#
+
+The model to use for synthesis. Refer to the
+
+LMNT models guide
+
+for possible values.
+
+voice
+
+string
+
+Optional
+
+Default:
+
+leah
+
+#
+
+The voice ID to use. Find or create new voices in the
+
+LMNT voice library
+
+.
+
+language
+
+string
+
+Optional
+
+#
+
+Two-letter ISO 639-1 language code. See the
+
+LMNT API documentation
+
+for supported languages.
+
+temperature
+
+float
+
+Optional
+
+#
+
+Influences how expressive and emotionally varied the speech becomes. Lower values (like 0.3) create more neutral, consistent speaking styles. Higher values (like 1.0) allow for more dynamic emotional range and speaking styles.
+
+top_p
+
+float
+
+Optional
+
+#
+
+Controls the stability of the generated speech. A lower value (like 0.3) produces more consistent, reliable speech. A higher value (like 0.9) gives more flexibility in how words are spoken, but might occasionally produce unusual intonations or speech patterns.
+
+Additional resources
+
+The following resources provide more information about using LMNT with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-lmnt
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the LMNT TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit LMNT TTS plugin.
+
+LMNT docs
+
+LMNT API documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and LMNT TTS.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

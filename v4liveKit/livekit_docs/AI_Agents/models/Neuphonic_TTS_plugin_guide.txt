@@ -1,0 +1,243 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/neuphonic/
+Title: 
+Crawled: 2025-11-01 21:25:31
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Neuphonic
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section includes a brief overview of the Neuphonic TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[neuphonic]~=1.2"
+
+Authentication
+
+The Neuphonic plugin requires a
+
+Neuphonic API key
+
+.
+
+Set
+
+NEUPHONIC_API_TOKEN
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Neuphonic TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+neuphonic
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+neuphonic
+
+.
+
+TTS
+
+(
+
+voice_id
+
+=
+
+"fc854436-2dac-4d21-aa69-ae17b54e98eb"
+
+)
+
+,
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+voice_id
+
+string
+
+Required
+
+#
+
+ID of the voice to use for generation.
+
+speed
+
+float
+
+Optional
+
+Default:
+
+1
+
+#
+
+Speed of generated speech.
+
+model
+
+string
+
+Optional
+
+Default:
+
+neu_hq
+
+#
+
+ID of the model to use for generation.
+
+lang_code
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language code for the generated speech.
+
+Additional resources
+
+The following resources provide more information about using Neuphonic with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-neuphonic
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Neuphonic TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Neuphonic TTS plugin.
+
+Neuphonic documentation
+
+Neuphonic's full documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Neuphonic TTS.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

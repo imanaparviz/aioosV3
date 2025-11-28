@@ -31,7 +31,20 @@ export default {
         "subtext-light": "#4d6a99",
         "subtext-dark": "#a0aec0",
         "border-light": "#e7ecf3",
-        "border-dark": "#334155"
+        "border-dark": "#334155",
+        "banana": {
+          "DEFAULT": "#FFD700",
+          "50": "#FFFDF0",
+          "100": "#FFFAC2",
+          "200": "#FFF599",
+          "300": "#FFF070",
+          "400": "#FFEB47",
+          "500": "#FFD700",
+          "600": "#CCAC00",
+          "700": "#998100",
+          "800": "#665600",
+          "900": "#332B00"
+        }
       },
       fontFamily: {
         "display": ["Inter", "sans-serif"]

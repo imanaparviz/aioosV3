@@ -1,0 +1,81 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usetrackbyname/
+Title: useTrackByName
+Crawled: 2025-11-01 21:17:50
+================================================================================
+
+GitHub
+
+Source
+
+useTrackByName
+
+This function
+
+useTrackByName
+
+allows you to access a track by referencing its track name. Inside the function, it ensures that the a valid
+
+participant
+
+reference is available by checking for both a passed participant argument and, if not available, a valid participant context.
+
+Import
+
+import
+
+{
+
+useTrackByName
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+name
+
+string
+
+Required
+
+#
+
+participant
+
+Participant
+
+Optional
+
+#
+
+Returns
+
+import
+
+(
+
+"@livekit/components-core"
+
+)
+
+.
+
+TrackReferenceOrPlaceholder
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

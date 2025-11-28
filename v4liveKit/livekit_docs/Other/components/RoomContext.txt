@@ -1,0 +1,33 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/roomcontext/
+Title: RoomContext
+Crawled: 2025-11-01 21:16:34
+================================================================================
+
+GitHub
+
+Source
+
+RoomContext
+
+Import
+
+import
+
+{
+
+RoomContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+On this page
+
+Import

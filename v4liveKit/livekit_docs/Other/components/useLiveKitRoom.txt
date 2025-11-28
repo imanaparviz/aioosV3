@@ -1,0 +1,291 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/uselivekitroom/
+Title: useLiveKitRoom
+Crawled: 2025-11-01 21:17:49
+================================================================================
+
+GitHub
+
+Source
+
+useLiveKitRoom
+
+The
+
+useLiveKitRoom
+
+hook is used to implement the
+
+LiveKitRoom
+
+or your custom implementation of it. It returns a
+
+Room
+
+instance and HTML props that should be applied to the root element of the component.
+
+Import
+
+import
+
+{
+
+useLiveKitRoom
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+const
+
+{
+
+room
+
+,
+
+htmlProps
+
+}
+
+=
+
+useLiveKitRoom
+
+(
+
+)
+
+;
+
+return
+
+<
+
+div
+
+{
+
+...
+
+htmlProps
+
+}
+
+>
+
+...
+
+</
+
+div
+
+>
+
+;
+
+Properties
+
+props.serverUrl
+
+string | undefined
+
+Required
+
+#
+
+URL to the LiveKit server. For example:
+
+wss://<domain>.livekit.cloud
+
+To simplify the implementation,
+
+undefined
+
+is also accepted as an intermediate value, but only with a valid string url can the connection be established.
+
+props.token
+
+string | undefined
+
+Required
+
+#
+
+A user specific access token for a client to authenticate to the room. This token is necessary to establish a connection to the room. To simplify the implementation,
+
+undefined
+
+is also accepted as an intermediate value, but only with a valid string token can the connection be established.
+
+props.audio
+
+AudioCaptureOptions | boolean
+
+Optional
+
+#
+
+Publish audio immediately after connecting to your LiveKit room.
+
+props.connect
+
+boolean
+
+Optional
+
+#
+
+If set to true a connection to LiveKit room is initiated.
+
+props.connectOptions
+
+RoomConnectOptions
+
+Optional
+
+#
+
+Define options how to connect to the LiveKit server.
+
+props.onConnected
+
+() => void
+
+Optional
+
+#
+
+props.onDisconnected
+
+(reason?: DisconnectReason) => void
+
+Optional
+
+#
+
+props.onEncryptionError
+
+(error: Error) => void
+
+Optional
+
+#
+
+props.onError
+
+(error: Error) => void
+
+Optional
+
+#
+
+props.onMediaDeviceFailure
+
+(failure?: MediaDeviceFailure, kind?: MediaDeviceKind) => void
+
+Optional
+
+#
+
+props.options
+
+RoomOptions
+
+Optional
+
+#
+
+Options for when creating a new room. When you pass your own room instance to this component, these options have no effect. Instead, set the options directly in the room instance.
+
+props.room
+
+Room
+
+Optional
+
+#
+
+Optional room instance. By passing your own room instance you overwrite the
+
+options
+
+parameter, make sure to set the options directly on the room instance itself.
+
+props.screen
+
+ScreenShareCaptureOptions | boolean
+
+Optional
+
+#
+
+Publish screen share immediately after connecting to your LiveKit room.
+
+props.simulateParticipants
+
+number | undefined
+
+Optional
+
+#
+
+props.video
+
+VideoCaptureOptions | boolean
+
+Optional
+
+#
+
+Publish video immediately after connecting to your LiveKit room.
+
+Returns
+
+{
+
+room
+
+:
+
+Room
+
+|
+
+undefined
+
+;
+
+htmlProps
+
+:
+
+HTMLAttributes
+
+<
+
+T
+
+>
+
+;
+
+}
+
+On this page
+
+Import
+
+Usage
+
+Properties
+
+Returns

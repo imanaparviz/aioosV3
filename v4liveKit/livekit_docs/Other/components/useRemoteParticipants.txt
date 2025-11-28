@@ -1,0 +1,145 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useremoteparticipants/
+Title: useRemoteParticipants
+Crawled: 2025-11-01 21:17:30
+================================================================================
+
+GitHub
+
+Source
+
+useRemoteParticipants
+
+The
+
+useRemoteParticipants
+
+hook returns all remote participants (without the local) of the current room.
+
+Import
+
+import
+
+{
+
+useRemoteParticipants
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+To optimize performance, you can use the
+
+updateOnlyOn
+
+property to decide on what
+
+RoomEvents
+
+the hook updates.
+
+Usage
+
+const
+
+participants
+
+=
+
+useRemoteParticipants
+
+(
+
+)
+
+;
+
+<
+
+ParticipantLoop
+
+participants
+
+=
+
+{
+
+participants
+
+}
+
+>
+
+<
+
+ParticipantName
+
+/>
+
+</
+
+ParticipantLoop
+
+>
+
+;
+
+Properties
+
+options.room
+
+Room
+
+Optional
+
+#
+
+The room to use. If not provided, the hook will use the room from the context.
+
+options.updateOnlyOn
+
+RoomEvent[]
+
+Optional
+
+#
+
+To optimize performance, you can use the
+
+updateOnlyOn
+
+property to decide on what RoomEvents the hook updates. By default it updates on all relevant RoomEvents to keep the returned participants array up to date. The minimal set of non-overwriteable
+
+RoomEvents
+
+is:
+
+[RoomEvent.ParticipantConnected, RoomEvent.ParticipantDisconnected, RoomEvent.ConnectionStateChanged]
+
+Returns
+
+RemoteParticipant
+
+[
+
+]
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Properties
+
+Returns

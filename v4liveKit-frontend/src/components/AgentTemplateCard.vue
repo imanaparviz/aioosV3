@@ -1,6 +1,6 @@
 <template>
   <div
-    class="group flex cursor-pointer flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary"
+    class="group flex cursor-pointer flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-md p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary"
     @click="$emit('select', template)"
   >
     <!-- Icon -->

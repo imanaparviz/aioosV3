@@ -1,0 +1,213 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/barvisualizer/
+Title: BarVisualizer
+Crawled: 2025-11-01 21:16:18
+================================================================================
+
+GitHub
+
+Source
+
+BarVisualizer
+
+Note
+
+This feature is under active development and may change based on developer feedback and real-world usage.
+
+Visualizes audio signals from a TrackReference as bars. If the
+
+state
+
+prop is set, it automatically transitions between VoiceAssistant states.
+
+Import
+
+import
+
+{
+
+BarVisualizer
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+For VoiceAssistant state transitions this component requires a voice assistant agent running with livekit-agents >
+
+= 0.9.0
+
+Usage
+
+Example 1
+
+function
+
+SimpleVoiceAssistant
+
+(
+
+)
+
+{
+
+const
+
+{
+
+state
+
+,
+
+audioTrack
+
+}
+
+=
+
+useVoiceAssistant
+
+(
+
+)
+
+;
+
+return
+
+<
+
+BarVisualizer
+
+state
+
+=
+
+{
+
+state
+
+}
+
+trackRef
+
+=
+
+{
+
+audioTrack
+
+}
+
+/>
+
+;
+
+}
+
+Styling the BarVisualizer using CSS classes
+
+.lk-audio-bar
+
+{
+
+// Styles for
+
+"idle"
+
+bars
+
+}
+
+.lk-audio-bar
+
+.lk-highlighted
+
+{
+
+// Styles for
+
+"active"
+
+bars
+
+}
+
+Styling the BarVisualizer using CSS custom properties
+
+--lk-fg
+
+// for the
+
+"active"
+
+colour
+
+,
+
+note that this defines the main foreground colour for the whole
+
+"theme"
+
+--lk-va-bg
+
+// for
+
+"idle"
+
+colour
+
+Using a custom bar template for the BarVisualizer
+
+<
+
+BarVisualizer
+
+>
+
+<
+
+div
+
+className
+
+=
+
+"
+
+all the classes
+
+"
+
+/>
+
+</
+
+BarVisualizer
+
+>
+
+the highlighted children will get a data prop of data-lk-highlighted for them to switch between active and idle bars in their own template bar
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Example 1
+
+Styling the BarVisualizer using CSS classes
+
+Styling the BarVisualizer using CSS custom properties
+
+Using a custom bar template for the BarVisualizer

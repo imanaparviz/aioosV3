@@ -1,0 +1,453 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/inference/rime/
+Title: 
+Crawled: 2025-11-01 21:25:26
+================================================================================
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Voices
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit Inference offers voice models powered by Rime. Pricing information is available on the
+
+pricing page
+
+.
+
+Model ID
+
+Languages
+
+rime/arcana
+
+en
+
+es
+
+fr
+
+de
+
+rime/mistv2
+
+en
+
+es
+
+fr
+
+de
+
+rime/mist
+
+en
+
+es
+
+fr
+
+de
+
+Usage
+
+The simplest way to use Rime TTS is to pass it to the
+
+tts
+
+argument in your
+
+AgentSession
+
+, including the model and voice to use:
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+"rime/arcana:astra"
+
+,
+
+# ... llm, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+tts
+
+:
+
+"rime/arcana:astra"
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+To customize additional parameters, use the
+
+TTS
+
+class from the
+
+inference
+
+module:
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+,
+
+inference
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+inference
+
+.
+
+TTS
+
+(
+
+model
+
+=
+
+"rime/arcana"
+
+,
+
+voice
+
+=
+
+"astra"
+
+,
+
+language
+
+=
+
+"en"
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+tts
+
+:
+
+new
+
+inference
+
+.
+
+TTS
+
+(
+
+{
+
+model
+
+:
+
+"rime/arcana"
+
+,
+
+voice
+
+:
+
+"astra"
+
+,
+
+language
+
+:
+
+"en"
+
+}
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+model
+
+string
+
+Required
+
+#
+
+The model ID from the
+
+models list
+
+.
+
+voice
+
+string
+
+Required
+
+#
+
+See
+
+voices
+
+for guidance on selecting a voice.
+
+language
+
+string
+
+Optional
+
+#
+
+Two-letter language code for the input text. Note that the Rime API uses three-letter abbreviations (e.g.
+
+eng
+
+for English), but LiveKit Inference uses two-letter codes instead for consistency with other providers.
+
+extra_kwargs
+
+dict
+
+Optional
+
+#
+
+Additional parameters to pass to the Rime TTS API. See the provider's
+
+documentation
+
+for more information.
+
+In Node.js this parameter is called
+
+modelOptions
+
+.
+
+Voices
+
+LiveKit Inference supports all of the voices available in the Rime API. You can view the default voices and explore the wider set in the API in the
+
+Rime voices documentation
+
+, and use the voice by copying its name into your LiveKit agent session.
+
+The following is a small sample of the Rime voices available in LiveKit Inference.
+
+Search voices
+
+Filter by gender
+
+Filter by gender
+
+Use the keyboard
+
+and
+
+arrows to audition voices
+
+Astra
+
+Chipper, upbeat American female
+
+🇺🇸
+
+Celeste
+
+Chill Gen-Z American female
+
+🇺🇸
+
+Luna
+
+Chill but excitable American female
+
+🇺🇸
+
+Ursa
+
+Young, emo American male
+
+🇺🇸
+
+Use the keyboard
+
+and
+
+arrows to audition voices
+
+Additional resources
+
+The following links provide more information about Rime in LiveKit Inference.
+
+Rime Plugin
+
+Plugin to use your own Rime account instead of LiveKit Inference.
+
+Rime TTS docs
+
+Rime's official API documentation.
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Voices
+
+Additional resources

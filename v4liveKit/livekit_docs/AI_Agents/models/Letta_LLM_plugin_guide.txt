@@ -1,0 +1,231 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/letta/
+Title: 
+Crawled: 2025-11-01 21:19:25
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Letta
+
+as an LLM provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the OpenAI plugin to add Letta support:
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+Authentication
+
+If your Letta server requires authentication, you need to provide an API key. Set the following environment variable in your
+
+.env
+
+file:
+
+LETTA_API_KEY
+
+Usage
+
+Use Letta LLM within an
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+.
+
+with_letta
+
+(
+
+agent_id
+
+=
+
+"<agent-id>"
+
+,
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+Parameters
+
+This section describes some of the parameters for the
+
+with_letta
+
+method. For a complete list of all available parameters,
+
+see the
+
+plugin documentation
+
+.
+
+agent_id
+
+string
+
+Required
+
+#
+
+Letta
+
+agent ID
+
+. Must begin with
+
+agent-
+
+.
+
+base_url
+
+string
+
+Optional
+
+Default:
+
+https://api.letta.com/v1/voice-beta
+
+#
+
+URL of the Letta server. For example, your
+
+self-hosted server
+
+or
+
+Letta Cloud
+
+.
+
+Additional resources
+
+The following links provide more information about the Letta LLM plugin.
+
+Python package
+
+The
+
+livekit-plugins-openai
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Letta LLM plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit OpenAI LLM plugin.
+
+Letta docs
+
+Letta documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Letta.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

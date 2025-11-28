@@ -1,0 +1,41 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/python/v1/livekit/plugins/minimal/index.html
+Title: 
+Crawled: 2025-11-01 21:18:49
+================================================================================
+
+Minimal example plugin for LiveKit Agents
+
+This is a stubbed example plugin.
+
+Sub-modules
+
+livekit.plugins.minimal.log
+
+livekit.plugins.minimal.version
+
+Classes
+
+class
+
+MinimalPlugin
+
+Expand source code
+
+class MinimalPlugin(Plugin):
+
+def __init__(self) -> None:
+
+super().__init__(__name__, __version__, __package__, logger)
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+livekit.agents.plugin.Plugin
+
+abc.ABC

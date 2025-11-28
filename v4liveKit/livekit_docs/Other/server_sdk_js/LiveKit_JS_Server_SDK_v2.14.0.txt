@@ -1,0 +1,11 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/server-sdk-js/index.html
+Title: LiveKit JS Server SDK - v2.14.0
+Crawled: 2025-11-01 21:14:20
+================================================================================
+
+LiveKit JS Server SDK - v2.14.0
+
+Preparing search index...

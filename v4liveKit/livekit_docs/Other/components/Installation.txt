@@ -1,0 +1,53 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/installation/
+Title: 
+Crawled: 2025-11-01 21:16:50
+================================================================================
+
+Copy page
+
+See more page options
+
+Use your favorite package manager to install the LiveKit Components package and its dependencies:
+
+npm
+
+pnpm
+
+yarn
+
+yarn
+
+add
+
+@livekit/components-react @livekit/components-styles livekit-client
+
+npm
+
+install
+
+@livekit/components-react @livekit/components-styles livekit-client
+
+pnpm
+
+install
+
+@livekit/components-react @livekit/components-styles livekit-client
+
+Note
+
+When installing the
+
+@livekit/components-react
+
+npm package, it's important to note that it relies on the
+
+livekit-client
+
+and
+
+@livekit/components-styles
+
+packages. This dependency is necessary for the package to function properly.

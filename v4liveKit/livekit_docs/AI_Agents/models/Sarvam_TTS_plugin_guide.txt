@@ -1,0 +1,303 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/sarvam/
+Title: 
+Crawled: 2025-11-01 21:25:24
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Sarvam
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section provides a quick reference for the Sarvam TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[sarvam]~=1.2"
+
+Authentication
+
+The Sarvam plugin requires a
+
+Sarvam API key
+
+.
+
+Set
+
+SARVAM_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Sarvam TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+sarvam
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+sarvam
+
+.
+
+TTS
+
+(
+
+target_language_code
+
+=
+
+"hi-IN"
+
+,
+
+speaker
+
+=
+
+"anushka"
+
+,
+
+)
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+target_language_code
+
+string
+
+Required
+
+#
+
+BCP-47 language code for supported Indian languages. For example:
+
+hi-IN
+
+for Hindi,
+
+en-IN
+
+for Indian English. See
+
+documentation
+
+for a complete list of supported languages.
+
+model
+
+string
+
+Optional
+
+Default:
+
+bulbul:v2
+
+#
+
+The Sarvam TTS model to use. Currently only
+
+bulbul:v2
+
+is supported. See
+
+documentation
+
+for a complete list of supported models.
+
+speaker
+
+string
+
+Optional
+
+Default:
+
+anushka
+
+#
+
+Voice to use for synthesis. See
+
+documentation
+
+for a complete list of supported voices.
+
+pitch
+
+float
+
+Optional
+
+Default:
+
+0.0
+
+#
+
+Voice pitch adjustment. Valid range: -20.0 to 20.0.
+
+pace
+
+float
+
+Optional
+
+Default:
+
+1.0
+
+#
+
+Speech rate multiplier. Valid range: 0.5 to 2.0.
+
+loudness
+
+float
+
+Optional
+
+Default:
+
+1.0
+
+#
+
+Volume multiplier. Valid range: 0.5 to 2.0.
+
+Additional resources
+
+The following resources provide more information about using Sarvam with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-sarvam
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Sarvam TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Sarvam TTS plugin.
+
+Sarvam docs
+
+Sarvam's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Sarvam.
+
+Sarvam STT
+
+Guide to the Sarvam STT plugin with LiveKit Agents.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

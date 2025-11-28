@@ -14,15 +14,16 @@
           </div>
           <button
             @click="handleExport"
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 dark:ring-offset-background-dark"
+            :disabled="isExporting"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 dark:ring-offset-background-dark disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span class="material-symbols-outlined">download</span>
-            <span>Export</span>
+            <span class="material-symbols-outlined">{{ isExporting ? 'hourglass_top' : 'download' }}</span>
+            <span>{{ isExporting ? 'Exporting...' : 'Export' }}</span>
           </button>
         </div>
 
         <!-- Filters -->
-        <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900/50">
+        <div class="mb-6 rounded-lg border border-gray-200 bg-white/80 backdrop-blur-md p-4 dark:border-gray-800 dark:bg-gray-900/50">
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             <!-- Agent Filter -->
             <div class="flex flex-col gap-1.5">
@@ -31,13 +32,14 @@
               </label>
               <select
                 v-model="filters.agent"
-                class="w-full rounded-md border-gray-300 bg-white text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                @change="applyFilters"
+                class="w-full rounded-md border-gray-300 bg-white/80 backdrop-blur-md text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800/80 dark:text-white"
                 id="agent-filter"
               >
                 <option value="">All Agents</option>
-                <option value="olivia">Olivia Martin</option>
-                <option value="liam">Liam Harris</option>
-                <option value="sophia">Sophia King</option>
+                <option v-for="agent in agents" :key="agent.id" :value="agent.id">
+                  {{ agent.name }}
+                </option>
               </select>
             </div>
 
@@ -48,7 +50,8 @@
               </label>
               <select
                 v-model="filters.department"
-                class="w-full rounded-md border-gray-300 bg-white text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                @change="applyFilters"
+                class="w-full rounded-md border-gray-300 bg-white/80 backdrop-blur-md text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800/80 dark:text-white"
                 id="department-filter"
               >
                 <option value="">All Departments</option>
@@ -65,7 +68,8 @@
               </label>
               <input
                 v-model="filters.dateRange"
-                class="w-full rounded-md border-gray-300 bg-white text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                @change="applyFilters"
+                class="w-full rounded-md border-gray-300 bg-white/80 backdrop-blur-md text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800/80 dark:text-white"
                 id="date-range-filter"
                 placeholder="Select date range"
                 type="text"
@@ -79,7 +83,8 @@
               </label>
               <select
                 v-model="filters.outcome"
-                class="w-full rounded-md border-gray-300 bg-white text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                @change="applyFilters"
+                class="w-full rounded-md border-gray-300 bg-white/80 backdrop-blur-md text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800/80 dark:text-white"
                 id="outcome-filter"
               >
                 <option value="">All Outcomes</option>
@@ -97,7 +102,8 @@
               </label>
               <select
                 v-model="filters.duration"
-                class="w-full rounded-md border-gray-300 bg-white text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                @change="applyFilters"
+                class="w-full rounded-md border-gray-300 bg-white/80 backdrop-blur-md text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800/80 dark:text-white"
                 id="duration-filter"
               >
                 <option value="">Any Duration</option>
@@ -118,7 +124,8 @@
                 </span>
                 <input
                   v-model="filters.search"
-                  class="w-full rounded-md border-gray-300 bg-white pl-10 text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  @input="debouncedSearch"
+                  class="w-full rounded-md border-gray-300 bg-white/80 backdrop-blur-md pl-10 text-sm text-gray-900 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-800/80 dark:text-white"
                   id="search"
                   placeholder="Search caller ID..."
                   type="search"
@@ -128,11 +135,28 @@
           </div>
         </div>
 
+        <!-- Loading State -->
+        <div v-if="isLoading" class="flex items-center justify-center py-12">
+          <div class="text-center">
+            <span class="material-symbols-outlined animate-spin text-4xl text-primary">refresh</span>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Loading call logs...</p>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div v-else-if="!isLoading && callLogs.length === 0" class="rounded-lg border border-gray-200 bg-white/80 backdrop-blur-md p-12 text-center dark:border-gray-800 dark:bg-gray-900/50">
+          <span class="material-symbols-outlined text-6xl text-gray-400">call</span>
+          <h3 class="mt-4 text-lg font-semibold text-gray-900 dark:text-white">No call logs found</h3>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {{ filters.search || filters.agent || filters.outcome ? 'Try adjusting your filters' : 'Make a test call to see data here' }}
+          </p>
+        </div>
+
         <!-- Table -->
-        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900/50">
+        <div v-else class="overflow-hidden rounded-lg border border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/50">
           <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-              <thead class="bg-gray-50 dark:bg-gray-900">
+              <thead class="bg-gray-50/80 backdrop-blur-md dark:bg-gray-900">
                 <tr>
                   <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400" scope="col">
                     Caller ID
@@ -157,8 +181,8 @@
                   </th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-800 dark:bg-gray-900/50">
-                <tr v-for="log in paginatedLogs" :key="log.id">
+              <tbody class="divide-y divide-gray-200 bg-white/80 backdrop-blur-md dark:divide-gray-800 dark:bg-gray-900/50">
+                <tr v-for="log in callLogs" :key="log.id">
                   <td class="whitespace-nowrap px-6 py-4 text-sm font-medium">
                     <router-link
                       :to="`/call-logs/${log.id}`"
@@ -218,19 +242,19 @@
           </div>
 
           <!-- Pagination -->
-          <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 dark:border-gray-800 dark:bg-gray-900/50 sm:px-6">
+          <div class="flex items-center justify-between border-t border-gray-200 bg-white/80 backdrop-blur-md px-4 py-3 dark:border-gray-800 dark:bg-gray-900/50 sm:px-6">
             <div class="flex flex-1 justify-between sm:hidden">
               <button
                 @click="previousPage"
                 :disabled="currentPage === 1"
-                class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                class="relative inline-flex items-center rounded-md border border-gray-300 bg-white/80 backdrop-blur-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300"
               >
                 Previous
               </button>
               <button
                 @click="nextPage"
                 :disabled="currentPage === totalPages"
-                class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white/80 backdrop-blur-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300"
               >
                 Next
               </button>
@@ -288,81 +312,34 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import SidebarNav from '@/components/SidebarNav.vue'
+import { getCallLogs, getAgents, exportCallLogs } from '@/services/api'
+
+// State
+const callLogs = ref([])
+const agents = ref([])
+const isLoading = ref(true)
+const isExporting = ref(false)
 
 // Filters
 const filters = ref({
   agent: '',
   department: '',
-  dateRange: 'Oct 1, 2023 - Oct 31, 2023',
+  dateRange: '',
   outcome: '',
   duration: '',
   search: ''
 })
 
-// Mock data
-const callLogs = ref([
-  {
-    id: 1,
-    callerId: '+1 (555) 123-4567',
-    agent: 'Olivia Martin',
-    department: 'Support',
-    startTime: 'Oct 26, 2023, 10:15 AM',
-    duration: '02:35',
-    outcome: 'Completed'
-  },
-  {
-    id: 2,
-    callerId: '+1 (555) 987-6543',
-    agent: 'Liam Harris',
-    department: 'Sales',
-    startTime: 'Oct 26, 2023, 10:12 AM',
-    duration: '05:12',
-    outcome: 'Transferred'
-  },
-  {
-    id: 3,
-    callerId: '+1 (555) 234-5678',
-    agent: 'Sophia King',
-    department: 'Support',
-    startTime: 'Oct 26, 2023, 10:05 AM',
-    duration: '00:45',
-    outcome: 'Hung Up'
-  },
-  {
-    id: 4,
-    callerId: '+1 (555) 876-5432',
-    agent: 'Olivia Martin',
-    department: 'Billing',
-    startTime: 'Oct 26, 2023, 09:58 AM',
-    duration: '01:15',
-    outcome: 'Error'
-  },
-  // Add more mock entries to demonstrate pagination
-  ...Array.from({ length: 93 }, (_, i) => ({
-    id: i + 5,
-    callerId: `+1 (555) ${String(Math.floor(Math.random() * 900) + 100)}-${String(Math.floor(Math.random() * 9000) + 1000)}`,
-    agent: ['Olivia Martin', 'Liam Harris', 'Sophia King'][i % 3],
-    department: ['Support', 'Sales', 'Billing'][i % 3],
-    startTime: `Oct ${26 - Math.floor(i / 10)}, 2023, ${String(Math.floor(Math.random() * 12) + 1).padStart(2, '0')}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')} AM`,
-    duration: `0${Math.floor(Math.random() * 5)}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
-    outcome: ['Completed', 'Transferred', 'Hung Up', 'Error'][Math.floor(Math.random() * 4)]
-  }))
-])
-
 // Pagination
 const currentPage = ref(1)
 const itemsPerPage = ref(10)
+const totalLogs = ref(0)
 
-const totalLogs = computed(() => callLogs.value.length)
 const totalPages = computed(() => Math.ceil(totalLogs.value / itemsPerPage.value))
 const startIndex = computed(() => (currentPage.value - 1) * itemsPerPage.value)
 const endIndex = computed(() => currentPage.value * itemsPerPage.value)
-
-const paginatedLogs = computed(() => {
-  return callLogs.value.slice(startIndex.value, endIndex.value)
-})
 
 const visiblePages = computed(() => {
   const pages = []
@@ -389,50 +366,126 @@ const visiblePages = computed(() => {
 })
 
 // Methods
+const loadCallLogs = async () => {
+  isLoading.value = true
+  try {
+    const params = {
+      limit: itemsPerPage.value,
+      offset: startIndex.value
+    }
+
+    // Apply filters
+    if (filters.value.agent) params.agent_id = filters.value.agent
+    if (filters.value.department) params.department = filters.value.department
+    if (filters.value.outcome) params.status = filters.value.outcome
+    if (filters.value.duration) params.duration_filter = filters.value.duration
+    if (filters.value.search) params.search = filters.value.search
+    // TODO: Add date range parsing
+
+    const response = await getCallLogs(params)
+    callLogs.value = response.calls || []
+    totalLogs.value = response.total || 0
+
+  } catch (error) {
+    console.error('Failed to load call logs:', error)
+    callLogs.value = []
+    totalLogs.value = 0
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const loadAgents = async () => {
+  try {
+    agents.value = await getAgents()
+  } catch (error) {
+    console.error('Failed to load agents:', error)
+    agents.value = []
+  }
+}
+
+const applyFilters = () => {
+  currentPage.value = 1
+  loadCallLogs()
+}
+
+// Debounced search
+let searchTimeout = null
+const debouncedSearch = () => {
+  clearTimeout(searchTimeout)
+  searchTimeout = setTimeout(() => {
+    applyFilters()
+  }, 500)
+}
+
+const handleExport = async () => {
+  isExporting.value = true
+  try {
+    await exportCallLogs({
+      agent_id: filters.value.agent,
+      // Add other filters as needed
+    })
+  } catch (error) {
+    console.error('Export failed:', error)
+    alert('Failed to export call logs. Please try again.')
+  } finally {
+    isExporting.value = false
+  }
+}
+
 const getOutcomeBadgeClass = (outcome) => {
   const classes = {
     'Completed': 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
     'Transferred': 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
     'Hung Up': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300',
-    'Error': 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300'
+    'Error': 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
+    'Failed': 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300'
   }
-  return classes[outcome] || ''
-}
-
-const handleExport = () => {
-  alert('Export functionality!\n\nIn the full implementation, this would export the call logs to CSV/Excel.')
+  return classes[outcome] || 'bg-gray-100 text-gray-800 dark:bg-gray-900/50 dark:text-gray-300'
 }
 
 const handlePlayRecording = (log) => {
   console.log('Play recording:', log)
-  alert(`Play Recording\n\nCall ID: ${log.callerId}\nAgent: ${log.agent}\n\nThis would play the call recording.`)
+  // TODO: Implement recording playback
+  alert(`Play Recording\n\nCall ID: ${log.callerId}\nAgent: ${log.agent}\n\n[Feature Coming Soon]\n\nThis will play the call recording once LiveKit recording is configured.`)
 }
 
 const handleViewTranscript = (log) => {
   console.log('View transcript:', log)
-  alert(`View Transcript\n\nCall ID: ${log.callerId}\nAgent: ${log.agent}\n\nThis would show the call transcript.`)
+  // TODO: Implement transcript view
+  alert(`View Transcript\n\nCall ID: ${log.callerId}\nAgent: ${log.agent}\n\n[Feature Coming Soon]\n\nThis will show the call transcript once STT transcription is saved to database.`)
 }
 
 const handleMoreActions = (log) => {
   console.log('More actions:', log)
-  alert(`More Actions\n\nCall ID: ${log.callerId}\n\nOptions:\n- Download Recording\n- Share\n- Delete\n- Add to Report`)
+  // TODO: Implement actions menu
+  alert(`More Actions\n\nCall ID: ${log.callerId}\n\n[Feature Coming Soon]\n\nOptions:\n- Download Recording\n- Share Link\n- Delete Call\n- Add to Report\n- Export Transcript`)
 }
 
 const previousPage = () => {
   if (currentPage.value > 1) {
     currentPage.value--
+    loadCallLogs()
   }
 }
 
 const nextPage = () => {
   if (currentPage.value < totalPages.value) {
     currentPage.value++
+    loadCallLogs()
   }
 }
 
 const goToPage = (page) => {
   if (page !== '...' && page >= 1 && page <= totalPages.value) {
     currentPage.value = page
+    loadCallLogs()
   }
 }
+
+// Lifecycle
+onMounted(() => {
+  loadAgents()
+  loadCallLogs()
+})
 </script>

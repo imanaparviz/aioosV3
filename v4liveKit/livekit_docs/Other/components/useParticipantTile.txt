@@ -1,0 +1,137 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useparticipanttile/
+Title: useParticipantTile
+Crawled: 2025-11-01 21:16:19
+================================================================================
+
+GitHub
+
+Source
+
+useParticipantTile
+
+The
+
+useParticipantTile
+
+hook is used to implement the
+
+ParticipantTile
+
+and returns the props needed to render the tile.
+
+Import
+
+import
+
+{
+
+useParticipantTile
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+The returned props include many data attributes that are useful for CSS styling purposes because they indicate the state of the participant and the track. For example:
+
+data-lk-audio-muted
+
+,
+
+data-lk-video-muted
+
+,
+
+data-lk-speaking
+
+,
+
+data-lk-local-participant
+
+,
+
+data-lk-source
+
+,
+
+data-lk-facing-mode
+
+.
+
+Properties
+
+{ trackRef, onParticipantClick, disableSpeakingIndicator, htmlProps, }.htmlProps
+
+React.HTMLAttributes<T>
+
+Required
+
+#
+
+{ trackRef, onParticipantClick, disableSpeakingIndicator, htmlProps, }.disableSpeakingIndicator
+
+boolean
+
+Optional
+
+#
+
+{ trackRef, onParticipantClick, disableSpeakingIndicator, htmlProps, }.onParticipantClick
+
+(event: ParticipantClickEvent) => void
+
+Optional
+
+#
+
+{ trackRef, onParticipantClick, disableSpeakingIndicator, htmlProps, }.trackRef
+
+TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+The track reference to display.
+
+Returns
+
+{
+
+elementProps
+
+:
+
+React
+
+.
+
+HTMLAttributes
+
+<
+
+T
+
+>
+
+;
+
+}
+
+On this page
+
+Import
+
+Remarks
+
+Properties
+
+Returns

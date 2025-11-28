@@ -1,0 +1,69 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/quickstarts/
+Title: Platform-specific quickstart guides
+Crawled: 2025-11-01 21:03:08
+================================================================================
+
+Platform-specific quickstart guides
+
+LiveKit has SDKs for most major platforms and languages. Quickly integrate realtime AI, audio, or video into your app by selecting your platform below.
+
+Web SDKs
+
+For browser-based applications.
+
+Next.js
+
+React
+
+JavaScript
+
+Unity (WebGL)
+
+Native SDKs
+
+For native applications on mobile, desktop, and more.
+
+Swift
+
+Android (Compose)
+
+Android
+
+Flutter
+
+React Native
+
+Expo
+
+Other SDKs
+
+Don’t see your platform listed?
+
+View the full
+
+list of supported SDKs
+
+.
+
+Integrate with a
+
+telephone system using SIP
+
+.
+
+Join the
+
+LiveKit Slack community
+
+to share what you’re building.
+
+On this page
+
+Web SDKs
+
+Native SDKs
+
+Other platforms

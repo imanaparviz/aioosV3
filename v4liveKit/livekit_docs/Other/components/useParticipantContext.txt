@@ -1,0 +1,47 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useparticipantcontext/
+Title: useParticipantContext
+Crawled: 2025-11-01 21:17:42
+================================================================================
+
+GitHub
+
+Source
+
+useParticipantContext
+
+Ensures that a participant is provided via context. If not inside a
+
+ParticipantContext
+
+, an error is thrown.
+
+Import
+
+import
+
+{
+
+useParticipantContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+Participant
+
+;
+
+On this page
+
+Import
+
+Returns

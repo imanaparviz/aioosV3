@@ -1,0 +1,89 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/focustoggle/
+Title: FocusToggle
+Crawled: 2025-11-01 21:17:32
+================================================================================
+
+GitHub
+
+Source
+
+FocusToggle
+
+The
+
+FocusToggle
+
+puts the
+
+ParticipantTile
+
+in focus or removes it from focus.
+
+Import
+
+import
+
+{
+
+FocusToggle
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+This component needs to live inside
+
+LayoutContext
+
+to work properly.
+
+Usage
+
+<
+
+ParticipantTile
+
+>
+
+<
+
+FocusToggle
+
+/>
+
+</
+
+ParticipantTile
+
+>
+
+Properties
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Properties

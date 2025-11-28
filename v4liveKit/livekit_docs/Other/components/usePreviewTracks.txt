@@ -1,0 +1,75 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usepreviewtracks/
+Title: usePreviewTracks
+Crawled: 2025-11-01 21:16:52
+================================================================================
+
+GitHub
+
+Source
+
+usePreviewTracks
+
+Import
+
+import
+
+{
+
+usePreviewTracks
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+onError
+
+(err: Error) => void
+
+Optional
+
+#
+
+Returns
+
+(
+
+LocalTrack
+
+<
+
+Track
+
+.
+
+Kind
+
+>
+
+[
+
+]
+
+)
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

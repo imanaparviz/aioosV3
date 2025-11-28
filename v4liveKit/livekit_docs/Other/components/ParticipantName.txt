@@ -1,0 +1,49 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/participantname/
+Title: ParticipantName
+Crawled: 2025-11-01 21:15:44
+================================================================================
+
+GitHub
+
+Source
+
+ParticipantName
+
+The
+
+ParticipantName
+
+component displays the name of the participant as a string within an HTML span element. If no participant name is undefined the participant identity string is displayed.
+
+Import
+
+import
+
+{
+
+ParticipantName
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+ParticipantName
+
+/>
+
+On this page
+
+Import
+
+Usage

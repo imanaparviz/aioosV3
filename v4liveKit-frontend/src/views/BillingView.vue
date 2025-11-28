@@ -7,21 +7,21 @@
     <main class="flex-1 overflow-y-auto">
       <div class="mx-auto max-w-7xl p-6 lg:p-8">
         <!-- Page Header -->
-        <div class="mb-8">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-8">
           <h1 class="text-4xl font-black leading-tight tracking-[-0.033em] text-slate-900 dark:text-white">
             Billing & Subscriptions
           </h1>
           <p class="mt-2 text-slate-600 dark:text-slate-400">
             Manage your plan, payment methods, and view your billing history.
           </p>
-        </div>
+        </header>
 
         <!-- Two Column Layout -->
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <!-- Left Column (2/3 width) -->
           <div class="flex flex-col gap-8 lg:col-span-2">
             <!-- Current Plan Card -->
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
               <div class="border-b border-slate-200 dark:border-slate-800 p-6">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Current Plan</h2>
                 <p class="text-sm text-slate-500 dark:text-slate-400">You are currently on the Pro Plan.</p>
@@ -77,7 +77,7 @@
             </div>
 
             <!-- Billing History Card -->
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
               <div class="border-b border-slate-200 dark:border-slate-800 p-6">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Billing History</h2>
                 <p class="text-sm text-slate-500 dark:text-slate-400">Download your past invoices.</p>
@@ -85,7 +85,7 @@
               <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm">
                   <thead>
-                    <tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300">
+                    <tr class="bg-slate-50/80 backdrop-blur-md dark:bg-slate-800/50 text-slate-600 dark:text-slate-300">
                       <th class="p-4 font-medium">Date</th>
                       <th class="p-4 font-medium">Description</th>
                       <th class="p-4 font-medium">Amount</th>
@@ -116,7 +116,7 @@
           <!-- Right Column (1/3 width) -->
           <div class="flex flex-col gap-8">
             <!-- Payment Method Card -->
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
               <div class="border-b border-slate-200 dark:border-slate-800 p-6">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Payment Method</h2>
               </div>
@@ -154,7 +154,7 @@
             </div>
 
             <!-- Usage This Month Card -->
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
               <div class="border-b border-slate-200 dark:border-slate-800 p-6">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Usage This Month</h2>
               </div>
@@ -175,7 +175,7 @@
             </div>
 
             <!-- Need Help Card -->
-            <div class="rounded-xl bg-slate-100 dark:bg-slate-800/50 p-6">
+            <div class="rounded-xl bg-slate-100/80 backdrop-blur-md dark:bg-slate-800/50 p-6">
               <div class="flex items-center gap-4">
                 <div class="flex size-12 items-center justify-center rounded-full bg-white dark:bg-slate-700 text-primary">
                   <span class="material-symbols-outlined">quiz</span>

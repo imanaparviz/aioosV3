@@ -1,0 +1,389 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/inference/deepseek/
+Title: 
+Crawled: 2025-11-01 21:22:01
+================================================================================
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+LiveKit Inference offers DeepSeek models through Baseten. Pricing is available on the
+
+pricing page
+
+.
+
+Model name
+
+Model ID
+
+Providers
+
+DeepSeek V3
+
+deepseek-ai/deepseek-v3
+
+baseten
+
+Usage
+
+To use DeepSeek, pass the model id to the
+
+llm
+
+argument in your
+
+AgentSession
+
+. LiveKit Inference manages the connection to the best available provider automatically.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+"deepseek-ai/deepseek-v3"
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+"deepseek-ai/deepseek-v3"
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+To customize additional parameters, including the specific provider to use, use the
+
+LLM
+
+class from the
+
+inference
+
+module.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+,
+
+inference
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+inference
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"deepseek-ai/deepseek-v3"
+
+,
+
+provider
+
+=
+
+"baseten"
+
+,
+
+extra_kwargs
+
+=
+
+{
+
+"max_completion_tokens"
+
+:
+
+1000
+
+}
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+{
+
+AgentSession
+
+,
+
+inference
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+new
+
+inference
+
+.
+
+LLM
+
+(
+
+{
+
+model
+
+:
+
+"deepseek-ai/deepseek-v3"
+
+,
+
+provider
+
+:
+
+"baseten"
+
+,
+
+modelOptions
+
+:
+
+{
+
+max_completion_tokens
+
+:
+
+1000
+
+}
+
+}
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+model
+
+string
+
+Required
+
+#
+
+The model ID from the
+
+models list
+
+.
+
+provider
+
+string
+
+Optional
+
+#
+
+Set a specific provider to use for the LLM. Refer to the
+
+models list
+
+for available providers. If not set, LiveKit Inference uses the best available provider, and bills accordingly.
+
+extra_kwargs
+
+dict
+
+Optional
+
+#
+
+Additional parameters to pass to the provider's Chat Completions API, such as
+
+max_completion_tokens
+
+. See the provider's
+
+documentation
+
+for more information.
+
+In Node.js this parameter is called
+
+modelOptions
+
+.
+
+Additional resources
+
+The following links provide more information about DeepSeek in LiveKit Inference.
+
+Baseten Plugin
+
+Plugin to use your own Baseten account instead of LiveKit Inference.
+
+DeepSeek Plugin
+
+Plugin to use DeepSeek's official API instead of LiveKit Inference.
+
+Baseten docs
+
+Baseten's official Model API documentation.
+
+On this page
+
+Overview
+
+Usage
+
+Parameters
+
+Additional resources

@@ -1,0 +1,229 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/soniox/
+Title: 
+Crawled: 2025-11-01 21:21:29
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Soniox
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section provides a quick reference for the Soniox STT plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[soniox]~=1.2"
+
+Authentication
+
+The Soniox plugin requires an API key from the
+
+Soniox console
+
+.
+
+Set
+
+SONIOX_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Soniox STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+soniox
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+soniox
+
+.
+
+STT
+
+(
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+stt-rt-preview
+
+#
+
+The Soniox STT model to use. See
+
+documentation
+
+for a complete list of supported models.
+
+context
+
+string
+
+Optional
+
+Default:
+
+None
+
+#
+
+Free-form text that provides additional context or vocabulary to bias transcription towards domain-specific terms.
+
+enable_language_identification
+
+boolean
+
+Optional
+
+Default:
+
+true
+
+#
+
+When
+
+true
+
+, the Soniox attempts to identify the language of the input audio.
+
+Additional resources
+
+The following resources provide more information about using Soniox with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-soniox
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Soniox STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Soniox STT plugin.
+
+Soniox docs
+
+Soniox's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Soniox.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

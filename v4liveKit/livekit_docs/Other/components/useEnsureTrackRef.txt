@@ -1,0 +1,59 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useensuretrackref/
+Title: useEnsureTrackRef
+Crawled: 2025-11-01 21:17:16
+================================================================================
+
+GitHub
+
+Source
+
+useEnsureTrackRef
+
+Ensures that a track reference is provided, either via context or explicitly as a parameter. If not inside a
+
+TrackRefContext
+
+and no track reference is provided, an error is thrown.
+
+Import
+
+import
+
+{
+
+useEnsureTrackRef
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+Returns
+
+TrackReferenceOrPlaceholder
+
+;
+
+On this page
+
+Import
+
+Properties
+
+Returns

@@ -1,0 +1,11 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/client-sdk-js/index.html
+Title: LiveKit JS Client SDK - v2.15.14
+Crawled: 2025-11-01 21:14:39
+================================================================================
+
+LiveKit JS Client SDK - v2.15.14
+
+Preparing search index...

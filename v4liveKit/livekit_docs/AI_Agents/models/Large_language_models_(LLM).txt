@@ -1,0 +1,593 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/
+Title: 
+Crawled: 2025-11-01 21:09:53
+================================================================================
+
+On this page
+
+Overview
+
+LiveKit Inference
+
+Usage
+
+Additional parameters
+
+Plugins
+
+Advanced features
+
+Custom LLM
+
+Standalone usage
+
+Vision
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Overview
+
+The core reasoning, response, and orchestration of your voice agent is powered by an LLM. You can choose between a variety of models to balance performance, accuracy, and cost. In a voice agent, your LLM receives a transcript of the user's speech from an
+
+STT
+
+model, and produces a text response which is turned into speech by a
+
+TTS
+
+model.
+
+You can choose a model served through LiveKit Inference, which is included in LiveKit Cloud, or you can use a plugin to connect directly to a wider range of model providers with your own account.
+
+LiveKit Inference
+
+The following models are available in
+
+LiveKit Inference
+
+. Refer to the guide for each model for more details on additional configuration options.
+
+Model family
+
+Model name
+
+Model ID
+
+OpenAI
+
+GPT-4o
+
+openai/gpt-4o
+
+GPT-4o mini
+
+openai/gpt-4o-mini
+
+GPT-4.1
+
+openai/gpt-4.1
+
+GPT-4.1 mini
+
+openai/gpt-4.1-mini
+
+GPT-4.1 nano
+
+openai/gpt-4.1-nano
+
+GPT-5
+
+openai/gpt-5
+
+GPT-5 mini
+
+openai/gpt-5-mini
+
+GPT-5 nano
+
+openai/gpt-5-nano
+
+GPT OSS 120B
+
+openai/gpt-oss-120b
+
+Gemini
+
+Gemini 2.5 Pro
+
+google/gemini-2.5-pro
+
+Gemini 2.5 Flash
+
+google/gemini-2.5-flash
+
+Gemini 2.5 Flash Lite
+
+google/gemini-2.5-flash-lite
+
+Gemini 2.0 Flash
+
+google/gemini-2.0-flash
+
+Gemini 2.0 Flash Lite
+
+google/gemini-2.0-flash-lite
+
+Qwen
+
+Qwen
+
+Qwen3 235B A22B Instruct
+
+qwen/qwen3-235b-a22b-instruct
+
+Kimi
+
+Kimi
+
+Kimi K2 Instruct
+
+moonshotai/kimi-k2-instruct
+
+DeepSeek
+
+DeepSeek V3
+
+deepseek-ai/deepseek-v3
+
+Usage
+
+To set up an LLM in an
+
+AgentSession
+
+, provide the model id to the
+
+llm
+
+argument. LiveKit Inference manages the connection to the model automatically. Consult the
+
+models list
+
+for available models.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+AgentSession
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+"openai/gpt-4.1-mini"
+
+,
+
+)
+
+import
+
+{
+
+AgentSession
+
+}
+
+from
+
+'@livekit/agents'
+
+;
+
+session
+
+=
+
+new
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+"openai/gpt-4.1-mini"
+
+,
+
+}
+
+)
+
+;
+
+Additional parameters
+
+More configuration options, such as reasoning effort, are available for each model. To set additional parameters, use the
+
+LLM
+
+class from the
+
+inference
+
+module. Consult each model reference for examples and available parameters.
+
+Plugins
+
+The LiveKit Agents framework also includes a variety of open source
+
+plugins
+
+for a wide range of LLM providers. Plugins are especially useful if you need custom or fine-tuned models. These plugins require authentication with the provider yourself, usually via an API key. You are responsible for setting up your own account and managing your own billing and credentials. The plugins are listed below, along with their availability for Python or Node.js.
+
+Provider
+
+Python
+
+Node.js
+
+Amazon Bedrock
+
+✓
+
+—
+
+Anthropic
+
+✓
+
+—
+
+Baseten
+
+✓
+
+—
+
+Google Gemini
+
+✓
+
+✓
+
+Groq
+
+✓
+
+✓
+
+LangChain
+
+✓
+
+—
+
+Mistral AI
+
+✓
+
+—
+
+OpenAI
+
+✓
+
+✓
+
+Azure OpenAI
+
+✓
+
+✓
+
+Cerebras
+
+✓
+
+✓
+
+DeepSeek
+
+✓
+
+✓
+
+Fireworks
+
+✓
+
+✓
+
+Letta
+
+✓
+
+—
+
+Ollama
+
+✓
+
+✓
+
+OpenRouter
+
+✓
+
+—
+
+Perplexity
+
+✓
+
+✓
+
+Telnyx
+
+✓
+
+✓
+
+Together AI
+
+✓
+
+✓
+
+xAI
+
+✓
+
+✓
+
+Have another provider in mind? LiveKit is open source and welcomes
+
+new plugin contributions
+
+.
+
+Advanced features
+
+The following sections cover more advanced topics common to all LLM providers. For more detailed reference on individual provider configuration, consult the model reference or plugin documentation for that provider.
+
+Custom LLM
+
+To create an entirely custom LLM, implement the
+
+LLM node
+
+in your agent.
+
+Standalone usage
+
+You can use an
+
+LLM
+
+instance as a standalone component with its streaming interface. It expects a
+
+ChatContext
+
+object, which contains the conversation history. The return value is a stream of
+
+ChatChunk
+
+objects. This interface is the same across all LLM providers, regardless of their underlying API design:
+
+from
+
+livekit
+
+.
+
+agents
+
+import
+
+ChatContext
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"gpt-4o-mini"
+
+)
+
+chat_ctx
+
+=
+
+ChatContext
+
+(
+
+)
+
+chat_ctx
+
+.
+
+add_message
+
+(
+
+role
+
+=
+
+"user"
+
+,
+
+content
+
+=
+
+"Hello, this is a test message!"
+
+)
+
+async
+
+with
+
+llm
+
+.
+
+chat
+
+(
+
+chat_ctx
+
+=
+
+chat_ctx
+
+)
+
+as
+
+stream
+
+:
+
+async
+
+for
+
+chunk
+
+in
+
+stream
+
+:
+
+print
+
+(
+
+"Received chunk:"
+
+,
+
+chunk
+
+.
+
+delta
+
+)
+
+Vision
+
+LiveKit Agents supports image input from URL or from
+
+realtime video frames
+
+. Consult your model provider for details on compatible image types, external URL support, and other constraints. For more information, see
+
+Vision
+
+.
+
+Additional resources
+
+The following resources cover related topics that may be useful for your application.
+
+Workflows
+
+How to model repeatable, accurate tasks with multiple agents.
+
+Tool definition and usage
+
+Let your agents call external tools and more.
+
+Inference pricing
+
+The latest pricing information for all models in LiveKit Inference.
+
+Realtime models
+
+Realtime models like the OpenAI Realtime API, Gemini Live, and Amazon Nova Sonic.
+
+On this page
+
+Overview
+
+LiveKit Inference
+
+Usage
+
+Additional parameters
+
+Plugins
+
+Advanced features
+
+Custom LLM
+
+Standalone usage
+
+Vision
+
+Additional resources

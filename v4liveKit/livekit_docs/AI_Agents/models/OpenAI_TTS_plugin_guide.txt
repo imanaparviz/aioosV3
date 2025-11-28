@@ -1,0 +1,365 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/openai/
+Title: 
+Crawled: 2025-11-01 21:25:19
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Try LiveKit.fm
+
+Chat with OpenAI's latest `gpt-4o-mini-tts` model in a LiveKit demo inspired by OpenAI.fm
+
+Overview
+
+This plugin allows you to use
+
+OpenAI TTS
+
+as a TTS provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+pip
+
+install
+
+"livekit-agents[openai]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Authentication
+
+The OpenAI plugin requires an
+
+OpenAI API key
+
+.
+
+Set
+
+OPENAI_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use OpenAI TTS in an
+
+AgentSession
+
+or as a standalone speech generator. For example, you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+openai
+
+.
+
+TTS
+
+(
+
+model
+
+=
+
+"gpt-4o-mini-tts"
+
+,
+
+voice
+
+=
+
+"ash"
+
+,
+
+instructions
+
+=
+
+"Speak in a friendly and conversational tone."
+
+,
+
+)
+
+,
+
+# ... llm, stt, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+tts
+
+:
+
+new
+
+openai
+
+.
+
+TTS
+
+(
+
+model
+
+:
+
+"gpt-4o-mini-tts"
+
+,
+
+voice
+
+:
+
+"ash"
+
+,
+
+instructions
+
+:
+
+"Speak in a friendly and conversational tone."
+
+,
+
+)
+
+,
+
+// ... llm, stt, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for a complete list of all available parameters.
+
+model
+
+TTSModels | string
+
+Optional
+
+Default:
+
+gpt-4o-mini-tts
+
+#
+
+ID of the model to use for speech generation. To learn more, see
+
+TTS models
+
+.
+
+voice
+
+TTSVoice | string
+
+Optional
+
+Default:
+
+ash
+
+#
+
+ID of the voice used for speech generation. To learn more, see
+
+TTS voice options
+
+.
+
+instructions
+
+string
+
+Optional
+
+#
+
+Instructions to control tone, style, and other characteristics of the speech. Does not work with
+
+tts-1
+
+or
+
+tts-1-hd
+
+models.
+
+Additional resources
+
+The following resources provide more information about using OpenAI with LiveKit Agents.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+OpenAI docs
+
+OpenAI TTS docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and OpenAI TTS.
+
+OpenAI ecosystem guide
+
+Overview of the entire OpenAI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

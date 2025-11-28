@@ -1,0 +1,127 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/mediadevicemenu/
+Title: MediaDeviceMenu
+Crawled: 2025-11-01 21:17:02
+================================================================================
+
+GitHub
+
+Source
+
+MediaDeviceMenu
+
+The
+
+MediaDeviceMenu
+
+component is a button that opens a menu that lists all media devices and allows the user to select them.
+
+Import
+
+import
+
+{
+
+MediaDeviceMenu
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+This component is implemented with the
+
+MediaDeviceSelect
+
+LiveKit components.
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+MediaDeviceMenu
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+Properties
+
+initialSelection
+
+string
+
+Optional
+
+#
+
+(Optional)
+
+kind
+
+MediaDeviceKind
+
+Optional
+
+#
+
+(Optional)
+
+onActiveDeviceChange
+
+(kind: MediaDeviceKind, deviceId: string) => void
+
+Optional
+
+#
+
+(Optional)
+
+requestPermissions
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+this will call getUserMedia if the permissions are not yet given to enumerate the devices with device labels. in some browsers multiple calls to getUserMedia result in multiple permission prompts. It's generally advised only flip this to true, once a (preview) track has been acquired successfully with the appropriate permissions.
+
+tracks
+
+Partial<Record<MediaDeviceKind, LocalAudioTrack | LocalVideoTrack | undefined>>
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Properties

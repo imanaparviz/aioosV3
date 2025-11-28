@@ -1,0 +1,257 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/tts/plugins/smallestai/
+Title: 
+Crawled: 2025-11-01 21:25:18
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use the
+
+Smallest AI
+
+Waves platform as a TTS provider for your voice agents.
+
+Quick reference
+
+This section includes a brief overview of the Smallest AI TTS plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[smallestai]~=1.2"
+
+Authentication
+
+The Smallest AI plugin requires an
+
+API key
+
+.
+
+Set
+
+SMALLEST_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Smallest AI TTS within an
+
+AgentSession
+
+or as a standalone speech generator. For example,
+
+you can use this TTS in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+smallestai
+
+session
+
+=
+
+AgentSession
+
+(
+
+tts
+
+=
+
+smallestai
+
+.
+
+TTS
+
+(
+
+voice_id
+
+=
+
+"irisha"
+
+,
+
+sample_rate
+
+=
+
+24000
+
+,
+
+output_format
+
+=
+
+"pcm"
+
+,
+
+)
+
+,
+
+# ... llm, stt, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+TTSModels | string
+
+Optional
+
+Default:
+
+lightning
+
+#
+
+Model to use.
+
+voice_id
+
+string
+
+Optional
+
+#
+
+The voice ID for synthesis. Must be a valid Smallest AI voice identifier.
+
+sample_rate
+
+number
+
+Optional
+
+Default:
+
+24000
+
+#
+
+Target audio sample rate in Hz. Match the rate to the rest of your audio pipeline to avoid resampling artifacts.
+
+output_format
+
+TTSOutputFormat | string
+
+Optional
+
+Default:
+
+pcm
+
+#
+
+Encoding format for synthesized audio. Select a format based on if you want raw audio for streaming/processing or compressed for storage/playback.
+
+Additional resources
+
+The following resources provide more information about using Smallest AI with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-smallestai
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Smallest AI TTS plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Smallest AI TTS plugin.
+
+Smallest AI docs
+
+Smallest AI's Waves TTS docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Smallest AI TTS.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

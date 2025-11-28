@@ -1,0 +1,39 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/
+Title: 
+Crawled: 2025-11-01 21:02:45
+================================================================================
+
+Copy page
+
+See more page options
+
+Voice AI quickstart
+
+Build your first voice AI agent in less than 10 minutes.
+
+Intro to LiveKit
+
+An overview of the LiveKit ecosystem and advantages.
+
+AI Agents
+
+The LiveKit framework for building realtime multimodal AI agents.
+
+Telephony
+
+LiveKit SIP integration for telephony applications.
+
+SDK Quickstarts
+
+Explore our collection of platform quickstarts to get up and running fast.
+
+LiveKit Cloud
+
+The fully-managed, globally distributed LiveKit deployment option.
+
+Recipes
+
+A comprehensive collection of LiveKit examples, guides, and demos.

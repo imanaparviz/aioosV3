@@ -1,0 +1,191 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/prejoin/
+Title: PreJoin
+Crawled: 2025-11-01 21:15:25
+================================================================================
+
+GitHub
+
+Source
+
+PreJoin
+
+The
+
+PreJoin
+
+prefab component is normally presented to the user before he enters a room. This component allows the user to check and select the preferred media device (camera und microphone). On submit the user decisions are returned, which can then be passed on to the
+
+LiveKitRoom
+
+so that the user enters the room with the correct media devices.
+
+Import
+
+import
+
+{
+
+PreJoin
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+This component is independent of the
+
+LiveKitRoom
+
+component and should not be nested within it. Because it only accesses the local media tracks this component is self-contained and works without connection to the LiveKit server.
+
+Usage
+
+<
+
+PreJoin
+
+/>
+
+Properties
+
+camLabel
+
+string
+
+Optional
+
+#
+
+(Optional)
+
+debug
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+Display a debug window for your convenience.
+
+defaults
+
+Partial<LocalUserChoices>
+
+Optional
+
+#
+
+(Optional)
+
+Prefill the input form with initial values.
+
+joinLabel
+
+string
+
+Optional
+
+#
+
+(Optional)
+
+micLabel
+
+string
+
+Optional
+
+#
+
+(Optional)
+
+onError
+
+(error: Error) => void
+
+Optional
+
+#
+
+(Optional)
+
+onSubmit
+
+(values: LocalUserChoices) => void
+
+Optional
+
+#
+
+(Optional)
+
+This function is called with the
+
+LocalUserChoices
+
+if validation is passed.
+
+onValidate
+
+(values: LocalUserChoices) => boolean
+
+Optional
+
+#
+
+(Optional)
+
+Provide your custom validation function. Only if validation is successful the user choices are past to the onSubmit callback.
+
+persistUserChoices
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+If true, user choices are persisted across sessions.
+
+userLabel
+
+string
+
+Optional
+
+#
+
+(Optional)
+
+videoProcessor
+
+TrackProcessor<Track.Kind.Video>
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Properties

@@ -1,0 +1,571 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/gemini/
+Title: 
+Crawled: 2025-11-01 21:21:52
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Gemini tools
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Google Gemini
+
+as an LLM provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[google]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-google@1.x
+
+Authentication
+
+The Google plugin requires authentication based on your chosen service:
+
+For Vertex AI, you must set the
+
+GOOGLE_APPLICATION_CREDENTIALS
+
+environment variable to the path of the service account key file.
+
+For Google Gemini API, set the
+
+GOOGLE_API_KEY
+
+environment variable.
+
+Usage
+
+Use Gemini within an
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+google
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+google
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"gemini-2.0-flash-exp"
+
+,
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+google
+
+from
+
+'@livekit/agents-plugin-google'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+google
+
+.
+
+LLM
+
+(
+
+model
+
+:
+
+"gemini-2.0-flash-exp"
+
+,
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. For a complete reference of all available parameters, see the
+
+plugin reference
+
+.
+
+model
+
+ChatModels | str
+
+Optional
+
+Default:
+
+gemini-2.0-flash-001
+
+#
+
+ID of the model to use. For a full list, see
+
+Gemini models
+
+.
+
+api_key
+
+str
+
+Optional
+
+Env:
+
+GOOGLE_API_KEY
+
+#
+
+API key for Google Gemini API.
+
+vertexai
+
+bool
+
+Optional
+
+Default:
+
+false
+
+#
+
+True to use
+
+Vertex AI
+
+; false to use
+
+Google AI
+
+.
+
+project
+
+str
+
+Optional
+
+Env:
+
+GOOGLE_CLOUD_PROJECT
+
+#
+
+Google Cloud project to use (only if using Vertex AI). Required if using Vertex AI and the environment variable isn't set.
+
+location
+
+str
+
+Optional
+
+Env:
+
+GOOGLE_CLOUD_LOCATION
+
+#
+
+Google Cloud location to use (only if using Vertex AI). Required if using Vertex AI and the environment variable isn't set.
+
+gemini_tools
+
+List[GeminiTool]
+
+Optional
+
+#
+
+List of built-in Google tools, such as Google Search. For more information, see
+
+Gemini tools
+
+.
+
+Gemini tools
+
+The
+
+gemini_tools
+
+parameter allows you to use built-in Google tools with the Gemini model. For example, you can use this feature to implement
+
+Grounding with Google Search
+
+:
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+google
+
+from
+
+google
+
+.
+
+genai
+
+import
+
+types
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+google
+
+.
+
+LLM
+
+(
+
+model
+
+=
+
+"gemini-2.0-flash-exp"
+
+,
+
+gemini_tools
+
+=
+
+[
+
+types
+
+.
+
+GoogleSearch
+
+(
+
+)
+
+]
+
+,
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+google
+
+from
+
+'@livekit/agents-plugin-google'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+google
+
+.
+
+LLM
+
+(
+
+model
+
+:
+
+"gemini-2.0-flash-exp"
+
+,
+
+geminiTools
+
+:
+
+[
+
+new
+
+google
+
+.
+
+types
+
+.
+
+GoogleSearch
+
+(
+
+)
+
+]
+
+,
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+The full list of supported tools, depending on the model, is:
+
+google.genai.types.GoogleSearchRetrieval()
+
+google.genai.types.ToolCodeExecution()
+
+google.genai.types.GoogleSearch()
+
+google.genai.types.UrlContext()
+
+google.genai.types.GoogleMaps()
+
+Additional resources
+
+The following resources provide more information about using Google Gemini with LiveKit Agents.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+Gemini docs
+
+Google Gemini documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Google Gemini.
+
+Google AI ecosystem guide
+
+Overview of the entire Google AI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Gemini tools
+
+Additional resources

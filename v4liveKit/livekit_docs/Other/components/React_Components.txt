@@ -1,0 +1,127 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/
+Title: 
+Crawled: 2025-11-01 21:06:39
+================================================================================
+
+Featured components
+
+A selected collection of components that we consider important and a good starting point for most applications.
+
+LiveKitRoom
+
+VideoTrack
+
+AudioTrack
+
+ParticipantTile
+
+RoomAudioRenderer
+
+TrackLoop
+
+Layouts
+
+Layouts are components that help you arrange video or audio tracks in standard conference layouts.
+
+CarouselLayout
+
+FocusLayout
+
+GridLayout
+
+Participant components
+
+A collection of components that are somewhat related to a participant, for example, to help you render a participant's audio or video track.
+
+AudioTrack
+
+AudioVisualizer
+
+ConnectionQualityIndicator
+
+ParticipantAudioTile
+
+ParticipantName
+
+ParticipantTile
+
+TrackMutedIndicator
+
+VideoTrack
+
+Controls components
+
+These components provide UI elements for controlling video, audio and screen sharing tracks, as well as the status of the room or UI elements.
+
+ChatToggle
+
+ClearPinButton
+
+DisconnectButton
+
+FocusToggle
+
+MediaDeviceSelect
+
+StartAudio
+
+TrackToggle
+
+More components
+
+BarVisualizer
+
+ChatEntry
+
+ConnectionState
+
+ConnectionStateToast
+
+FocusLayoutContainer
+
+LayoutContext
+
+LayoutContextProvider
+
+LiveKitRoom
+
+ParticipantContext
+
+ParticipantContextIfNeeded
+
+ParticipantLoop
+
+RoomAudioRenderer
+
+RoomContext
+
+RoomName
+
+StartMediaButton
+
+Toast
+
+TrackLoop
+
+TrackRefContext
+
+VoiceAssistantControlBar
+
+Prefabs
+
+Prefabs are built atop components, enriched with added functionalities, distinctive styles, and practical defaults. Designed for direct use, they're not intended for extension. Utilize them as-is or as a blueprint for developing your own unique components.
+
+AudioConference
+
+Chat
+
+ControlBar
+
+MediaDeviceMenu
+
+PreJoin
+
+VideoConference

@@ -1,0 +1,81 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/connectionstate/
+Title: ConnectionState
+Crawled: 2025-11-01 21:17:12
+================================================================================
+
+GitHub
+
+Source
+
+ConnectionState
+
+The
+
+ConnectionState
+
+component displays the connection status of the room as strings (
+
+"connected" | "connecting" | "disconnected" | "reconnecting"
+
+).
+
+Import
+
+import
+
+{
+
+ConnectionState
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+ConnectionState
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+Properties
+
+room
+
+Room
+
+Optional
+
+#
+
+(Optional)
+
+The room from which the connection status should be displayed.
+
+On this page
+
+Import
+
+Usage
+
+Properties

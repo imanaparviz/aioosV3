@@ -4,10 +4,10 @@
     <SidebarNav />
 
     <!-- Main Content -->
-    <main class="flex-1 p-6 lg:p-10 overflow-y-auto bg-slate-50 dark:bg-background-dark">
+    <main class="flex-1 p-6 lg:p-10 overflow-y-auto">
       <div class="flex flex-col h-full">
         <!-- Header -->
-        <header class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <header class="sticky top-0 backdrop-blur-sm z-10 py-4 mb-6 flex flex-wrap items-center justify-between gap-4">
           <div class="flex flex-col gap-1">
             <h1 class="text-slate-900 dark:text-white text-3xl lg:text-4xl font-black leading-tight tracking-[-0.033em]">
               Team Management
@@ -33,7 +33,7 @@
             </span>
             <input
               v-model="searchQuery"
-              class="w-full h-10 pl-10 pr-4 border border-slate-200 dark:border-slate-800 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
+              class="w-full h-10 pl-10 pr-4 border border-slate-200 dark:border-slate-800 rounded-lg bg-white/80 backdrop-blur-md dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
               placeholder="Search teams..."
               type="text"
             />
@@ -50,11 +50,11 @@
         </div>
 
         <!-- Teams Table -->
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+        <div class="bg-white/80 backdrop-blur-md dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left">
               <thead>
-                <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                <tr class="bg-slate-50/80 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
                   <th class="p-4 text-sm font-semibold text-slate-500 dark:text-slate-400">Team Name</th>
                   <th class="p-4 text-sm font-semibold text-slate-500 dark:text-slate-400">Members</th>
                   <th class="p-4 text-sm font-semibold text-slate-500 dark:text-slate-400">Assigned Agents</th>

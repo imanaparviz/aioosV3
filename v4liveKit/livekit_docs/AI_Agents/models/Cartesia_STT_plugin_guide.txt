@@ -1,0 +1,237 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/cartesia/
+Title: 
+Crawled: 2025-11-01 21:21:44
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Cartesia
+
+as an STT provider for your voice agents.
+
+LiveKit Inference
+
+Cartesia STT is also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[cartesia]~=1.2"
+
+Authentication
+
+The Cartesia plugin requires a
+
+Cartesia API key
+
+.
+
+Set
+
+CARTESIA_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Cartesia STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+cartesia
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+cartesia
+
+.
+
+STT
+
+(
+
+model
+
+=
+
+"ink-whisper"
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+model
+
+string
+
+Optional
+
+Default:
+
+ink-whisper
+
+#
+
+Selected model to use for STT. See
+
+Cartesia STT models
+
+for supported values.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language of input audio in
+
+ISO-639-1
+
+format. See
+
+Cartesia STT models
+
+for supported values.
+
+Additional resources
+
+The following resources provide more information about using Cartesia with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-cartesia
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Cartesia STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Cartesia STT plugin.
+
+Cartesia docs
+
+Cartesia STT docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Cartesia STT.
+
+Cartesia TTS
+
+Guide to the Cartesia TTS plugin with LiveKit Agents.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

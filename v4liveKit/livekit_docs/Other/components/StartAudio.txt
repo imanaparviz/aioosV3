@@ -1,0 +1,83 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/startaudio/
+Title: StartAudio
+Crawled: 2025-11-01 21:17:29
+================================================================================
+
+GitHub
+
+Source
+
+StartAudio
+
+The
+
+StartAudio
+
+component is only visible when the browser blocks audio playback. This is due to some browser implemented autoplay policies. To start audio playback, the user must perform a user-initiated event such as clicking this button. As soon as audio playback starts, the button hides itself again.
+
+Import
+
+import
+
+{
+
+StartAudio
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+StartAudio
+
+label
+
+=
+
+"
+
+Click to allow audio playback
+
+"
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+Properties
+
+label
+
+string
+
+Required
+
+#
+
+On this page
+
+Import
+
+Usage
+
+Properties

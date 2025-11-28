@@ -1,0 +1,313 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/openai/
+Title: 
+Crawled: 2025-11-01 21:21:29
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+OpenAI
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Authentication
+
+The OpenAI plugin requires an
+
+OpenAI API key
+
+.
+
+Set
+
+OPENAI_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use OpenAI STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+openai
+
+.
+
+STT
+
+(
+
+model
+
+=
+
+"gpt-4o-transcribe"
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+stt
+
+:
+
+new
+
+openai
+
+.
+
+STT
+
+(
+
+model
+
+:
+
+"gpt-4o-transcribe"
+
+)
+
+,
+
+// ... llm, tts, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for a complete list of all available parameters.
+
+model
+
+WhisperModels | string
+
+Optional
+
+Default:
+
+gpt-4o-transcribe
+
+#
+
+Model to use for transcription. See OpenAI's documentation for a list of
+
+supported models
+
+.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language of input audio in
+
+ISO-639-1
+
+format. See OpenAI's documentation for a list of
+
+supported languages
+
+.
+
+Additional resources
+
+The following resources provide more information about using OpenAI with LiveKit Agents.
+
+Python package
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+OpenAI docs
+
+OpenAI STT docs.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and OpenAI STT.
+
+OpenAI ecosystem guide
+
+Overview of the entire OpenAI and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

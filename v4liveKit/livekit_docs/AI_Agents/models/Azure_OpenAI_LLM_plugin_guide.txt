@@ -1,0 +1,435 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/llm/plugins/azure-openai/
+Title: 
+Crawled: 2025-11-01 21:21:48
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Azure OpenAI
+
+as a LLM provider for your voice agents.
+
+LiveKit Inference
+
+Azure OpenAI is also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[openai]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-openai@1.x
+
+Authentication
+
+The Azure OpenAI plugin requires either an
+
+Azure OpenAI API key
+
+or a Microsoft Entra ID token.
+
+Set the following environment variables in your
+
+.env
+
+file:
+
+AZURE_OPENAI_API_KEY
+
+or
+
+AZURE_OPENAI_ENTRA_TOKEN
+
+AZURE_OPENAI_ENDPOINT
+
+OPENAI_API_VERSION
+
+Usage
+
+Use Azure OpenAI within an
+
+AgentSession
+
+or as a standalone LLM service. For example,
+
+you can use this LLM in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+openai
+
+session
+
+=
+
+AgentSession
+
+(
+
+llm
+
+=
+
+openai
+
+.
+
+LLM
+
+.
+
+with_azure
+
+(
+
+azure_deployment
+
+=
+
+"<model-deployment>"
+
+,
+
+azure_endpoint
+
+=
+
+"https://<endpoint>.openai.azure.com/"
+
+,
+
+# or AZURE_OPENAI_ENDPOINT
+
+api_key
+
+=
+
+"<api-key>"
+
+,
+
+# or AZURE_OPENAI_API_KEY
+
+api_version
+
+=
+
+"2024-10-01-preview"
+
+,
+
+# or OPENAI_API_VERSION
+
+)
+
+,
+
+# ... tts, stt, vad, turn_detection, etc.
+
+)
+
+import
+
+*
+
+as
+
+openai
+
+from
+
+'@livekit/agents-plugin-openai'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+llm
+
+:
+
+openai
+
+.
+
+LLM
+
+.
+
+withAzure
+
+(
+
+{
+
+azureDeployment
+
+:
+
+"<model-deployment>"
+
+,
+
+azureEndpoint
+
+:
+
+"https://<endpoint>.openai.azure.com/"
+
+,
+
+// or AZURE_OPENAI_ENDPOINT
+
+apiKey
+
+:
+
+"<api-key>"
+
+,
+
+// or AZURE_OPENAI_API_KEY
+
+apiVersion
+
+:
+
+"2024-10-01-preview"
+
+,
+
+// or OPENAI_API_VERSION
+
+}
+
+)
+
+,
+
+// ... tts, stt, vad, turn_detection, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes the Azure-specific parameters. For a complete list of all available parameters, see the plugin reference links in the
+
+Additional resources
+
+section.
+
+azure_deployment
+
+string
+
+Required
+
+#
+
+Name of your model deployment.
+
+entra_token
+
+string
+
+Optional
+
+#
+
+Microsoft Entra ID authentication token. Required if not using API key authentication.
+
+To learn more see Azure's
+
+Authentication
+
+documentation.
+
+temperature
+
+float
+
+Optional
+
+Default:
+
+0.1
+
+#
+
+Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
+
+Valid values are between
+
+0
+
+and
+
+2
+
+.
+
+parallel_tool_calls
+
+bool
+
+Optional
+
+#
+
+Controls whether the model can make multiple tool calls in parallel. When enabled, the model can make multiple tool calls simultaneously, which can improve performance for complex tasks.
+
+tool_choice
+
+ToolChoice | Literal['auto', 'required', 'none']
+
+Optional
+
+Default:
+
+auto
+
+#
+
+Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
+
+Additional resources
+
+The following links provide more information about the Azure OpenAI LLM plugin.
+
+Python plugin
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+Azure OpenAI docs
+
+Azure OpenAI service documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Azure OpenAI.
+
+Azure ecosystem overview
+
+Overview of the entire Azure AI ecosystem and LiveKit Agents integration.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

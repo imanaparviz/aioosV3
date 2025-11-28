@@ -1,0 +1,331 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/quickstarts/unity-web/
+Title: 
+Crawled: 2025-11-01 21:11:30
+================================================================================
+
+On this page
+
+1. Install LiveKit SDK
+
+2. Connect to a room
+
+3. Publish video & audio
+
+4. Display a video on a RawImage
+
+5. Next Steps
+
+Copy page
+
+See more page options
+
+1. Install LiveKit SDK
+
+Click the Add
+
++
+
+menu in the Package Manager toolbar, select
+
+Add package from git URL
+
+, and enter:
+
+https://github.com/livekit/client-sdk-unity-web.git
+
+For more details, see the
+
+Unity docs on installing packages from Git URLs
+
+.
+
+2. Connect to a room
+
+Note that this example hardcodes a token. In a real app, you’ll need your server to generate a token for you.
+
+public
+
+class
+
+MyObject
+
+:
+
+MonoBehaviour
+
+{
+
+public
+
+Room
+
+Room
+
+;
+
+IEnumerator
+
+Start
+
+(
+
+)
+
+{
+
+Room
+
+=
+
+new
+
+Room
+
+(
+
+)
+
+;
+
+var
+
+c
+
+=
+
+Room
+
+.
+
+Connect
+
+(
+
+"<your LiveKit server URL>"
+
+,
+
+"<generate a token>"
+
+)
+
+;
+
+yield
+
+return
+
+c
+
+;
+
+if
+
+(
+
+!
+
+c
+
+.
+
+IsError
+
+)
+
+{
+
+// Connected
+
+}
+
+}
+
+}
+
+3. Publish video & audio
+
+yield
+
+return
+
+Room
+
+.
+
+LocalParticipant
+
+.
+
+EnableCameraAndMicrophone
+
+(
+
+)
+
+;
+
+4. Display a video on a RawImage
+
+RawImage
+
+image
+
+=
+
+GetComponent
+
+<
+
+RawImage
+
+>
+
+(
+
+)
+
+;
+
+Room
+
+.
+
+TrackSubscribed
+
++=
+
+(
+
+track
+
+,
+
+publication
+
+,
+
+participant
+
+)
+
+=>
+
+{
+
+if
+
+(
+
+track
+
+.
+
+Kind
+
+==
+
+TrackKind
+
+.
+
+Video
+
+)
+
+{
+
+var
+
+video
+
+=
+
+track
+
+.
+
+Attach
+
+(
+
+)
+
+as
+
+HTMLVideoElement
+
+;
+
+video
+
+.
+
+VideoReceived
+
++=
+
+tex
+
+=>
+
+{
+
+// VideoReceived is called every time the video resolution changes
+
+image
+
+.
+
+texture
+
+=
+
+tex
+
+;
+
+}
+
+;
+
+}
+
+}
+
+;
+
+5. Next Steps
+
+Set up a server to generate tokens for your app at runtime by following this guide:
+
+Generating Tokens
+
+.
+
+View the
+
+full SDK reference
+
+and
+
+GitHub repository
+
+for more documentation and examples.
+
+Happy coding!
+
+On this page
+
+1. Install LiveKit SDK
+
+2. Connect to a room
+
+3. Publish video & audio
+
+4. Display a video on a RawImage
+
+5. Next Steps

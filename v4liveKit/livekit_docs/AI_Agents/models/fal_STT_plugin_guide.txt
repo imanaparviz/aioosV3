@@ -1,0 +1,201 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/fal/
+Title: 
+Crawled: 2025-11-01 21:21:34
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+fal
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[fal]~=1.2"
+
+Authentication
+
+The fal plugin requires a
+
+fal API key
+
+.
+
+Set
+
+FAL_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use fal STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+fal
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+fal
+
+.
+
+STT
+
+(
+
+language
+
+=
+
+"de"
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+language
+
+str
+
+Optional
+
+Default:
+
+en
+
+#
+
+Speech recognition language.
+
+Additional resources
+
+The following resources provide more information about using fal with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-fal
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the fal STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit fal STT plugin.
+
+fal docs
+
+fal's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and fal.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

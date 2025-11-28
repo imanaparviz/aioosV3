@@ -1,0 +1,61 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usesortedparticipants/
+Title: useSortedParticipants
+Crawled: 2025-11-01 21:16:54
+================================================================================
+
+GitHub
+
+Source
+
+useSortedParticipants
+
+The
+
+useSortedParticipants
+
+hook returns the participants sorted by importance.
+
+Import
+
+import
+
+{
+
+useSortedParticipants
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+participants
+
+Array<Participant>
+
+Required
+
+#
+
+Returns
+
+Participant
+
+[
+
+]
+
+On this page
+
+Import
+
+Properties
+
+Returns

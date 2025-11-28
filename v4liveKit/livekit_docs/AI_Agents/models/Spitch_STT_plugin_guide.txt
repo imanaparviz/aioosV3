@@ -1,0 +1,209 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/spitch/
+Title: 
+Crawled: 2025-11-01 21:21:30
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+Overview
+
+This plugin allows you to use
+
+Spitch
+
+as an STT provider for your voice agents.
+
+Quick reference
+
+This section provides a quick reference for the Spitch STT plugin. For more information, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+uv
+
+add
+
+"livekit-agents[spitch]~=1.2"
+
+Authentication
+
+The Spitch plugin requires a
+
+Spitch API key
+
+.
+
+Set
+
+SPITCH_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Spitch STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+spitch
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+spitch
+
+.
+
+STT
+
+(
+
+language
+
+=
+
+"en"
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+Parameters
+
+This section describes some of the available parameters. See the
+
+plugin reference
+
+for a complete list of all available parameters.
+
+language
+
+string
+
+Optional
+
+Default:
+
+en
+
+#
+
+Language short code of the input speech. For supported values, see
+
+Spitch languages
+
+.
+
+Additional resources
+
+The following resources provide more information about using Spitch with LiveKit Agents.
+
+Python package
+
+The
+
+livekit-plugins-spitch
+
+package on PyPI.
+
+Plugin reference
+
+Reference for the Spitch STT plugin.
+
+GitHub repo
+
+View the source or contribute to the LiveKit Spitch STT plugin.
+
+Spitch docs
+
+Spitch's official documentation.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Spitch.
+
+Spitch TTS
+
+Guide to the Spitch TTS plugin with LiveKit Agents.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

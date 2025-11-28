@@ -1,0 +1,85 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usefacingmode/
+Title: useFacingMode
+Crawled: 2025-11-01 21:15:41
+================================================================================
+
+GitHub
+
+Source
+
+useFacingMode
+
+Note
+
+This feature is experimental and may change or be removed based on developer feedback and real-world usage.
+
+Try to determine the
+
+facingMode
+
+of a local participant video track.
+
+Import
+
+import
+
+{
+
+useFacingMode
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+Works only on local video tracks.
+
+Properties
+
+trackReference
+
+TrackReferenceOrPlaceholder
+
+Required
+
+#
+
+Returns
+
+"user"
+
+|
+
+"environment"
+
+|
+
+"left"
+
+|
+
+"right"
+
+|
+
+"undefined"
+
+;
+
+On this page
+
+Import
+
+Remarks
+
+Properties
+
+Returns

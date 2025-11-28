@@ -1,0 +1,99 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usetracktranscription/
+Title: useTrackTranscription
+Crawled: 2025-11-01 21:17:55
+================================================================================
+
+GitHub
+
+Source
+
+useTrackTranscription
+
+Note
+
+This feature is experimental and may change or be removed based on developer feedback and real-world usage.
+
+Caution
+
+This API is deprecated: Use useTranscription instead
+
+Import
+
+import
+
+{
+
+useTrackTranscription
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+trackRef
+
+TrackReferenceOrPlaceholder | undefined
+
+Required
+
+#
+
+options.bufferSize
+
+number
+
+Optional
+
+#
+
+how many transcription segments should be buffered in state
+
+options.onTranscription
+
+(newSegments: TranscriptionSegment[]) => void
+
+Optional
+
+#
+
+optional callback for retrieving newly incoming transcriptions only
+
+Returns
+
+An object consisting of
+
+segments
+
+with maximum length of opts.bufferSize
+
+{
+
+segments
+
+:
+
+ReceivedTranscriptionSegment
+
+[
+
+]
+
+;
+
+}
+
+On this page
+
+Import
+
+Properties
+
+Returns

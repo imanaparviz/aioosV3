@@ -1,0 +1,561 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/python/v1/livekit/agents/tokenize/index.html
+Title: 
+Crawled: 2025-11-01 21:18:47
+================================================================================
+
+Sub-modules
+
+livekit.agents.tokenize.basic
+
+livekit.agents.tokenize.blingfire
+
+livekit.agents.tokenize.utils
+
+Classes
+
+class
+
+BufferedSentenceStream
+
+(
+
+*, tokenizer: TokenizeCallable, min_token_len: int, min_ctx_len: int)
+
+Expand source code
+
+class BufferedSentenceStream(BufferedTokenStream, SentenceStream):
+
+def __init__(
+
+self,
+
+*,
+
+tokenizer: TokenizeCallable,
+
+min_token_len: int,
+
+min_ctx_len: int,
+
+) -> None:
+
+super().__init__(
+
+tokenize_fnc=tokenizer,
+
+min_token_len=min_token_len,
+
+min_ctx_len=min_ctx_len,
+
+)
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+livekit.agents.tokenize.token_stream.BufferedTokenStream
+
+livekit.agents.tokenize.tokenizer.SentenceStream
+
+abc.ABC
+
+class
+
+BufferedWordStream
+
+(
+
+*, tokenizer: TokenizeCallable, min_token_len: int, min_ctx_len: int)
+
+Expand source code
+
+class BufferedWordStream(BufferedTokenStream, WordStream):
+
+def __init__(
+
+self,
+
+*,
+
+tokenizer: TokenizeCallable,
+
+min_token_len: int,
+
+min_ctx_len: int,
+
+) -> None:
+
+super().__init__(
+
+tokenize_fnc=tokenizer,
+
+min_token_len=min_token_len,
+
+min_ctx_len=min_ctx_len,
+
+)
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+livekit.agents.tokenize.token_stream.BufferedTokenStream
+
+livekit.agents.tokenize.tokenizer.WordStream
+
+abc.ABC
+
+class
+
+SentenceStream
+
+Expand source code
+
+class SentenceStream(ABC):
+
+def __init__(self) -> None:
+
+self._event_ch = aio.Chan[TokenData]()
+
+@abstractmethod
+
+def push_text(self, text: str) -> None: ...
+
+@abstractmethod
+
+def flush(self) -> None: ...
+
+@abstractmethod
+
+def end_input(self) -> None: ...
+
+@abstractmethod
+
+async def aclose(self) -> None: ...
+
+async def __anext__(self) -> TokenData:
+
+return await self._event_ch.__anext__()
+
+def __aiter__(self) -> AsyncIterator[TokenData]:
+
+return self
+
+def _do_close(self) -> None:
+
+self._event_ch.close()
+
+def _check_not_closed(self) -> None:
+
+if self._event_ch.closed:
+
+cls = type(self)
+
+raise RuntimeError(f"{cls.__module__}.{cls.__name__} is closed")
+
+@property
+
+def closed(self) -> bool:
+
+return self._event_ch.closed
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+abc.ABC
+
+Subclasses
+
+livekit.agents.tokenize.token_stream.BufferedSentenceStream
+
+livekit.agents.tts.stream_pacer.StreamPacerWrapper
+
+Instance variables
+
+prop
+
+closed
+
+: bool
+
+Expand source code
+
+@property
+
+def closed(self) -> bool:
+
+return self._event_ch.closed
+
+Methods
+
+async def
+
+aclose
+
+(
+
+self) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+async def aclose(self) -> None: ...
+
+def
+
+end_input
+
+(
+
+self) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+def end_input(self) -> None: ...
+
+def
+
+flush
+
+(
+
+self) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+def flush(self) -> None: ...
+
+def
+
+push_text
+
+(
+
+self, text: str) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+def push_text(self, text: str) -> None: ...
+
+class
+
+SentenceTokenizer
+
+Expand source code
+
+class SentenceTokenizer(ABC):
+
+@abstractmethod
+
+def tokenize(self, text: str, *, language: str | None = None) -> list[str]:
+
+pass
+
+@abstractmethod
+
+def stream(self, *, language: str | None = None) -> SentenceStream:
+
+pass
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+abc.ABC
+
+Subclasses
+
+SentenceTokenizer
+
+SentenceTokenizer
+
+livekit.plugins.nltk.sentence_tokenizer.SentenceTokenizer
+
+Methods
+
+def
+
+stream
+
+(
+
+self, *, language: str | None = None) ‑> livekit.agents.tokenize.tokenizer.SentenceStream
+
+Expand source code
+
+@abstractmethod
+
+def stream(self, *, language: str | None = None) -> SentenceStream:
+
+pass
+
+def
+
+tokenize
+
+(
+
+self, text: str, *, language: str | None = None) ‑> list[str]
+
+Expand source code
+
+@abstractmethod
+
+def tokenize(self, text: str, *, language: str | None = None) -> list[str]:
+
+pass
+
+class
+
+TokenData
+
+(
+
+segment_id: str = '', token: str = '')
+
+Expand source code
+
+@dataclass
+
+class TokenData:
+
+segment_id: str = ""
+
+token: str = ""
+
+TokenData(segment_id: 'str' = '', token: 'str' = '')
+
+Instance variables
+
+var
+
+segment_id
+
+: str
+
+var
+
+token
+
+: str
+
+class
+
+WordStream
+
+Expand source code
+
+class WordStream(ABC):
+
+def __init__(self) -> None:
+
+self._event_ch = aio.Chan[TokenData]()
+
+@abstractmethod
+
+def push_text(self, text: str) -> None: ...
+
+@abstractmethod
+
+def flush(self) -> None: ...
+
+@abstractmethod
+
+def end_input(self) -> None: ...
+
+@abstractmethod
+
+async def aclose(self) -> None: ...
+
+async def __anext__(self) -> TokenData:
+
+return await self._event_ch.__anext__()
+
+def __aiter__(self) -> AsyncIterator[TokenData]:
+
+return self
+
+def _do_close(self) -> None:
+
+self._event_ch.close()
+
+def _check_not_closed(self) -> None:
+
+if self._event_ch.closed:
+
+cls = type(self)
+
+raise RuntimeError(f"{cls.__module__}.{cls.__name__} is closed")
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+abc.ABC
+
+Subclasses
+
+livekit.agents.tokenize.token_stream.BufferedWordStream
+
+Methods
+
+async def
+
+aclose
+
+(
+
+self) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+async def aclose(self) -> None: ...
+
+def
+
+end_input
+
+(
+
+self) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+def end_input(self) -> None: ...
+
+def
+
+flush
+
+(
+
+self) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+def flush(self) -> None: ...
+
+def
+
+push_text
+
+(
+
+self, text: str) ‑> None
+
+Expand source code
+
+@abstractmethod
+
+def push_text(self, text: str) -> None: ...
+
+class
+
+WordTokenizer
+
+Expand source code
+
+class WordTokenizer(ABC):
+
+@abstractmethod
+
+def tokenize(self, text: str, *, language: str | None = None) -> list[str]:
+
+pass
+
+@abstractmethod
+
+def stream(self, *, language: str | None = None) -> WordStream:
+
+pass
+
+def format_words(self, words: list[str]) -> str:
+
+return " ".join(words)
+
+Helper class that provides a standard way to create an ABC using
+
+inheritance.
+
+Ancestors
+
+abc.ABC
+
+Subclasses
+
+WordTokenizer
+
+Methods
+
+def
+
+format_words
+
+(
+
+self, words: list[str]) ‑> str
+
+Expand source code
+
+def format_words(self, words: list[str]) -> str:
+
+return " ".join(words)
+
+def
+
+stream
+
+(
+
+self, *, language: str | None = None) ‑> livekit.agents.tokenize.tokenizer.WordStream
+
+Expand source code
+
+@abstractmethod
+
+def stream(self, *, language: str | None = None) -> WordStream:
+
+pass
+
+def
+
+tokenize
+
+(
+
+self, text: str, *, language: str | None = None) ‑> list[str]
+
+Expand source code
+
+@abstractmethod
+
+def tokenize(self, text: str, *, language: str | None = None) -> list[str]:
+
+pass

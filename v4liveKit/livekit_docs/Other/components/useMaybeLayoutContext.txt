@@ -1,0 +1,55 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/usemaybelayoutcontext/
+Title: useMaybeLayoutContext
+Crawled: 2025-11-01 21:16:01
+================================================================================
+
+GitHub
+
+Source
+
+useMaybeLayoutContext
+
+Returns a layout context from the
+
+LayoutContext
+
+if it exists, otherwise
+
+undefined
+
+.
+
+Import
+
+import
+
+{
+
+useMaybeLayoutContext
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Returns
+
+LayoutContextType
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Returns

@@ -1,16 +1,21 @@
 @echo off
 REM ============================================
 REM AIOOS Platform - Start Script
-REM Runs both Backend and Frontend servers
+REM Runs Backend, Agent Worker, and Frontend
 REM ============================================
+
+REM Set the base directory to THIS script's location
+set "BASEDIR=%~dp0"
+cd /d "%BASEDIR%"
 
 echo ================================================
 echo 🚀 Starting AIOOS Voice AI Platform
+echo 📁 From: %BASEDIR%
 echo ================================================
 echo.
 
 REM Check if backend venv exists
-if not exist "v4liveKit\backend\venv" (
+if not exist "%BASEDIR%v4liveKit\backend\venv" (
     echo ❌ Backend not installed yet!
     echo 📝 Please run: 1-INSTALL.bat first
     echo.
@@ -19,7 +24,7 @@ if not exist "v4liveKit\backend\venv" (
 )
 
 REM Check if frontend node_modules exists
-if not exist "v4liveKit-frontend\node_modules" (
+if not exist "%BASEDIR%v4liveKit-frontend\node_modules" (
     echo ❌ Frontend not installed yet!
     echo 📝 Please run: 1-INSTALL.bat first
     echo.
@@ -27,69 +32,42 @@ if not exist "v4liveKit-frontend\node_modules" (
     exit /b 1
 )
 
-echo ✅ Dependencies found
-echo.
-echo 📝 Starting servers in separate windows...
-echo.
-echo   Backend:  http://localhost:8000
-echo   Agent Worker: Voice AI 🎤
-echo   Frontend: http://localhost:5173
-echo.
-echo 💡 To stop servers: Run 3-STOP.bat or close the windows
+echo ✅ Dependencies found. Starting services...
 echo.
 
-REM Start Backend in new window
-echo 🔧 Starting Backend Server...
-start "AIOOS Backend (Port 8000)" /D "%~dp0v4liveKit\backend" cmd /k "call venv\Scripts\activate.bat && echo ================================================ && echo 🔧 AIOOS Backend Server && echo ================================================ && echo. && echo Backend running at: http://localhost:8000 && echo API Docs: http://localhost:8000/docs && echo. && echo Close this window to stop the backend && echo ================================================ && echo. && python main.py"
+REM 1. Start Backend
+echo 🔧 Starting Backend Server (Port 8000)...
+start "AIOOS Backend" /D "%BASEDIR%v4liveKit\backend" cmd /k "call venv\Scripts\activate.bat && python main.py"
 
-REM Wait 3 seconds for backend to start
-echo ⏳ Waiting for backend to start...
+REM Wait for backend to initialize
 timeout /t 3 /nobreak >nul
 
-REM Start Agent Worker in new window (VOICE AGENT!)
-echo 🎙️  Starting Agent Worker (Voice AI)...
-start "AIOOS Agent Worker (Voice)" /D "%~dp0v4liveKit\backend" cmd /k "call venv\Scripts\activate.bat && echo ================================================ && echo 🎙️  AIOOS Voice Agent Worker && echo ================================================ && echo. && echo This enables voice conversations! && echo Using Azure Speech (German + English) && echo. && echo Close this window to stop the agent && echo ================================================ && echo. && python agent_worker.py dev"
+REM 2. Start Agent Worker
+echo 🎙️  Starting Voice Agent Worker...
+start "AIOOS Agent Worker" /D "%BASEDIR%v4liveKit\backend" cmd /k "call venv\Scripts\activate.bat && python agent_worker.py dev"
 
-REM Wait 3 seconds for agent worker to start
-echo ⏳ Waiting for agent worker to start...
-timeout /t 3 /nobreak >nul
-
-REM Start Frontend in new window
-echo 🎨 Starting Frontend Server...
-start "AIOOS Frontend (Port 5173)" /D "%~dp0v4liveKit-frontend" cmd /k "echo ================================================ && echo 🎨 AIOOS Frontend Server && echo ================================================ && echo. && echo Frontend running at: http://localhost:5173 && echo. && echo Close this window to stop the frontend && echo ================================================ && echo. && npm run dev"
-
-REM Wait a bit for frontend to start
+REM Wait for worker to initialize
 timeout /t 2 /nobreak >nul
+
+REM 3. Start Frontend
+echo 🎨 Starting Frontend Server (Port 5173)...
+start "AIOOS Frontend" /D "%BASEDIR%v4liveKit-frontend" cmd /k "npm run dev"
+
+REM Wait for frontend to initialize
+timeout /t 4 /nobreak >nul
 
 echo.
 echo ================================================
-echo ✅ Servers Started!
+echo ✅ All Systems Operational!
 echo ================================================
 echo.
 echo 🌐 Backend:  http://localhost:8000
-echo 🎙️  Agent Worker: Voice AI Running
-echo 🌐 Frontend: http://localhost:5173
-echo 📚 API Docs: http://localhost:8000/docs
+echo 🎙️  Worker:   Listening for jobs...
+echo 🎨 Frontend: http://localhost:5173
 echo.
-echo 💡 Tips:
-echo   - Backend window will show API requests
-echo   - Agent Worker window shows voice AI logs
-echo   - Frontend window will show build logs
-echo   - Close windows or run 3-STOP.bat to stop
-echo.
-echo 🎤 To test voice agent:
-echo   1. Click on "Deutscher Kundenservice" agent
-echo   2. Click "Test Agent"
-echo   3. Say: "Hallo, wie geht es dir?"
-echo.
-echo 🎉 Opening frontend in browser...
-echo.
-
-REM Wait 5 seconds then open browser
-timeout /t 5 /nobreak >nul
+echo 🎉 Opening browser...
 start http://localhost:5173
 
 echo.
-echo ✅ Platform is running! Enjoy!
-echo.
-pause
+echo 💡 Press any key to close this launcher (servers will keep running)...
+pause >nul

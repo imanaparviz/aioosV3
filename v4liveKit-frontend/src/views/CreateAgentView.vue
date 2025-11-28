@@ -4,7 +4,7 @@
     <SidebarNav />
 
     <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+    <main class="flex-1 overflow-y-auto">
       <div class="px-4 py-5 sm:px-6 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center">
         <div class="flex flex-col w-full max-w-5xl flex-1">
           <!-- Back Button -->

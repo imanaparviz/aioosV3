@@ -1,0 +1,137 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/participanttile/
+Title: ParticipantTile
+Crawled: 2025-11-01 21:16:39
+================================================================================
+
+GitHub
+
+Source
+
+ParticipantTile
+
+The
+
+ParticipantTile
+
+component is the base utility wrapper for displaying a visual representation of a participant. This component can be used as a child of the
+
+TrackLoop
+
+component or by passing a track reference as property.
+
+Import
+
+import
+
+{
+
+ParticipantTile
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+Using the
+
+ParticipantTile
+
+component with a track reference:
+
+<
+
+ParticipantTile
+
+trackRef
+
+=
+
+{
+
+trackRef
+
+}
+
+/>
+
+Using the
+
+ParticipantTile
+
+component as a child of the
+
+TrackLoop
+
+component:
+
+<
+
+TrackLoop
+
+>
+
+<
+
+ParticipantTile
+
+/>
+
+</
+
+TrackLoop
+
+>
+
+Properties
+
+disableSpeakingIndicator
+
+boolean
+
+Optional
+
+#
+
+(Optional)
+
+onParticipantClick
+
+(event: ParticipantClickEvent) => void
+
+Optional
+
+#
+
+(Optional)
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Optional
+
+#
+
+(Optional)
+
+The track reference to display.
+
+On this page
+
+Import
+
+Usage
+
+Using the
+
+Using the
+
+Properties

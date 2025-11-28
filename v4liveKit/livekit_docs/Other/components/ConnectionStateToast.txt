@@ -1,0 +1,53 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/connectionstatetoast/
+Title: ConnectionStateToast
+Crawled: 2025-11-01 21:17:39
+================================================================================
+
+GitHub
+
+Source
+
+ConnectionStateToast
+
+The
+
+ConnectionStateToast
+
+component displays a toast notification indicating the current connection state of the room.
+
+Import
+
+import
+
+{
+
+ConnectionStateToast
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Properties
+
+room
+
+Room
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Properties

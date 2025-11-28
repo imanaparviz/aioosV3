@@ -1,0 +1,317 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/agents/models/stt/plugins/deepgram/
+Title: 
+Crawled: 2025-11-01 21:21:41
+================================================================================
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources
+
+Copy page
+
+See more page options
+
+Available in
+
+Python
+
+|
+
+Node.js
+
+Overview
+
+This plugin allows you to use
+
+Deepgram
+
+as an STT provider for your voice agents.
+
+LiveKit Inference
+
+Deepgram STT is also available in LiveKit Inference, with billing and integration handled automatically. See
+
+the docs
+
+for more information.
+
+Quick reference
+
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see
+
+Additional resources
+
+.
+
+Installation
+
+Install the plugin from PyPI:
+
+Python
+
+Node.js
+
+uv
+
+add
+
+"livekit-agents[deepgram]~=1.2"
+
+pnpm
+
+add
+
+@livekit/agents-plugin-deepgram@1.x
+
+Authentication
+
+The Deepgram plugin requires a
+
+Deepgram API key
+
+.
+
+Set
+
+DEEPGRAM_API_KEY
+
+in your
+
+.env
+
+file.
+
+Usage
+
+Use Deepgram STT in an
+
+AgentSession
+
+or as a standalone transcription service. For example, you can use this STT in the
+
+Voice AI quickstart
+
+.
+
+Python
+
+Node.js
+
+from
+
+livekit
+
+.
+
+plugins
+
+import
+
+deepgram
+
+session
+
+=
+
+AgentSession
+
+(
+
+stt
+
+=
+
+deepgram
+
+.
+
+STTv2
+
+(
+
+model
+
+=
+
+"flux-general-en"
+
+,
+
+eager_eot_threshold
+
+=
+
+0.4
+
+,
+
+)
+
+,
+
+# ... llm, tts, etc.
+
+)
+
+import
+
+*
+
+as
+
+deepgram
+
+from
+
+'@livekit/agents-plugin-deepgram'
+
+;
+
+const
+
+session
+
+=
+
+new
+
+voice
+
+.
+
+AgentSession
+
+(
+
+{
+
+stt
+
+:
+
+new
+
+deepgram
+
+.
+
+STT
+
+(
+
+model
+
+:
+
+"nova-3"
+
+)
+
+,
+
+// ... llm, tts, etc.
+
+}
+
+)
+
+;
+
+Parameters
+
+This section describes some of the available parameters. See the plugin reference links in the
+
+Additional resources
+
+section for more details.
+
+model
+
+string
+
+Optional
+
+Default:
+
+nova-3
+
+#
+
+The Deepgram model to use for speech recognition.
+
+keyterms
+
+list[string]
+
+Optional
+
+Default:
+
+[]
+
+#
+
+List of key terms to improve recognition accuracy. Supported by Nova-3 models.
+
+Additional resources
+
+The following resources provide more information about using Deepgram with LiveKit Agents.
+
+Python package
+
+Reference
+
+GitHub
+
+PyPI
+
+Node.js plugin
+
+Reference
+
+GitHub
+
+NPM
+
+Deepgram docs
+
+Deepgram's full docs site.
+
+Voice AI quickstart
+
+Get started with LiveKit Agents and Deepgram.
+
+Deepgram TTS
+
+Guide to the Deepgram TTS plugin with LiveKit Agents.
+
+On this page
+
+Overview
+
+Quick reference
+
+Installation
+
+Authentication
+
+Usage
+
+Parameters
+
+Additional resources

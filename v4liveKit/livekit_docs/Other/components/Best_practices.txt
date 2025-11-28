@@ -1,0 +1,191 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/guide/
+Title: 
+Crawled: 2025-11-01 21:16:35
+================================================================================
+
+On this page
+
+Use LiveKit components for lower-level features
+
+Using hooks for current state
+
+Updating props for the LiveKitRoom component
+
+Copy page
+
+See more page options
+
+Use LiveKit components for lower-level features
+
+You can create custom React components for your LiveKit app. For lower-level features (for example, mic toggle),
+
+however, LiveKit components are built using utility state handling hooks. LiveKit strongly recommends you use
+
+these instead of creating your own implementation because they manage React state handling and have been rigorously
+
+tested. Lower-level features include input device toggling, and audio and video tracks:
+
+StartAudio
+
+StartMediaButton
+
+TrackToggle
+
+TrackLoop
+
+If you do create custom components, use the provided hooks for state. For example, to create a custom mic toggle
+
+button, use
+
+useTrackToggle
+
+:
+
+const
+
+{
+
+buttonProps
+
+,
+
+enabled
+
+}
+
+=
+
+useTrackToggle
+
+(
+
+props
+
+)
+
+;
+
+return
+
+(
+
+<
+
+button ref
+
+=
+
+{
+
+ref
+
+}
+
+{
+
+...
+
+buttonProps
+
+}
+
+>
+
+{
+
+(
+
+showIcon
+
+??
+
+true
+
+)
+
+&&
+
+getSourceIcon
+
+(
+
+props
+
+.
+
+source
+
+,
+
+enabled
+
+)
+
+}
+
+{
+
+props
+
+.
+
+children
+
+}
+
+<
+
+/
+
+button
+
+>
+
+)
+
+;
+
+Using hooks for current state
+
+LiveKit recommends using
+
+hooks
+
+to get
+
+the most current information about room state. For example, to get a list of active tracks or participants in a room:
+
+useParticipants
+
+useTracks
+
+Updating props for the LiveKitRoom component
+
+Updating props for the
+
+LiveKitRoom
+
+component should
+
+not
+
+result in the component being repeatedly unmounted and
+
+remounted. This results in
+
+Client initiated disconnect
+
+errors and cause users to be repeatedly disconnected and
+
+reconnected to the room.
+
+On this page
+
+Use LiveKit components for lower-level features
+
+Using hooks for current state
+
+Updating props for the LiveKitRoom component

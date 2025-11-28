@@ -1,0 +1,29 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/home/client/data/
+Title: 
+Crawled: 2025-11-01 21:06:10
+================================================================================
+
+Copy page
+
+See more page options
+
+Sending text
+
+Use text streams to send and receive text data, such as LLM responses or chat messages.
+
+Sending files & bytes
+
+Use byte streams to transfer files, images, or any other binary data.
+
+Remote method calls
+
+Use RPC to execute custom methods on other participants in the room and await a response.
+
+For low-level control over individual packet behavior, LiveKit also includes a simple
+
+data packets
+
+API.

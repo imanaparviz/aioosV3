@@ -1,0 +1,121 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useismuted/
+Title: useIsMuted
+Crawled: 2025-11-01 21:17:21
+================================================================================
+
+GitHub
+
+Source
+
+useIsMuted
+
+The
+
+useIsMuted
+
+hook is used to implement the
+
+TrackMutedIndicator
+
+or your custom implementation of it. It returns a
+
+boolean
+
+that indicates if the track is muted or not.
+
+Import
+
+import
+
+{
+
+useIsMuted
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+With a track reference
+
+const
+
+isMuted
+
+=
+
+useIsMuted
+
+(
+
+track
+
+)
+
+;
+
+With a track source / participant
+
+const
+
+isMuted
+
+=
+
+useIsMuted
+
+(
+
+"camera"
+
+,
+
+{
+
+participant
+
+}
+
+)
+
+;
+
+Properties
+
+trackRef
+
+TrackReferenceOrPlaceholder
+
+Required
+
+#
+
+Returns
+
+boolean indicating if the track is muted
+
+boolean
+
+;
+
+On this page
+
+Import
+
+Usage
+
+With a track reference
+
+With a track source / participant
+
+Properties
+
+Returns

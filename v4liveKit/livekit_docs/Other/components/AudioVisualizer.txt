@@ -1,0 +1,77 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/audiovisualizer/
+Title: AudioVisualizer
+Crawled: 2025-11-01 21:16:44
+================================================================================
+
+GitHub
+
+Source
+
+AudioVisualizer
+
+Caution
+
+This API is deprecated: Use BarVisualizer instead
+
+The AudioVisualizer component is used to visualize the audio volume of a given audio track.
+
+Import
+
+import
+
+{
+
+AudioVisualizer
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+Requires a
+
+TrackReferenceOrPlaceholder
+
+to be provided either as a property or via the
+
+TrackRefContext
+
+.
+
+Usage
+
+<
+
+AudioVisualizer
+
+/>
+
+Properties
+
+trackRef
+
+TrackReference
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Properties

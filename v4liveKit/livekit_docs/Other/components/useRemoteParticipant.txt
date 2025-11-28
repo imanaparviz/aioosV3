@@ -1,0 +1,135 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/hook/useremoteparticipant/
+Title: useRemoteParticipant
+Crawled: 2025-11-01 21:17:23
+================================================================================
+
+GitHub
+
+Source
+
+useRemoteParticipant
+
+The
+
+useRemoteParticipant
+
+hook returns the first RemoteParticipant by either identity and/or based on the participant kind.
+
+Import
+
+import
+
+{
+
+useRemoteParticipant
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Remarks
+
+To optimize performance, you can use the
+
+updateOnlyOn
+
+property to decide on what
+
+ParticipantEvents
+
+the hook updates.
+
+Usage
+
+const
+
+participant
+
+=
+
+useRemoteParticipant
+
+(
+
+{
+
+kind
+
+:
+
+ParticipantKind
+
+.
+
+Agent
+
+,
+
+identity
+
+:
+
+"myAgent"
+
+}
+
+)
+
+;
+
+Properties
+
+identifier
+
+ParticipantIdentifier
+
+Required
+
+#
+
+options.updateOnlyOn
+
+ParticipantEvent[]
+
+Optional
+
+#
+
+To optimize performance, you can use the
+
+updateOnlyOn
+
+property to decide on what
+
+ParticipantEvents
+
+the hook updates. By default it updates on all relevant ParticipantEvents to keep the returned participant up to date.
+
+Returns
+
+RemoteParticipant
+
+|
+
+undefined
+
+;
+
+On this page
+
+Import
+
+Remarks
+
+Usage
+
+Properties
+
+Returns

@@ -1,0 +1,273 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/internals/client-protocol/
+Title: 
+Crawled: 2025-11-01 21:14:42
+================================================================================
+
+On this page
+
+Basics
+
+Protobufs
+
+Dedicated PeerConnections
+
+Joining a room
+
+WebSocket Parameters
+
+Publishing
+
+Receiving tracks
+
+Server events
+
+SpeakersChanged
+
+Client-initiated control
+
+Mute/unmute local tracks
+
+Changing quality of streams
+
+Subscription control
+
+Copy page
+
+See more page options
+
+Note
+
+Using LiveKit in your app does not require you to understand the underlying protocol. This is one of our design goals.
+
+Basics
+
+LiveKit clients use a WebSocket to communicate with the server over Protocol Buffers. Client could establish up to two WebRTC PeerConnections with the SFUs, used for publishing and receiving streams, respectively.
+
+By default, the subscriber PeerConnection will always be open upon connection. The publisher PeerConnection will be established only when the client is ready to publish.
+
+Protobufs
+
+LiveKit uses Protocol Buffers for all of its communications. Communication happens asynchronously: one side may send a message to the other at any time, without the expectation of an immediate response. LiveKit protobufs reside in the
+
+livekit/protocol repo
+
+.
+
+As a convention, a client always sends a
+
+SignalRequest
+
+and the server replies with a
+
+SignalResponse
+
+.
+
+Dedicated PeerConnections
+
+For each client connected to the server, we use up to two separate
+
+PeerConnection
+
+objects. One for publishing tracks to the server, and the other for receiving subscribed tracks.
+
+Using separate peer connections simplifies the negotiation process and eliminates negotiation
+
+Glares
+
+. The side sending tracks to the other will be the one that initiates the offer.
+
+Joining a room
+
+client initiates WebSocket connection to
+
+/rtc
+
+server sends a
+
+JoinResponse
+
+, which includes room information, the current participant's data, and information about other participants in the room
+
+server initiates the subscriber
+
+PeerConnection
+
+, sends
+
+offer
+
+to client
+
+if
+
+AutoSubscribe
+
+is enabled, this offer will contain existing tracks in the room.
+
+the offer will include two data channels as part of the connection
+
+client and server will exchange ICE candidates via
+
+trickle
+
+client accepts the subscriber connection, sends an
+
+answer
+
+ICE connectivity is established
+
+server notifies other participants of the new participant
+
+WebSocket Parameters
+
+Websocket endpoint
+
+/rtc
+
+is the initial step that the client connects to. It takes in several parameters to give the server information about the client and its capabilities:
+
+access_token: an encoded JWT access token
+
+reconnect: true if client is trying to resume to an existing connection. when this is set, server will attempt to perform a ICE restart after connection is established.
+
+auto_subscribe: true by default. If true, server will automatically subscribe client to all tracks in the room
+
+sdk: indicates the SDK it's using. (js, ios, android, etc)
+
+protocol: indicates the protocol version. this document descriibes the latest protocol version: 9
+
+version: version of the client SDK
+
+Publishing
+
+To publish a track, a client must first notify the server of its intent and send up any client-defined metadata about the track.
+
+client sends a
+
+AddTrackRequest
+
+with track metadata
+
+server sends back a
+
+TrackPublishedResponse
+
+client adds a transceiver to the
+
+PeerConnection
+
+, along with the media track
+
+client initiates
+
+offer
+
+, sends to server
+
+server answers the offer and starts receiving the track
+
+if server subscribes other participants to the track
+
+Receiving tracks
+
+LiveKit server sends down track metadata to all participants in a room as soon as it's published, then it adds the track to each client's subscriber
+
+PeerConnection
+
+.
+
+Server events
+
+The client must also be ready to act upon other changes in the room. The server will notify clients of:
+
+ParticipantUpdate
+
+: when other participants join or leave, or if there are changes to their tracks
+
+LeaveRequest
+
+: when the participant should immediately disconnect
+
+SpeakersChanged
+
+: when the active speakers in the room changes
+
+For all server events, clients should handle them in an idempotent way. For example, it's possible to
+
+receive multiple ParticipantUpdates with identical metadata.
+
+SpeakersChanged
+
+Server will send down a list of
+
+SpeakerInfo
+
+that has changed from the last update. Clients are responsible for applying the deltas and firing the appropriate events.
+
+Client-initiated control
+
+Mute/unmute local tracks
+
+WebRTC doesn't natively support muting tracks. When a track is disabled, it will continue to periodically send "empty" packets. With LiveKit (and SFUs, in general), we want a discrete mute event in order to notify other participants of the change and to optimize network consumption by suppressing empty packets.
+
+To mute a track, set
+
+MediaStreamTrack.enabled
+
+to false, and subsequently send a
+
+MuteTrackRequest
+
+to the server with that track's
+
+sid
+
+.
+
+Changing quality of streams
+
+For a particular client,
+
+UpdateTrackSettings
+
+informs the server whether a subscribed track should be temporarily paused, or if the server should send down a stream of differing quality. This is especially useful for larger rooms, when the client wants to optimize how much data it's receiving at once. For example, offscreen clients could have their streams temporarily paused.
+
+Subscription control
+
+Clients also have the ability to control which tracks they're subscribed to. An
+
+UpdateSubscription
+
+message allows the client to subscribe or unsubscribe to published tracks.
+
+On this page
+
+Basics
+
+Protobufs
+
+Dedicated PeerConnections
+
+Joining a room
+
+WebSocket Parameters
+
+Publishing
+
+Receiving tracks
+
+Server events
+
+SpeakersChanged
+
+Client-initiated control
+
+Mute/unmute local tracks
+
+Changing quality of streams
+
+Subscription control

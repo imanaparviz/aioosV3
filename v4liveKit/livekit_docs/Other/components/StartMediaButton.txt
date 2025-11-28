@@ -1,0 +1,85 @@
+================================================================================
+LiveKit Documentation
+================================================================================
+URL: https://docs.livekit.io/reference/components/react/component/startmediabutton/
+Title: StartMediaButton
+Crawled: 2025-11-01 21:15:19
+================================================================================
+
+GitHub
+
+Source
+
+StartMediaButton
+
+The
+
+StartMediaButton
+
+component is only visible when the browser blocks media playback. This is due to some browser implemented autoplay policies. To start media playback, the user must perform a user-initiated event such as clicking this button. As soon as media playback starts, the button hides itself again.
+
+Import
+
+import
+
+{
+
+StartMediaButton
+
+}
+
+from
+
+"@livekit/components-react"
+
+;
+
+Usage
+
+<
+
+LiveKitRoom
+
+>
+
+<
+
+StartMediaButton
+
+label
+
+=
+
+"
+
+Click to allow media playback
+
+"
+
+/>
+
+</
+
+LiveKitRoom
+
+>
+
+Properties
+
+label
+
+string
+
+Optional
+
+#
+
+(Optional)
+
+On this page
+
+Import
+
+Usage
+
+Properties
